@@ -41,13 +41,9 @@ class LocalStorageSharedPreferencesServiceImpl implements ILocalStorageService {
         const (double) => sharedPreferences.getDouble(key),
         const (int) => sharedPreferences.getInt(key),
         const (List<String>) => sharedPreferences.getStringList(key),
-        const (Map<String, dynamic>) => () {
-            final result = sharedPreferences.getString(key);
-            if (result == null) return null;
-
-            return (jsonDecode(result) as Map).cast<String, dynamic>();
-          }(),
-        _ => sharedPreferences.getString(key),
+        const (Map<String, dynamic>) =>
+          (sharedPreferences.get(key) as Map?)?.cast<String, dynamic>(),
+        _ => sharedPreferences.get(key),
       };
 
       if (result == null) {
@@ -73,14 +69,14 @@ class LocalStorageSharedPreferencesServiceImpl implements ILocalStorageService {
     T value,
   ) async {
     try {
-      final writed = switch (value.runtimeType) {
+      final writed = switch (T) {
         const (bool) => await sharedPreferences.setBool(key, value as bool),
         const (double) =>
           await sharedPreferences.setDouble(key, value as double),
         const (int) => await sharedPreferences.setInt(key, value as int),
         const (List<String>) =>
           await sharedPreferences.setStringList(key, value as List<String>),
-        const (Map<dynamic, dynamic>) =>
+        const (Map<String, dynamic>) =>
           await sharedPreferences.setString(key, jsonEncode(value)),
         _ => await sharedPreferences.setString(key, value.toString()),
       };
