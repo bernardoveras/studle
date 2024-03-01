@@ -24,8 +24,8 @@ class UserEntity extends Equatable {
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{
       'id': id,
-      'accessToken': accessToken,
-      'refreshToken': refreshToken,
+      'access_token': accessToken,
+      'refresh_token': refreshToken,
       'name': name,
       'email': email,
       'picture': picture,
@@ -38,8 +38,8 @@ class UserEntity extends Equatable {
   factory UserEntity.fromMap(Map<String, dynamic> map) {
     return UserEntity(
       id: map['id'],
-      accessToken: map['accessToken'],
-      refreshToken: map['refreshToken'],
+      accessToken: map['access_token'],
+      refreshToken: map['refresh_token'],
       name: map['name'],
       email: map['email'],
       picture: map['picture'],
