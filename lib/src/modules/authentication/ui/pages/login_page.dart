@@ -14,9 +14,12 @@ import '../store/login_store.dart';
 class LoginPage extends StatefulWidget {
   const LoginPage({
     super.key,
+    this.from,
   });
 
   static String get route => '/auth';
+
+  final String? from;
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -120,6 +123,12 @@ class _LoginPageState extends State<LoginPage> {
                           Validatorless.required(TextConstants.requiredField),
                       onChanged: store.changePassword,
                       onFieldSubmitted: (_) => submit(),
+                    ),
+                    const SizedBox(height: 20),
+                    DefaultCheckboxTile(
+                      title: 'Permanecer logado',
+                      value: store.stayLogged,
+                      onChanged: store.changeStayLogged,
                     ),
                     const SizedBox(height: 56),
                     SolidButton.primary(

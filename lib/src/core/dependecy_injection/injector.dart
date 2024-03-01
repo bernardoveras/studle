@@ -23,7 +23,9 @@ abstract class Injector {
   ///
   /// This private method registers various service implementations with GetIt.
   static void _registerServices() {
-    _getIt.registerAuthenticationServices();
+    _getIt
+      ..registerAuthenticationServices()
+      ..registerLocalStorageServices();
   }
 
   /// Register all dependencies.

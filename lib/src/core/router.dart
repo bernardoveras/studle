@@ -9,10 +9,12 @@ import '../modules/home/ui/pages/home_page.dart';
 import '../modules/onboarding/ui/pages/onboarding_page.dart';
 import '../modules/onboarding/ui/stores/onboarding_store.dart';
 import 'dependecy_injection/injector.dart';
+import 'route_guard.dart';
+import 'user_session.dart';
 
 abstract class AppRouter {
   static final router = GoRouter(
-    initialLocation: OnboardingPage.route,
+    initialLocation: LoginPage.route,
     routes: [
       GoRoute(
         path: HomePage.route,
@@ -21,7 +23,9 @@ abstract class AppRouter {
       GoRoute(
         path: OnboardingPage.route,
         builder: (context, state) => ChangeNotifierProvider.value(
-          value: OnboardingStore(),
+          value: OnboardingStore(
+            userSession: Injector.resolve(),
+          ),
           child: const OnboardingPage(),
         ),
       ),
@@ -40,9 +44,13 @@ abstract class AppRouter {
             authService: Injector.resolve(),
             userSession: Injector.resolve(),
           ),
-          child: const LoginPage(),
+          child: LoginPage(
+            from: state.uri.queryParameters['from'],
+          ),
         ),
       ),
     ],
+    redirect: RouteGuard.redirect,
+    refreshListenable: Injector.resolve<UserSession>(),
   );
 }
