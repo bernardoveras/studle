@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:myschool/src/modules/authentication/ui/store/login_store.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:validatorless/validatorless.dart';
 
 import '../../../../core/text_constants.dart';
@@ -24,7 +25,7 @@ class _LoginPageState extends State<LoginPage> {
   void initState() {
     super.initState();
 
-    store = LoginStore();
+    store = context.read();
   }
 
   @override
