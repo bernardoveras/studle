@@ -775,7 +775,7 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
             widget.label!,
             style: Button3Typography(
               fontWeight: FontWeight.w500,
-              color: MonoChromaticColors.dark.v300,
+              color: MonoChromaticColors.gray.v600,
             ),
           ),
           const SizedBox(height: 12),
@@ -809,7 +809,7 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
               maxLines: widget.maxLines,
               textAlignVertical: widget.textAlignVertical,
               style: Text2Typography(
-                color: MonoChromaticColors.dark,
+                color: MonoChromaticColors.gray.v800,
                 fontWeight: FontWeight.w500,
               ),
               decoration: InputDecoration(
@@ -858,19 +858,19 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
                     : null,
                 hintStyle: Text2Typography(
                   fontWeight: FontWeight.w500,
-                  color: MonoChromaticColors.dark.v100,
+                  color: MonoChromaticColors.gray.v400,
                 ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(
-                    color: MonoChromaticColors.light.v500,
+                    color: MonoChromaticColors.gray.v300,
                     width: 1.5,
                   ),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(
-                    color: MonoChromaticColors.light.v500,
+                    color: MonoChromaticColors.gray.v300,
                     width: 1.5,
                   ),
                 ),

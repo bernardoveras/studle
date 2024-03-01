@@ -13,23 +13,23 @@ abstract class AppTheme {
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.white,
       elevation: 0,
-      foregroundColor: MonoChromaticColors.dark,
+      foregroundColor: MonoChromaticColors.gray.v800,
       actionsIconTheme: IconThemeData(
-        color: MonoChromaticColors.dark.v200,
+        color: MonoChromaticColors.gray,
       ),
       iconTheme: IconThemeData(
-        color: MonoChromaticColors.dark.v200,
+        color: MonoChromaticColors.gray,
       ),
       shape: Border(
         bottom: BorderSide(
-          color: MonoChromaticColors.light.v300,
+          color: MonoChromaticColors.gray.v100,
           width: 2,
         ),
       ),
       titleTextStyle: TextStyle(
         fontSize: 18,
         fontWeight: FontWeight.w600,
-        color: MonoChromaticColors.dark,
+        color: MonoChromaticColors.gray.v800,
       ),
       centerTitle: true,
     ),
@@ -69,7 +69,7 @@ abstract class AppTheme {
     colorScheme: ColorScheme.fromSeed(
       seedColor: PrimaryColors.brand,
       background: Colors.white,
-      onBackground: MonoChromaticColors.dark,
+      onBackground: MonoChromaticColors.gray.v800,
     ),
   );
 }
