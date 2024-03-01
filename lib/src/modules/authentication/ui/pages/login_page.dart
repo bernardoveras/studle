@@ -68,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
             splashColor: Colors.transparent,
             icon: Icon(
               PhosphorIconsRegular.question,
-              color: MonoChromaticColors.dark.v200,
+              color: MonoChromaticColors.gray,
             ),
           ),
         ],
@@ -90,14 +90,14 @@ class _LoginPageState extends State<LoginPage> {
                       'Insira seus dados',
                       style: Heading4Typography(
                         fontWeight: FontWeight.w600,
-                        color: MonoChromaticColors.dark,
+                        color: MonoChromaticColors.gray.v800,
                       ),
                     ),
                     const SizedBox(height: 8),
                     Text(
                       'Utilize o número do seu RA para realizar o login.',
                       style: Text2Typography(
-                        color: MonoChromaticColors.dark.v300,
+                        color: MonoChromaticColors.gray.v600,
                       ),
                     ),
                     const SizedBox(height: 24),

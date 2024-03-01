@@ -24,7 +24,7 @@ class CampaignHeader extends StatelessWidget {
         border: bannerUrl == null
             ? Border(
                 bottom: BorderSide(
-                  color: MonoChromaticColors.light.v400,
+                  color: MonoChromaticColors.gray.v200,
                   width: 2,
                 ),
               )
@@ -73,7 +73,7 @@ class CampaignHeader extends StatelessWidget {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: bannerUrl == null
-                        ? MonoChromaticColors.light.v400
+                        ? MonoChromaticColors.gray.v200
                         : Colors.white,
                   ),
                   height: 40,
@@ -81,8 +81,8 @@ class CampaignHeader extends StatelessWidget {
                   child: Icon(
                     PhosphorIconsBold.x,
                     color: bannerUrl == null
-                        ? MonoChromaticColors.dark.v400
-                        : MonoChromaticColors.dark.v200,
+                        ? MonoChromaticColors.gray.v700
+                        : MonoChromaticColors.gray,
                     size: 18,
                   ),
                 ),
