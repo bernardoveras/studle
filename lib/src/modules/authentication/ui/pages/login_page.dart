@@ -5,7 +5,7 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:validatorless/validatorless.dart';
 
-import '../../../../core/text_constants.dart';
+import '../../../../core/constants/text_constants.dart';
 import '../../../../core/ui/design_system/design_system.dart';
 import '../../../../core/ui/widgets/default_app_bar.dart';
 import '../../../home/ui/pages/home_page.dart';
