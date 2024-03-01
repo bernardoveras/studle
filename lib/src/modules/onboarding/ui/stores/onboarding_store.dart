@@ -1,7 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/image_source_constants.dart';
+import '../../../../core/constants/image_source_constants.dart';
 import '../../domain/entities/onboarding_entity.dart';
 
 class OnboardingStore extends ChangeNotifier {

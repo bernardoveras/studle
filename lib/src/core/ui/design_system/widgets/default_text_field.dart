@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:validatorless/validatorless.dart';
 
-import '../../../text_constants.dart';
+import '../../../constants/text_constants.dart';
 import '../design_system.dart';
 
 class DefaultTextField extends StatefulWidget {
