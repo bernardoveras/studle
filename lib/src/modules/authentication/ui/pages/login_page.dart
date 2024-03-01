@@ -5,7 +5,7 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:validatorless/validatorless.dart';
 
-import '../../../../core/text_constants.dart';
+import '../../../../core/constants/text_constants.dart';
 import '../../../../core/ui/design_system/design_system.dart';
 import '../../../../core/ui/widgets/default_app_bar.dart';
 import '../../../home/ui/pages/home_page.dart';
@@ -68,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
             splashColor: Colors.transparent,
             icon: Icon(
               PhosphorIconsRegular.question,
-              color: MonoChromaticColors.dark.v200,
+              color: MonoChromaticColors.gray,
             ),
           ),
         ],
@@ -88,18 +88,16 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     Text(
                       'Insira seus dados',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: MonoChromaticColors.dark,
+                      style: Heading4Typography(
+                        fontWeight: FontWeight.w600,
+                        color: MonoChromaticColors.gray.v800,
                       ),
                     ),
                     const SizedBox(height: 8),
                     Text(
                       'Utilize o número do seu RA para realizar o login.',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: MonoChromaticColors.dark.v300,
+                      style: Text2Typography(
+                        color: MonoChromaticColors.gray.v600,
                       ),
                     ),
                     const SizedBox(height: 24),
@@ -123,7 +121,7 @@ class _LoginPageState extends State<LoginPage> {
                       onChanged: store.changePassword,
                       onFieldSubmitted: (_) => submit(),
                     ),
-                    const SizedBox(height: 40),
+                    const SizedBox(height: 56),
                     SolidButton.primary(
                       label: 'Entrar',
                       onPressed: store.formIsValid ? submit : null,

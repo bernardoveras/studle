@@ -154,8 +154,8 @@ class SolidButton extends StatelessWidget {
       loading: loading,
       height: height,
       width: width,
-      backgroundColor: MonoChromaticColors.light,
-      foregroundColor: MonoChromaticColors.dark.v300,
+      backgroundColor: MonoChromaticColors.gray,
+      foregroundColor: MonoChromaticColors.gray.v600,
       icon: icon,
       iconSize: iconSize,
       disabled: disabled,
@@ -184,8 +184,8 @@ class SolidButton extends StatelessWidget {
       loading: loading,
       height: height,
       width: width,
-      backgroundColor: MonoChromaticColors.light,
-      foregroundColor: MonoChromaticColors.dark.v300,
+      backgroundColor: MonoChromaticColors.gray,
+      foregroundColor: MonoChromaticColors.gray.v600,
       icon: icon,
       iconSize: iconSize,
       disabled: disabled,
@@ -215,7 +215,7 @@ class SolidButton extends StatelessWidget {
           ),
           backgroundColor: MaterialStateProperty.resolveWith((states) {
             if (states.contains(MaterialState.disabled)) {
-              return MonoChromaticColors.light.v500;
+              return MonoChromaticColors.gray.v300;
             }
 
             if (style == SolidButtonStyle.inverted) {
@@ -238,7 +238,7 @@ class SolidButton extends StatelessWidget {
           }),
           foregroundColor: MaterialStateProperty.resolveWith((states) {
             if (states.contains(MaterialState.disabled)) {
-              return MonoChromaticColors.dark.v200;
+              return MonoChromaticColors.gray;
             }
 
             if (style == SolidButtonStyle.inverted) {
@@ -260,9 +260,8 @@ class SolidButton extends StatelessWidget {
             return foregroundColor;
           }),
           textStyle: const MaterialStatePropertyAll(
-            TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: 16,
+            Button2Typography(
+              fontWeight: FontWeight.w500,
             ),
           ),
         ),
@@ -286,7 +285,9 @@ class SolidButton extends StatelessWidget {
                       label,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(),
+                      style: const Button2Typography(
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
                 ],

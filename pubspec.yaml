@@ -21,25 +21,30 @@ dependencies:
   get_it: ^7.6.7
   flutter_animate: ^4.5.0
   url_launcher: ^6.2.5
+  collection: ^1.18.0
+  smooth_page_indicator: ^1.1.0
+  shared_preferences: ^2.2.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
 
-
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/images/
 
   fonts:
     - family: Inter
       fonts:
-      - asset: assets/fonts/Inter-Light.ttf
-        weight: 300
-      - asset: assets/fonts/Inter-Regular.ttf
-        weight: 400
-      - asset: assets/fonts/Inter-Medium.ttf
-        weight: 500
-      - asset: assets/fonts/Inter-SemiBold.ttf
-        weight: 600
-      - asset: assets/fonts/Inter-Bold.ttf
+        - asset: assets/fonts/Inter-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Inter-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Inter-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Inter-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Inter-Bold.ttf

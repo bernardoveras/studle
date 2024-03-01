@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:result_dart/result_dart.dart';
 
 import '../../../../core/exceptions/exceptions.dart';
-import '../../../../core/exceptions/unknow_exception.dart';
 import '../../../../core/mixins/loading_change_notifier_mixin.dart';
 import '../../../../core/user_session.dart';
 import '../../domain/dtos/login_with_student_registration_dto.dart';

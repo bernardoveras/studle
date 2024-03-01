@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:validatorless/validatorless.dart';
 
-import '../../../text_constants.dart';
+import '../../../constants/text_constants.dart';
 import '../design_system.dart';
 
 class DefaultTextField extends StatefulWidget {
@@ -773,10 +773,9 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
         if (widget.label != null) ...{
           Text(
             widget.label!,
-            style: TextStyle(
-              fontSize: 14,
+            style: Button3Typography(
               fontWeight: FontWeight.w500,
-              color: MonoChromaticColors.dark.v300,
+              color: MonoChromaticColors.gray.v600,
             ),
           ),
           const SizedBox(height: 12),
@@ -809,10 +808,9 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
               readOnly: widget.readOnly,
               maxLines: widget.maxLines,
               textAlignVertical: widget.textAlignVertical,
-              style: TextStyle(
-                color: MonoChromaticColors.dark,
+              style: Text2Typography(
+                color: MonoChromaticColors.gray.v800,
                 fontWeight: FontWeight.w500,
-                fontSize: 16,
               ),
               decoration: InputDecoration(
                 filled: true,
@@ -853,23 +851,26 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
                             ),
                           )
                         : widget.suffixIcon,
-                errorStyle:
-                    widget.errorText == '' ? const TextStyle(height: 0) : null,
-                hintStyle: TextStyle(
-                  fontSize: 16,
-                  color: MonoChromaticColors.dark.v100,
+                errorStyle: widget.errorText == ''
+                    ? const Button3Typography(
+                        height: 0,
+                      )
+                    : null,
+                hintStyle: Text2Typography(
+                  fontWeight: FontWeight.w500,
+                  color: MonoChromaticColors.gray.v400,
                 ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(
-                    color: MonoChromaticColors.light.v500,
+                    color: MonoChromaticColors.gray.v300,
                     width: 1.5,
                   ),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(
-                    color: MonoChromaticColors.light.v500,
+                    color: MonoChromaticColors.gray.v300,
                     width: 1.5,
                   ),
                 ),

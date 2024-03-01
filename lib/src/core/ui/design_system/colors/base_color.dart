@@ -18,6 +18,8 @@ final class BaseColor extends ColorSwatch<int> {
   final int primary;
   final Map<int, Color> swatch;
 
+  Color get v25 => _getVariation(25);
+  Color get v50 => _getVariation(50);
   Color get v100 => _getVariation(100);
   Color get v200 => _getVariation(200);
   Color get v300 => _getVariation(300);
