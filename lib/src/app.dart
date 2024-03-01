@@ -11,6 +11,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      key: key,
       title: 'My School',
       theme: AppTheme.theme,
       routerConfig: AppRouter.router,
