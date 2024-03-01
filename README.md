@@ -16,11 +16,14 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 
 - [ ] Onboarding
 - [x] Login
+- [ ] Boas-vindas
 - [ ] Dúvidas frequentes
 - [ ] Tela Inicial
-- [ ] Perfil
+- [ ] Dados pessoais
 - [ ] Aulas
+- [ ] Notas
 - [ ] Atividades complementares
+- [ ] Progressão acadêmica
 - [ ] Financeiro
 - [ ] Notificações
 - [ ] Calendário
