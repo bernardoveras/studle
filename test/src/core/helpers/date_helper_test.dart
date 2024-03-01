@@ -14,7 +14,8 @@ void main() {
     test('Format with custom pattern', () {
       final date = DateTime(2024, 3, 1, 12, 30);
 
-      final formattedString = DateHelper.format(date, 'dd/MM/yyyy HH:mm:ss');
+      final formattedString =
+          DateHelper.format(date, pattern: 'dd/MM/yyyy HH:mm:ss');
 
       expect(formattedString, '01/03/2024 12:30:00');
     });
@@ -34,7 +35,7 @@ void main() {
 
       final dateParsed = DateHelper.tryParse(
         '01/03/2024 12:30:00',
-        'dd/MM/yyyy HH:mm:ss',
+        pattern: 'dd/MM/yyyy HH:mm:ss',
       );
 
       expect(dateParsed, expectedDate);
