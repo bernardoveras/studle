@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myschool/src/modules/authentication/domain/dtos/login_with_student_registration_dto.dart';
 
+import '../../../../../mocks/login_with_student_registration_mock.dart' as mock;
+
 void main() {
   test('LoginWithStudentRegistrationDto - equality', () {
     const dto1 = LoginWithStudentRegistrationDto(
@@ -19,28 +21,22 @@ void main() {
   });
 
   test('LoginWithStudentRegistrationDto - to map', () {
-    const dto = LoginWithStudentRegistrationDto(
-      registration: 'registration',
-      password: 'password',
-    );
+    const expectedDto = mock.dto;
 
-    final map = dto.toMap();
+    final map = expectedDto.toMap();
 
-    expect(map['login'], dto.registration);
-    expect(map['password'], dto.password);
+    expect(map['login'], expectedDto.registration);
+    expect(map['password'], expectedDto.password);
   });
 
   test('LoginWithStudentRegistrationDto - to json', () {
-    const dto = LoginWithStudentRegistrationDto(
-      registration: 'registration',
-      password: 'password',
-    );
+    const expectedDto = mock.dto;
 
-    final json = dto.toJson();
+    final json = expectedDto.toJson();
 
     final map = jsonDecode(json);
 
-    expect(map['login'], dto.registration);
-    expect(map['password'], dto.password);
+    expect(map['login'], expectedDto.registration);
+    expect(map['password'], expectedDto.password);
   });
 }
