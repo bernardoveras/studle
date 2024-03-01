@@ -25,6 +25,8 @@ final class BaseColor extends ColorSwatch<int> {
   Color get v500 => _getVariation(500);
   Color get v600 => _getVariation(600);
   Color get v700 => _getVariation(700);
+  Color get v800 => _getVariation(800);
+  Color get v900 => _getVariation(900);
 
   Color _getVariation(int variation) {
     if (swatch[variation] == null) {
