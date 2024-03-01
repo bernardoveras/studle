@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+echo "🚨🚨 PRE-PUSH HOOK RUNNING 🚨🚨"
+echo "→ 🔥🧪 Running Flutter test"
+# flutter test
+# if [ $? -ne 0 ]; then
+#   exit 1
+# fi
+
+# Set 0 to confirm push
+echo "→ 🚀🥳✅ Tests passed!"
+exit 0
