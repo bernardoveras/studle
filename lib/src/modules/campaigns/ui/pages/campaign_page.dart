@@ -4,7 +4,7 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../../../core/ui/design_system/design_system.dart';
 import '../../../../core/utils/redirect_to_url.dart';
-import '../parameters/campaign_page_parameters.dart';
+import '../parameters/campaign_page_parameter.dart';
 import '../widgets/campaign_header.dart';
 
 class CampaignPage extends StatelessWidget {
@@ -13,7 +13,7 @@ class CampaignPage extends StatelessWidget {
     required this.parameters,
   });
 
-  final CampaignPageParameters parameters;
+  final CampaignPageParameter parameters;
 
   static String get route => '/campaign';
 

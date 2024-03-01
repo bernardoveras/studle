@@ -1,22 +1,22 @@
 import 'package:equatable/equatable.dart';
 
-class CampaignPageParameters extends Equatable {
+class CampaignPageParameter extends Equatable {
   final String title;
   final String description;
   final String? link;
   final String? bannerUrl;
 
-  const CampaignPageParameters({
+  const CampaignPageParameter({
     required this.title,
     required this.description,
     this.link,
     this.bannerUrl,
   });
 
-  factory CampaignPageParameters.fromQueryParameters(
+  factory CampaignPageParameter.fromQueryParameters(
     Map<String, String> query,
   ) {
-    return CampaignPageParameters(
+    return CampaignPageParameter(
       title: query['title']!,
       description: query['description']!,
       link: query['link'],

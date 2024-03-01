@@ -1,16 +1,16 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:myschool/src/modules/campaigns/ui/parameters/campaign_page_parameters.dart';
+import 'package:myschool/src/modules/campaigns/ui/parameters/campaign_page_parameter.dart';
 
 void main() {
-  test('CampaignPageParameters - equality', () {
-    const parameter1 = CampaignPageParameters(
+  test('CampaignPageParameter - equality', () {
+    const parameter1 = CampaignPageParameter(
       title: 'Title',
       description: 'Description',
       link: 'https://google.com',
       bannerUrl: 'https://banner.com',
     );
 
-    const parameter2 = CampaignPageParameters(
+    const parameter2 = CampaignPageParameter(
       title: 'Title',
       description: 'Description',
       link: 'https://google.com',
@@ -20,9 +20,9 @@ void main() {
     expect(parameter1, parameter2);
   });
 
-  group('CampaignPageParameters - fromQueryParameters', () {
+  group('CampaignPageParameter - fromQueryParameters', () {
     test('all', () {
-      final parameter = CampaignPageParameters.fromQueryParameters(const {
+      final parameter = CampaignPageParameter.fromQueryParameters(const {
         'title': 'Title',
         'description': 'Description',
         'link': 'https://google.com',
@@ -36,7 +36,7 @@ void main() {
     });
 
     test('without link', () {
-      final parameter = CampaignPageParameters.fromQueryParameters(const {
+      final parameter = CampaignPageParameter.fromQueryParameters(const {
         'title': 'Title',
         'description': 'Description',
         'banner_url': 'https://banner.com',
@@ -49,7 +49,7 @@ void main() {
     });
 
     test('without banner', () {
-      final parameter = CampaignPageParameters.fromQueryParameters(const {
+      final parameter = CampaignPageParameter.fromQueryParameters(const {
         'title': 'Title',
         'description': 'Description',
         'link': 'https://google.com',
@@ -62,7 +62,7 @@ void main() {
     });
 
     test('without link and banner', () {
-      final parameter = CampaignPageParameters.fromQueryParameters(const {
+      final parameter = CampaignPageParameter.fromQueryParameters(const {
         'title': 'Title',
         'description': 'Description',
       });
@@ -74,9 +74,9 @@ void main() {
     });
   });
 
-  group('CampaignPageParameters - toQueryParameters', () {
+  group('CampaignPageParameter - toQueryParameters', () {
     test('all', () {
-      const parameter = CampaignPageParameters(
+      const parameter = CampaignPageParameter(
         title: 'Title',
         description: 'Description',
         link: 'https://google.com',
@@ -107,7 +107,7 @@ void main() {
     });
 
     test('without link', () {
-      const parameter = CampaignPageParameters(
+      const parameter = CampaignPageParameter(
         title: 'Title',
         description: 'Description',
         bannerUrl: 'https://banner.com',
@@ -137,7 +137,7 @@ void main() {
     });
 
     test('without banner', () {
-      const parameter = CampaignPageParameters(
+      const parameter = CampaignPageParameter(
         title: 'Title',
         description: 'Description',
         link: 'https://google.com',
@@ -167,7 +167,7 @@ void main() {
     });
 
     test('without link and banner', () {
-      const parameter = CampaignPageParameters(
+      const parameter = CampaignPageParameter(
         title: 'Title',
         description: 'Description',
       );
