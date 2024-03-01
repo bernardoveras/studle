@@ -6,7 +6,7 @@ import 'hex_color.dart';
 final class BaseColor extends ColorSwatch<int> {
   BaseColor(
     Map<int, String> swatchHex, {
-    this.primary = 5,
+    this.primary = 500,
   })  : swatch = swatchHex.map(
           (key, value) => MapEntry<int, Color>(key, HexColor.fromHex(value)),
         ),
