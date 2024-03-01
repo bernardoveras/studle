@@ -74,8 +74,7 @@ class CampaignPage extends StatelessWidget {
                     ],
                     child: Text(
                       parameters.title,
-                      style: TextStyle(
-                        fontSize: 20,
+                      style: Heading3Typography(
                         fontWeight: FontWeight.bold,
                         color: MonoChromaticColors.dark,
                       ),
@@ -98,8 +97,7 @@ class CampaignPage extends StatelessWidget {
                     ],
                     child: Text(
                       parameters.description,
-                      style: TextStyle(
-                        fontSize: 16,
+                      style: Text2Typography(
                         color: MonoChromaticColors.dark.v300,
                       ),
                     ),

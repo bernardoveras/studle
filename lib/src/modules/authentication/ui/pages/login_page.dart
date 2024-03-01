@@ -88,17 +88,15 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     Text(
                       'Insira seus dados',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                      style: Heading4Typography(
+                        fontWeight: FontWeight.w600,
                         color: MonoChromaticColors.dark,
                       ),
                     ),
                     const SizedBox(height: 8),
                     Text(
                       'Utilize o número do seu RA para realizar o login.',
-                      style: TextStyle(
-                        fontSize: 16,
+                      style: Text2Typography(
                         color: MonoChromaticColors.dark.v300,
                       ),
                     ),

@@ -773,8 +773,7 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
         if (widget.label != null) ...{
           Text(
             widget.label!,
-            style: TextStyle(
-              fontSize: 14,
+            style: Button3Typography(
               fontWeight: FontWeight.w500,
               color: MonoChromaticColors.dark.v300,
             ),
@@ -809,10 +808,9 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
               readOnly: widget.readOnly,
               maxLines: widget.maxLines,
               textAlignVertical: widget.textAlignVertical,
-              style: TextStyle(
+              style: Text2Typography(
                 color: MonoChromaticColors.dark,
                 fontWeight: FontWeight.w500,
-                fontSize: 16,
               ),
               decoration: InputDecoration(
                 filled: true,
@@ -853,10 +851,13 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
                             ),
                           )
                         : widget.suffixIcon,
-                errorStyle:
-                    widget.errorText == '' ? const TextStyle(height: 0) : null,
-                hintStyle: TextStyle(
-                  fontSize: 16,
+                errorStyle: widget.errorText == ''
+                    ? const Button3Typography(
+                        height: 0,
+                      )
+                    : null,
+                hintStyle: Text2Typography(
+                  fontWeight: FontWeight.w500,
                   color: MonoChromaticColors.dark.v100,
                 ),
                 border: OutlineInputBorder(

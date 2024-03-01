@@ -260,9 +260,8 @@ class SolidButton extends StatelessWidget {
             return foregroundColor;
           }),
           textStyle: const MaterialStatePropertyAll(
-            TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: 16,
+            Button2Typography(
+              fontWeight: FontWeight.w500,
             ),
           ),
         ),
@@ -286,7 +285,9 @@ class SolidButton extends StatelessWidget {
                       label,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(),
+                      style: const Button2Typography(
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
                 ],
