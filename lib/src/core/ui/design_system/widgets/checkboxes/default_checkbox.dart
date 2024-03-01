@@ -21,7 +21,7 @@ class DefaultCheckbox extends StatelessWidget {
       curve: Curves.easeInOut,
       decoration: BoxDecoration(
         // shape: BoxShape.circle,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(8),
         color: value ? PrimaryColors.brand : Colors.transparent,
         border: Border.all(
           color: value ? PrimaryColors.brand : PrimaryColors.brand.v100,
