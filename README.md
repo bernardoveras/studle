@@ -12,9 +12,21 @@
 
 ### Ajustes e melhorias
 
-O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
+O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes funcionalidades:
 
-- [ ] Criar tela inicial
+- [ ] Onboarding
+- [ ] Login
+- [ ] Dúvidas frequentes
+- [ ] Tela Inicial
+- [ ] Perfil
+- [ ] Aulas
+- [ ] Atividades complementares
+- [ ] Financeiro
+- [ ] Notificações
+- [ ] Calendário
+- [ ] Carteirinha
+- [ ] Serviço de Atendimento ao Aluno
+- [ ] Campanha
 
 ## 💻 Pré-requisitos
 
