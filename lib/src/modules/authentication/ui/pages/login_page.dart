@@ -121,7 +121,7 @@ class _LoginPageState extends State<LoginPage> {
                       onChanged: store.changePassword,
                       onFieldSubmitted: (_) => submit(),
                     ),
-                    const SizedBox(height: 40),
+                    const SizedBox(height: 56),
                     SolidButton.primary(
                       label: 'Entrar',
                       onPressed: store.formIsValid ? submit : null,
