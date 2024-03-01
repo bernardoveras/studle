@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:myschool/src/core/ui/widgets/keyboard_dismiss_on_tap.dart';
 
 import 'src/core/ui/design_system/design_system.dart';
 
@@ -9,13 +11,23 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'My School',
       theme: AppTheme.theme,
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      locale: const Locale('pt', 'BR'),
+      supportedLocales: const [
+        Locale('pt', 'BR'),
+      ],
+      builder: (context, child) => KeyboardDismissOnTap(
+        child: child!,
+      ),
     );
   }
 }
