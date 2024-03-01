@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:myschool/src/core/text_constants.dart';
-import 'package:myschool/src/core/ui/design_system/design_system.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:validatorless/validatorless.dart';
+
+import '../../../text_constants.dart';
+import '../design_system.dart';
 
 class DefaultTextField extends StatefulWidget {
   const DefaultTextField._({
