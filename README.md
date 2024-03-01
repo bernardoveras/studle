@@ -81,6 +81,14 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
         </sub>
       </a>
     </td>
+    <td align="center">
+      <a href="#" title="Caio Vellani">
+        <img src="https://avatars.githubusercontent.com/u/130803251?v=4" width="100px;" alt="Foto do Caio Vellani no GitHub"/><br>
+        <sub>
+          <b>Caio Vellani</b>
+        </sub>
+      </a>
+    </td>
   </tr>
 </table>
 
