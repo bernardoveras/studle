@@ -24,6 +24,7 @@ dependencies:
   collection: ^1.18.0
   smooth_page_indicator: ^1.1.0
   shared_preferences: ^2.2.2
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:
