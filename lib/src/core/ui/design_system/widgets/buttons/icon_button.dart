@@ -17,6 +17,7 @@ class DefaultIconButton extends StatelessWidget {
   });
 
   factory DefaultIconButton.outlined({
+    Key? key,
     VoidCallback? onPressed,
     required IconData icon,
     bool loading = false,
@@ -25,6 +26,7 @@ class DefaultIconButton extends StatelessWidget {
     double size = 56.0,
   }) =>
       DefaultIconButton._(
+        key: key,
         onPressed: onPressed,
         icon: icon,
         loading: loading,
@@ -35,6 +37,7 @@ class DefaultIconButton extends StatelessWidget {
       );
 
   factory DefaultIconButton.solid({
+    Key? key,
     VoidCallback? onPressed,
     required IconData icon,
     bool loading = false,
@@ -43,6 +46,7 @@ class DefaultIconButton extends StatelessWidget {
     double size = 56.0,
   }) =>
       DefaultIconButton._(
+        key: key,
         onPressed: onPressed,
         icon: icon,
         loading: loading,

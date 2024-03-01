@@ -10,6 +10,7 @@ import '../../../../core/ui/design_system/design_system.dart';
 import '../../../../core/ui/widgets/default_app_bar.dart';
 import '../../../home/ui/pages/home_page.dart';
 import '../store/login_store.dart';
+import '../../../questions/ui/pages/question_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({
@@ -67,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
         title: 'Login',
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () => context.push(QuestionPage.route),
             splashColor: Colors.transparent,
             icon: Icon(
               PhosphorIconsRegular.question,
