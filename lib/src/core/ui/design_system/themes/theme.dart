@@ -6,6 +6,11 @@ abstract class AppTheme {
     fontFamily: 'Inter',
     colorScheme: ColorScheme.fromSeed(seedColor: PrimaryColors.brand),
     useMaterial3: false,
+    appBarTheme: AppBarTheme(
+      backgroundColor: PrimaryColors.brand,
+      elevation: 0,
+      centerTitle: true,
+    ),
     buttonTheme: ButtonThemeData(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
