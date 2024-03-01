@@ -23,7 +23,7 @@ abstract class AppTheme {
       shape: Border(
         bottom: BorderSide(
           color: MonoChromaticColors.gray.v100,
-          width: 2,
+          width: 1.5,
         ),
       ),
       titleTextStyle: TextStyle(

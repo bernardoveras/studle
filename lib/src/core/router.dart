@@ -6,6 +6,7 @@ import '../modules/authentication/ui/store/login_store.dart';
 import '../modules/campaigns/ui/pages/campaign_page.dart';
 import '../modules/campaigns/ui/parameters/campaign_page_parameter.dart';
 import '../modules/home/ui/pages/home_page.dart';
+import '../modules/notifications/ui/pages/notification_list_page.dart';
 import '../modules/onboarding/ui/pages/onboarding_page.dart';
 import '../modules/onboarding/ui/stores/onboarding_store.dart';
 import 'dependecy_injection/injector.dart';
@@ -19,6 +20,10 @@ abstract class AppRouter {
       GoRoute(
         path: HomePage.route,
         builder: (context, state) => const HomePage(),
+      ),
+      GoRoute(
+        path: NotificationListPage.route,
+        builder: (context, state) => const NotificationListPage(),
       ),
       GoRoute(
         path: OnboardingPage.route,
