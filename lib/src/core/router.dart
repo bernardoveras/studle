@@ -19,6 +19,7 @@ abstract class AppRouter {
         builder: (context, state) => ChangeNotifierProvider.value(
           value: LoginStore(
             authService: Injector.resolve(),
+            userSession: Injector.resolve(),
           ),
           child: const LoginPage(),
         ),
