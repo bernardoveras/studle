@@ -19,6 +19,8 @@ dependencies:
   result_dart: ^1.1.0
   equatable: ^2.0.5
   get_it: ^7.6.7
+  flutter_animate: ^4.5.0
+  url_launcher: ^6.2.5
 
 dev_dependencies:
   flutter_test:

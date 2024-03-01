@@ -6,10 +6,20 @@ abstract class AppTheme {
   static ThemeData theme = ThemeData(
     fontFamily: 'Inter',
     useMaterial3: false,
+    bottomSheetTheme: const BottomSheetThemeData(
+      backgroundColor: Colors.transparent,
+      elevation: 0.0,
+    ),
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.white,
       elevation: 0,
       foregroundColor: MonoChromaticColors.dark,
+      actionsIconTheme: IconThemeData(
+        color: MonoChromaticColors.dark.v200,
+      ),
+      iconTheme: IconThemeData(
+        color: MonoChromaticColors.dark.v200,
+      ),
       shape: Border(
         bottom: BorderSide(
           color: MonoChromaticColors.light.v300,

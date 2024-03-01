@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import '../../colors/base_color.dart';
 import '../../design_system.dart';
 
-enum SolidButtonStyle { solid, inverted }
+enum SolidButtonStyle {
+  solid,
+  inverted,
+  outlined,
+}
 
 class SolidButton extends StatelessWidget {
   final String label;
@@ -36,7 +40,7 @@ class SolidButton extends StatelessWidget {
     double? radius,
     SolidButtonStyle? style,
   })  : height = height ?? 60,
-        iconSize = iconSize ?? 32,
+        iconSize = iconSize ?? 28,
         radius = radius ?? 8,
         style = style ?? SolidButtonStyle.solid;
 
@@ -201,6 +205,12 @@ class SolidButton extends StatelessWidget {
           shape: MaterialStatePropertyAll(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(radius),
+              side: style == SolidButtonStyle.outlined
+                  ? BorderSide(
+                      color: backgroundColor,
+                      width: 1.5,
+                    )
+                  : BorderSide.none,
             ),
           ),
           backgroundColor: MaterialStateProperty.resolveWith((states) {
@@ -220,6 +230,10 @@ class SolidButton extends StatelessWidget {
               return backgroundColor.v200;
             }
 
+            if (style == SolidButtonStyle.outlined) {
+              return Colors.transparent;
+            }
+
             return backgroundColor;
           }),
           foregroundColor: MaterialStateProperty.resolveWith((states) {
@@ -230,6 +244,14 @@ class SolidButton extends StatelessWidget {
             if (style == SolidButtonStyle.inverted) {
               if (states.contains(MaterialState.pressed)) {
                 return MonoChromaticColors.white;
+              }
+
+              return backgroundColor.v600;
+            }
+
+            if (style == SolidButtonStyle.outlined) {
+              if (states.contains(MaterialState.pressed)) {
+                return backgroundColor;
               }
 
               return backgroundColor.v600;
@@ -250,6 +272,15 @@ class SolidButton extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  if (_hasIcon) ...[
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: Icon(
+                        icon,
+                        size: iconSize,
+                      ),
+                    ),
+                  ],
                   Flexible(
                     child: Text(
                       label,
@@ -258,12 +289,6 @@ class SolidButton extends StatelessWidget {
                       style: const TextStyle(),
                     ),
                   ),
-                  if (_hasIcon) ...[
-                    Icon(
-                      icon,
-                      size: iconSize,
-                    ),
-                  ],
                 ],
               ),
       ),
