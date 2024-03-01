@@ -92,6 +92,22 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
         </sub>
       </a>
     </td>
+    <td align="center">
+      <a href="#" title="Giovanne Costa">
+        <img src="https://mir-s3-cdn-cf.behance.net/user/230/4e7ca387663677.5f31551c552a0.jpg" width="100px;" alt="Foto do Giovanne Costa no Behance"/><br>
+        <sub>
+          <b>Giovanne Costa<br>(UI Design)</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="#" title="Gustavo Machado">
+        <img src="https://mir-s3-cdn-cf.behance.net/user/230/75f529178659203.65cfba6c4432f.jpg" width="100px;" alt="Foto do Gustavo Machado no Behance"/><br>
+        <sub>
+          <b>Gustavo Machado<br>(UI Design)</b>
+        </sub>
+      </a>
+    </td>
   </tr>
 </table>
 
@@ -102,3 +118,7 @@ Quer fazer parte desse projeto? Clique [AQUI](CONTRIBUTING.md) e leia como contr
 ## 📝 Licença
 
 Esse projeto está sob licença. Veja o arquivo [LICENÇA](LICENSE.md) para mais detalhes.
+
+## 💌 Créditos
+
+A parte visual (UI/UX) deste projeto foi desenvolvida por [Giovanne Costa](https://www.behance.net/giovannecosta) e [Gustavo Machado](https://www.behance.net/gvstavomachado).
