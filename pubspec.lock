@@ -165,6 +165,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.0"
+  phosphor_flutter:
+    dependency: "direct main"
+    description:
+      name: phosphor_flutter
+      sha256: "3b3e6e4cbda8208f8c1431b0999842f0b76db73853dd824fd4847a9f0166931a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -218,6 +226,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.1"
+  validatorless:
+    dependency: "direct main"
+    description:
+      name: validatorless
+      sha256: ddb46df636114b3322d289489164cac309767b157191ba43c7ad49b28c2b57c7
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.3"
   vector_math:
     dependency: transitive
     description:

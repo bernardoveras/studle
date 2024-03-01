@@ -13,6 +13,8 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   go_router: ^13.2.0
+  validatorless: ^1.2.3
+  phosphor_flutter: ^2.0.1
 
 dev_dependencies:
   flutter_test:

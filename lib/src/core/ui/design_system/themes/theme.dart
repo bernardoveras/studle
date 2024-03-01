@@ -7,12 +7,19 @@ abstract class AppTheme {
     useMaterial3: false,
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.white,
+      elevation: 0,
+      foregroundColor: MonoChromaticColors.dark,
+      shape: Border(
+        bottom: BorderSide(
+          color: MonoChromaticColors.light.v300,
+          width: 2,
+        ),
+      ),
       titleTextStyle: TextStyle(
         fontSize: 18,
         fontWeight: FontWeight.w600,
         color: MonoChromaticColors.dark,
       ),
-      elevation: 0,
       centerTitle: true,
     ),
     buttonTheme: ButtonThemeData(
