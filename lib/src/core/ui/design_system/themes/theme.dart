@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:myschool/src/core/ui/design_system/colors/primary_colors.dart';
+import 'package:myschool/src/core/ui/design_system/colors/colors.dart';
 
 abstract class AppTheme {
   static ThemeData theme = ThemeData(
     fontFamily: 'Inter',
-    colorScheme: ColorScheme.fromSeed(seedColor: PrimaryColors.brand),
     useMaterial3: false,
     appBarTheme: AppBarTheme(
-      backgroundColor: PrimaryColors.brand,
+      backgroundColor: Colors.white,
+      titleTextStyle: TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w600,
+        color: MonoChromaticColors.dark,
+      ),
       elevation: 0,
       centerTitle: true,
     ),
@@ -42,6 +46,12 @@ abstract class AppTheme {
           ),
         ),
       ),
+    ),
+    scaffoldBackgroundColor: Colors.white,
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: PrimaryColors.brand,
+      background: Colors.white,
+      onBackground: MonoChromaticColors.dark,
     ),
   );
 }
