@@ -4,15 +4,18 @@ import 'package:result_dart/result_dart.dart';
 import '../../../../core/exceptions/exceptions.dart';
 import '../../../../core/exceptions/unknow_exception.dart';
 import '../../../../core/mixins/loading_change_notifier_mixin.dart';
+import '../../../../core/user_session.dart';
 import '../../domain/dtos/login_with_student_registration_dto.dart';
 import '../../domain/entities/user_entity.dart';
 import '../../domain/services/i_auth_service.dart';
 
 class LoginStore extends ChangeNotifier with LoadingChangeNotifierMixin {
   final IAuthService authService;
+  final UserSession userSession;
 
   LoginStore({
     required this.authService,
+    required this.userSession,
   });
 
   String login = '';
@@ -49,6 +52,8 @@ class LoginStore extends ChangeNotifier with LoadingChangeNotifierMixin {
       }
 
       final user = result.getOrNull()!;
+
+      userSession.setUser(user);
 
       return Success(user);
     } finally {

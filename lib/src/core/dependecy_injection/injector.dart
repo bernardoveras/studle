@@ -32,5 +32,6 @@ abstract class Injector {
   static void registerDependencies() {
     /// Services
     _registerServices();
+    _getIt.registerUserSession();
   }
 }
