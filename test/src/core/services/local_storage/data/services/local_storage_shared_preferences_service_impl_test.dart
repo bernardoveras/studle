@@ -11,6 +11,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// ✅ DELETE
 /// ✅ Delete existing key
 /// ✅ Delete non-existent key
+/// ✅ Delete all
 ///
 /// ✅ READ
 /// ✅ Read existing key without type
@@ -30,6 +31,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// ✅ Write to key with type List<String>
 /// ✅ Write to key with type Map<String, dynamic>
 /// ✅ Write to key with type String
+/// ✅ Write to key with null value and delete
 void main() {
   late final ILocalStorageService localStorageService;
   late final SharedPreferences sharedPreferences;
@@ -76,7 +78,21 @@ void main() {
       expect(result.isSuccess(), true);
       expect(expectedValue, null);
     });
+
+    test('Delete all', () async {
+      var expectedValue = sharedPreferences.getString('key6');
+
+      expect(expectedValue, 'value');
+
+      final result = await localStorageService.deleteAll();
+
+      expectedValue = sharedPreferences.getString('key6');
+
+      expect(result.isSuccess(), true);
+      expect(expectedValue, null);
+    });
   });
+
   group('Read', () {
     test('Read existing key without type', () async {
       final result = await localStorageService.read('key1');
@@ -141,6 +157,7 @@ void main() {
       expect(result.getOrNull(), expectedValue);
     });
   });
+
   group('Write', () {
     test('Write to key without type', () async {
       final result = await localStorageService.write('new-key', 10.5);
@@ -207,6 +224,21 @@ void main() {
 
       expect(result.isSuccess(), true);
       expect(expectedValue, 'value');
+    });
+
+    test('Write to key with null value and delete', () async {
+      await sharedPreferences.setBool('key1', true);
+
+      var expectedValue = sharedPreferences.getBool('key1');
+
+      expect(expectedValue, true);
+
+      final result = await localStorageService.write('key1', null);
+
+      expectedValue = sharedPreferences.getBool('key1');
+
+      expect(result.isSuccess(), true);
+      expect(expectedValue, null);
     });
   });
 }

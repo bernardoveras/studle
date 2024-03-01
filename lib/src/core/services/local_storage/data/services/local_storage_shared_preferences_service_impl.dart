@@ -22,6 +22,9 @@ class LocalStorageSharedPreferencesServiceImpl implements ILocalStorageService {
         return Failure(UnknowException());
       }
 
+      // ignore: avoid_print
+      print('deleted - $key');
+
       return Success(deleted);
     } catch (e) {
       return Failure(
@@ -52,6 +55,9 @@ class LocalStorageSharedPreferencesServiceImpl implements ILocalStorageService {
         ));
       }
 
+      // ignore: avoid_print
+      print('read - $key: $result');
+
       return Success(result as T);
     } catch (e) {
       return Failure(
@@ -64,11 +70,15 @@ class LocalStorageSharedPreferencesServiceImpl implements ILocalStorageService {
   }
 
   @override
-  AsyncResult<bool, GenericException> write<T extends Object>(
+  AsyncResult<bool, GenericException> write<T extends Object?>(
     String key,
-    T value,
+    T? value,
   ) async {
     try {
+      if (value == null) {
+        return delete(key);
+      }
+
       final writed = switch (T) {
         const (bool) => await sharedPreferences.setBool(key, value as bool),
         const (double) =>
@@ -85,7 +95,33 @@ class LocalStorageSharedPreferencesServiceImpl implements ILocalStorageService {
         return Failure(UnknowException());
       }
 
+      // ignore: avoid_print
+      print('writed - $key: $value');
+
       return Success(writed);
+    } catch (e) {
+      return Failure(
+        UnknowException(
+          message: e.toString(),
+          error: e,
+        ),
+      );
+    }
+  }
+
+  @override
+  AsyncResult<bool, GenericException> deleteAll() async {
+    try {
+      final deletedAll = await sharedPreferences.clear();
+
+      if (!deletedAll) {
+        return Failure(UnknowException());
+      }
+
+      // ignore: avoid_print
+      print('deletedAll');
+
+      return Success(deletedAll);
     } catch (e) {
       return Failure(
         UnknowException(
