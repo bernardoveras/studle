@@ -38,7 +38,7 @@ void main() {
 
     final json = dto.toJson();
 
-    final map = jsonDecode(json) as Map<String, dynamic>;
+    final map = jsonDecode(json);
 
     expect(map['login'], dto.registration);
     expect(map['password'], dto.password);
