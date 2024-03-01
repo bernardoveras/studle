@@ -17,7 +17,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Onboarding
 - [x] Login
 - [ ] Boas-vindas
-- [ ] Dúvidas frequentes
+- [x] Dúvidas frequentes
 - [ ] Tela Inicial
 - [ ] Dados pessoais
 - [ ] Aulas
