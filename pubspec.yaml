@@ -1,5 +1,5 @@
 name: myschool
-description: "A new Flutter project."
+description: "Application for students to research their data and performance at school"
 publish_to: "none"
 
 version: 1.0.0+1
