@@ -1,11 +1,19 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../../../core/constants/image_source_constants.dart';
+import '../../../../core/constants/local_storage_key.dart';
+import '../../../../core/dependecy_injection/injector.dart';
+import '../../../../core/services/local_storage/domain/services/i_local_storage_service.dart';
 import '../../../../core/ui/design_system/design_system.dart';
 import '../../../../core/ui/widgets/default_app_bar.dart';
 import '../../../../core/ui/widgets/states/states.dart';
 import '../../domain/entities/notification_entity.dart';
+import '../../domain/enums/notification_link_type_enum.dart';
+import '../../domain/enums/notification_status_enum.dart';
 import '../cubits/notification_list_cubit.dart';
 import '../cubits/notification_list_state.dart';
 import '../widgets/lists/notification_list.dart';
@@ -48,6 +56,55 @@ class _NotificationListPageState extends State<NotificationListPage> {
       child: Scaffold(
         appBar: const DefaultAppBar(
           title: 'Notificações',
+        ),
+        floatingActionButton: FloatingActionButton(
+          tooltip: 'Include test data',
+          onPressed: () {
+            final localStorageService =
+                Injector.resolve<ILocalStorageService>();
+
+            localStorageService.write(
+                LocalStorageKey.notifications,
+                jsonEncode([
+                  NotificationEntity(
+                    id: 2,
+                    title: 'Open Design 2024',
+                    description:
+                        'Não fique de fora do Open! Garante sua inscrição no maior evento de design da região!',
+                    status: NotificationStatus.unread,
+                    createdAt: DateTime(2024, 2, 16, 15, 20),
+                  ),
+                  NotificationEntity(
+                    id: 1,
+                    title: '6º Encontro de Clássicos na My School',
+                    description:
+                        'Já estamos em fevereiro e o evento mais aguardado pelos amantes de carro chegou!',
+                    status: NotificationStatus.unread,
+                    createdAt: DateTime(2024, 2, 14, 12, 50),
+                    link: 'https://google.com',
+                    linkType: NotificationLinkType.redirectToSite,
+                  ),
+                  NotificationEntity(
+                    id: 4,
+                    title: 'Nova matéria',
+                    description:
+                        'Foi cadastrada uma nova matéria no seu registro! 🥳📚',
+                    status: NotificationStatus.unread,
+                    createdAt: DateTime(2024, 3, 1, 12, 50),
+                  ),
+                  NotificationEntity(
+                    id: 3,
+                    title: 'Reitoria',
+                    description:
+                        'Participe da campanha do Vestibular 2024! A seleção está acontecendo hoje (30/08), das 20h às 23h',
+                    status: NotificationStatus.unread,
+                    createdAt: DateTime(2024, 3, 1, 12, 30),
+                  ),
+                ].map((e) => e.toMap()).toList()));
+
+            cubit.fetch();
+          },
+          child: const Icon(PhosphorIconsRegular.bug),
         ),
         body: BlocBuilder<NotificationListCubit, NotificationListState>(
           bloc: cubit,
