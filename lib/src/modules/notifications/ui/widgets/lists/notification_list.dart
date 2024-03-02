@@ -25,10 +25,10 @@ class _NotificationListState extends State<NotificationList>
   @override
   Widget build(BuildContext context) {
     super.build(context);
+
     return ListView.separated(
       key: widget.key,
       itemCount: widget.data.length,
-      shrinkWrap: true,
       padding: EdgeInsets.only(
         left: 16,
         right: 16,

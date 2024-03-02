@@ -12,9 +12,13 @@ class NotificationListCubit extends Cubit<NotificationListState> {
     required this.notificationService,
   }) : super(const InitialState());
 
-  Future<void> fetch() async {
+  Future<void> fetch({
+    bool refreshing = false,
+  }) async {
     try {
-      emit(const LoadingState());
+      if (!refreshing) {
+        emit(const LoadingState());
+      }
 
       final result = await notificationService.fetch();
 

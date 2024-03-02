@@ -18,6 +18,8 @@ class NotificationLocalServiceImpl implements INotificationService {
   @override
   AsyncResult<List<NotificationEntity>, GenericException> fetch() async {
     try {
+      await Future.delayed(const Duration(seconds: 1));
+
       final result =
           await localStorageService.read<String>(LocalStorageKey.notifications);
 

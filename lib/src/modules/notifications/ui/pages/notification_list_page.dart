@@ -122,8 +122,16 @@ class _NotificationListPageState extends State<NotificationListPage> {
                             controller: pageController,
                             physics: const NeverScrollableScrollPhysics(),
                             children: [
-                              NotificationList(data: allData),
-                              NotificationList(data: unreadData),
+                              RefreshIndicator(
+                                key: const ValueKey('notifications.all'),
+                                onRefresh: () => cubit.fetch(refreshing: true),
+                                child: NotificationList(data: allData),
+                              ),
+                              RefreshIndicator(
+                                key: const ValueKey('notifications.unread'),
+                                onRefresh: () => cubit.fetch(refreshing: true),
+                                child: NotificationList(data: unreadData),
+                              ),
                             ],
                           ),
                   },
