@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
+import '../modules/activities/ui/pages/additional_activities.dart';
 import '../modules/authentication/ui/pages/login_page.dart';
 import '../modules/questions/ui/pages/question_page.dart';
 import '../modules/authentication/ui/store/login_store.dart';
@@ -53,6 +54,10 @@ abstract class AppRouter {
       GoRoute(
         path: QuestionPage.route,
         builder: (context, state) => const QuestionPage(),
+      ),
+      GoRoute(
+        path: AdditionalActivities.route,
+        builder: (context, state) => const AdditionalActivities(),
       ),
     ],
     redirect: RouteGuard.redirect,
