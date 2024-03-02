@@ -28,14 +28,14 @@ class ErrorStateDisplay extends StatelessWidget {
     return Animate(
       effects: [
         FadeEffect(
-          curve: Curves.ease,
-          duration: 500.ms,
+          curve: Curves.fastLinearToSlowEaseIn,
+          duration: 1000.ms,
         ),
         ScaleEffect(
-          begin: const Offset(0.95, 0.95),
+          begin: const Offset(0.98, 0.98),
           alignment: Alignment.center,
-          curve: Curves.ease,
-          duration: 500.ms,
+          curve: Curves.fastLinearToSlowEaseIn,
+          duration: 1000.ms,
         ),
       ],
       child: Column(
