@@ -8,6 +8,8 @@ class NotificationTabBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 64,
+      width: double.infinity,
       decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(
@@ -16,15 +18,14 @@ class NotificationTabBar extends StatelessWidget {
           ),
         ),
       ),
-      height: 64,
-      width: double.infinity,
       child: TabBar(
+        isScrollable: true,
         indicatorColor: PrimaryColors.brand,
         indicatorSize: TabBarIndicatorSize.label,
         padding: EdgeInsets.zero,
         indicatorPadding: EdgeInsets.zero,
+        splashFactory: NoSplash.splashFactory,
         labelPadding: const EdgeInsets.only(left: 16, right: 8),
-        isScrollable: true,
         labelStyle: Button2Typography(
           fontWeight: FontWeight.w500,
           color: PrimaryColors.brand,
@@ -33,11 +34,8 @@ class NotificationTabBar extends StatelessWidget {
           fontWeight: FontWeight.w500,
           color: MonoChromaticColors.gray,
         ),
-        splashFactory: NoSplash.splashFactory,
         tabs: [
-          const Tab(
-            text: 'Todas',
-          ),
+          const Tab(text: 'Todas'),
           Tab(
             child: Row(
               mainAxisSize: MainAxisSize.min,

@@ -41,8 +41,8 @@ extension InjectorExtension on GetIt {
               .getOrNull();
 
           return UserSession(
-            firstAccess: firstAccess,
             user: user == null ? null : UserEntity.fromJson(user),
+            firstAccess: firstAccess,
             localStorageService: Injector.resolve(),
           );
         },

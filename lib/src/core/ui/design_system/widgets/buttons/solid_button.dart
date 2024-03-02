@@ -285,8 +285,8 @@ class SolidButton extends StatelessWidget {
                       label,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: const Button2Typography(
-                        fontWeight: FontWeight.w500,
+                      style: const Button1Typography(
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ),
