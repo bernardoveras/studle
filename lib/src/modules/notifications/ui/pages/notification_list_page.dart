@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/constants/image_source_constants.dart';
 import '../../../../core/ui/design_system/design_system.dart';
 import '../../../../core/ui/widgets/default_app_bar.dart';
 import '../../../../core/ui/widgets/states/states.dart';
@@ -102,14 +103,29 @@ class _NotificationListPageState extends State<NotificationListPage> {
                         itemBuilder: (_, __) =>
                             const NotificationSkeletonCard(),
                       ),
-                    _ => PageView(
-                        controller: pageController,
-                        physics: const NeverScrollableScrollPhysics(),
-                        children: [
-                          NotificationList(data: allData),
-                          NotificationList(data: unreadData),
-                        ],
-                      ),
+                    _ => allData.isEmpty
+                        ? SingleChildScrollView(
+                            padding: EdgeInsets.only(
+                              left: 20,
+                              right: 20,
+                              top: 48,
+                              bottom: 20 + MediaQuery.paddingOf(context).bottom,
+                            ),
+                            child: EmptyStateDisplay(
+                              imageSource: ImageSourceConstants
+                                  .notificationsIllustration,
+                              description:
+                                  'Não encontramos notificações no momento.',
+                            ),
+                          )
+                        : PageView(
+                            controller: pageController,
+                            physics: const NeverScrollableScrollPhysics(),
+                            children: [
+                              NotificationList(data: allData),
+                              NotificationList(data: unreadData),
+                            ],
+                          ),
                   },
                 )
               ],

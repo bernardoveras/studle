@@ -4,18 +4,22 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../design_system/design_system.dart';
 
-class ErrorStateDisplay extends StatelessWidget {
-  const ErrorStateDisplay({
+class EmptyStateDisplay extends StatelessWidget {
+  const EmptyStateDisplay({
     super.key,
-    this.icon = PhosphorIconsRegular.warningCircle,
-    this.title = 'Algo deu errado',
-    required this.description,
+    this.icon,
+    this.imageSource,
+    this.title = 'Oops, tudo limpo!',
+    this.description = 'Não encontramos registros no momento.',
     this.primaryButtonText,
     this.onPressedPrimaryButton,
     this.secondaryButtonText,
     this.onPressedSecondaryButton,
-  });
-  final IconData icon;
+  }) : assert(icon == null || imageSource == null,
+            'Only one of icon or imageSource can be provided, not both.');
+
+  final Widget? icon;
+  final String? imageSource;
   final String title;
   final String description;
   final String? primaryButtonText;
@@ -39,17 +43,26 @@ class ErrorStateDisplay extends StatelessWidget {
         ),
       ],
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            icon,
-            color: SemanticColors.negative,
-            size: 80,
-          ),
+          if (icon != null)
+            icon!
+          else if (imageSource != null)
+            Image.asset(
+              imageSource!,
+              height: 150,
+            )
+          else
+            Icon(
+              PhosphorIconsRegular.notification,
+              size: 80,
+              color: MonoChromaticColors.gray.v400,
+            ),
           const SizedBox(height: 32),
           Text(
             title,
+            textAlign: TextAlign.center,
             style: Heading2Typography(
               fontWeight: FontWeight.w600,
               color: MonoChromaticColors.gray.v900,
@@ -58,6 +71,7 @@ class ErrorStateDisplay extends StatelessWidget {
           const SizedBox(height: 24),
           Text(
             description,
+            textAlign: TextAlign.center,
             style: Text2Typography(
               color: MonoChromaticColors.gray,
             ),
