@@ -7,6 +7,7 @@ import '../../../../core/ui/design_system/design_system.dart';
 import '../../../../core/utils/redirect_to_url.dart';
 import '../../domain/entities/notification_entity.dart';
 import '../../domain/enums/notification_link_type_enum.dart';
+import '../../domain/enums/notification_status_enum.dart';
 
 class NotificationCard extends StatelessWidget {
   const NotificationCard({
@@ -45,7 +46,10 @@ class NotificationCard extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Badge(
-                        backgroundColor: SemanticColors.negative,
+                        backgroundColor: switch (notification.status) {
+                          NotificationStatus.read => PrimaryColors.brand.v200,
+                          NotificationStatus.unread => SemanticColors.negative,
+                        },
                       ),
                       const SizedBox(width: 8),
                       Text(

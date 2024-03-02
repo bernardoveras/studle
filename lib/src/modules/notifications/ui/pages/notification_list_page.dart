@@ -40,7 +40,7 @@ class _NotificationListPageState extends State<NotificationListPage> {
                 ),
                 separatorBuilder: (context, index) => Container(
                   height: 1.5,
-                  color: MonoChromaticColors.gray.v200,
+                  color: MonoChromaticColors.divider,
                   margin: const EdgeInsets.only(bottom: 24),
                 ),
                 itemBuilder: (context, index) {
@@ -52,6 +52,7 @@ class _NotificationListPageState extends State<NotificationListPage> {
                     status: NotificationStatus.unread,
                     createdAt: DateTime.now(),
                   );
+
                   return NotificationCard(
                     notification: notification,
                   );
