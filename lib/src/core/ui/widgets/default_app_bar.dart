@@ -12,9 +12,11 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? actions;
   final PreferredSizeWidget? bottom;
 
+  static double defaultHeight = 64.0;
+
   @override
   Size get preferredSize =>
-      Size.fromHeight(64 + (bottom?.preferredSize.height ?? 0.0));
+      Size.fromHeight(defaultHeight + (bottom?.preferredSize.height ?? 0.0));
 
   @override
   Widget build(BuildContext context) {
