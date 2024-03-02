@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../colors/base_color.dart';
 import '../../design_system.dart';
 
 enum SolidButtonStyle {
@@ -11,7 +10,7 @@ enum SolidButtonStyle {
 
 class SolidButton extends StatelessWidget {
   final String label;
-  final BaseColor backgroundColor;
+  final Color backgroundColor;
   final Color foregroundColor;
   final VoidCallback? onPressed;
   final bool loading;
@@ -154,13 +153,42 @@ class SolidButton extends StatelessWidget {
       loading: loading,
       height: height,
       width: width,
-      backgroundColor: MonoChromaticColors.gray,
-      foregroundColor: MonoChromaticColors.gray.v600,
+      backgroundColor: MonoChromaticColors.gray.v300,
+      foregroundColor: MonoChromaticColors.gray.v900,
       icon: icon,
       iconSize: iconSize,
       disabled: disabled,
       radius: radius,
       style: style,
+    );
+  }
+
+  factory SolidButton.outlined({
+    Key? key,
+    required String label,
+    VoidCallback? onPressed,
+    bool loading = false,
+    double? width,
+    double? height,
+    IconData? icon,
+    double? iconSize,
+    bool disabled = false,
+    double? radius,
+  }) {
+    return SolidButton._(
+      key: key,
+      label: label,
+      onPressed: onPressed,
+      loading: loading,
+      height: height,
+      width: width,
+      backgroundColor: MonoChromaticColors.gray.v300,
+      foregroundColor: MonoChromaticColors.gray.v900,
+      icon: icon,
+      iconSize: iconSize,
+      disabled: disabled,
+      radius: radius,
+      style: SolidButtonStyle.outlined,
     );
   }
 
@@ -184,8 +212,8 @@ class SolidButton extends StatelessWidget {
       loading: loading,
       height: height,
       width: width,
-      backgroundColor: MonoChromaticColors.gray,
-      foregroundColor: MonoChromaticColors.gray.v600,
+      backgroundColor: MonoChromaticColors.transparent,
+      foregroundColor: MonoChromaticColors.gray.v800,
       icon: icon,
       iconSize: iconSize,
       disabled: disabled,
@@ -224,10 +252,12 @@ class SolidButton extends StatelessWidget {
               }
 
               if (states.contains(MaterialState.focused)) {
-                return backgroundColor.v300;
+                // return backgroundColor.v300;
+                return backgroundColor;
               }
 
-              return backgroundColor.v200;
+              // return backgroundColor.v200;
+              return backgroundColor;
             }
 
             if (style == SolidButtonStyle.outlined) {
@@ -246,15 +276,17 @@ class SolidButton extends StatelessWidget {
                 return MonoChromaticColors.white;
               }
 
-              return backgroundColor.v600;
+              // return foregroundColor.v600;
+              return foregroundColor;
             }
 
             if (style == SolidButtonStyle.outlined) {
               if (states.contains(MaterialState.pressed)) {
-                return backgroundColor;
+                return foregroundColor;
               }
 
-              return backgroundColor.v600;
+              // return foregroundColor.v600;
+              return foregroundColor;
             }
 
             return foregroundColor;

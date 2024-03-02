@@ -1,3 +1,4 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
@@ -6,6 +7,7 @@ import '../modules/authentication/ui/store/login_store.dart';
 import '../modules/campaigns/ui/pages/campaign_page.dart';
 import '../modules/campaigns/ui/parameters/campaign_page_parameter.dart';
 import '../modules/home/ui/pages/home_page.dart';
+import '../modules/notifications/ui/cubits/notification_list_cubit.dart';
 import '../modules/notifications/ui/pages/notification_list_page.dart';
 import '../modules/onboarding/ui/pages/onboarding_page.dart';
 import '../modules/onboarding/ui/stores/onboarding_store.dart';
@@ -23,7 +25,10 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: NotificationListPage.route,
-        builder: (context, state) => const NotificationListPage(),
+        builder: (context, state) => BlocProvider.value(
+          value: NotificationListCubit(),
+          child: const NotificationListPage(),
+        ),
       ),
       GoRoute(
         path: OnboardingPage.route,
