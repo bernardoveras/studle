@@ -23,8 +23,9 @@ class NotificationEntity extends Equatable {
     this.linkType,
     required this.createdAt,
   }) : assert(
-          link == null && linkType == null,
-          'You must only enter the link and the type of link',
+          (link != null && linkType != null) ||
+              (link == null && linkType == null),
+          'You must either provide both a link and link type, or neither.',
         );
 
   Map<String, dynamic> toMap() {
@@ -34,8 +35,8 @@ class NotificationEntity extends Equatable {
       'description': description,
       'status': status.index,
       'link': link,
-      'linkType': linkType?.index,
-      'createdAt': createdAt.toIso8601String(),
+      'link_type': linkType?.index,
+      'created_at': createdAt.toIso8601String(),
     };
 
     return result;
@@ -48,10 +49,10 @@ class NotificationEntity extends Equatable {
       description: map['description'],
       status: NotificationStatus.fromIndex(map['status']),
       link: map['link'],
-      linkType: map['linkType'] != null
-          ? NotificationLinkType.fromIndex(map['linkType'])
+      linkType: map['link_type'] != null
+          ? NotificationLinkType.fromIndex(map['link_type'])
           : null,
-      createdAt: DateTime.parse(map['createdAt']),
+      createdAt: DateTime.parse(map['created_at']),
     );
   }
 
