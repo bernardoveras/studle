@@ -13,9 +13,16 @@ class NotificationCard extends StatelessWidget {
   const NotificationCard({
     super.key,
     required this.notification,
+    this.markAsRead,
   });
 
   final NotificationEntity notification;
+  final ValueChanged<int>? markAsRead;
+
+  void _markAsRead() {
+    if (notification.isRead) return;
+    markAsRead?.call(notification.id);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +32,14 @@ class NotificationCard extends StatelessWidget {
 
         if (notification.linkType == NotificationLinkType.redirectToRoute) {
           context.push(notification.link!);
+          _markAsRead();
+
           return;
         }
 
         if (notification.linkType == NotificationLinkType.redirectToSite) {
           redirectToUrl(notification.link!);
+          _markAsRead();
           return;
         }
       },

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
+import '../../../../core/utils/copy_with_value.dart';
 import '../enums/notification_link_type_enum.dart';
 import '../enums/notification_status_enum.dart';
 
@@ -13,6 +14,8 @@ class NotificationEntity extends Equatable {
   final String? link;
   final NotificationLinkType? linkType;
   final DateTime createdAt;
+
+  bool get isRead => status == NotificationStatus.read;
 
   const NotificationEntity({
     required this.id,
@@ -27,6 +30,25 @@ class NotificationEntity extends Equatable {
               (link == null && linkType == null),
           'You must either provide both a link and link type, or neither.',
         );
+
+  //TODO: Create unit test
+  NotificationEntity copyWith({
+    String? title,
+    String? description,
+    NotificationStatus? status,
+    CopyWithValue<String>? link,
+    CopyWithValue<NotificationLinkType>? linkType,
+  }) {
+    return NotificationEntity(
+      id: id,
+      title: title ?? this.title,
+      description: description ?? this.description,
+      status: status ?? this.status,
+      link: link == null ? this.link : link.value,
+      linkType: linkType == null ? this.linkType : linkType.value,
+      createdAt: createdAt,
+    );
+  }
 
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{

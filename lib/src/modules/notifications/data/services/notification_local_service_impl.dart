@@ -1,11 +1,13 @@
 import 'dart:convert';
 
+import 'package:collection/collection.dart';
 import 'package:result_dart/result_dart.dart';
 
 import '../../../../core/constants/local_storage_key.dart';
 import '../../../../core/exceptions/exceptions.dart';
 import '../../../../core/services/local_storage/domain/services/i_local_storage_service.dart';
 import '../../domain/entities/notification_entity.dart';
+import '../../domain/enums/notification_status_enum.dart';
 import '../../domain/services/i_notification_service.dart';
 
 class NotificationLocalServiceImpl implements INotificationService {
@@ -51,6 +53,70 @@ class NotificationLocalServiceImpl implements INotificationService {
           decodedJson.map((e) => NotificationEntity.fromMap(e)).toList();
 
       return Success(notifications);
+    } on GenericException catch (e) {
+      return Failure(e);
+    } catch (e) {
+      return Failure(UnknowException(error: e));
+    }
+  }
+
+  @override
+  AsyncResult<bool, GenericException> markAsRead(int id) async {
+    try {
+      final result =
+          await localStorageService.read<String>(LocalStorageKey.notifications);
+
+      final response = result.getOrNull();
+
+      if (result.isError()) {
+        final error = result.exceptionOrNull();
+        return Failure(error!);
+      }
+
+      final decodedJson = jsonDecode(response!);
+
+      if (decodedJson is! List) {
+        return Failure(
+          NotFoundException(
+            message: 'Não foi possível encontrar a notificação com id $id.',
+          ),
+        );
+      }
+
+      final notifications =
+          decodedJson.map((e) => NotificationEntity.fromMap(e)).toList();
+
+      var notification = notifications.singleWhereOrNull((x) => x.id == id);
+
+      if (notification == null) {
+        return Failure(
+          NotFoundException(
+            message: 'Não foi possível encontrar a notificação com id $id.',
+          ),
+        );
+      }
+
+      if (notification.isRead) {
+        return const Success(true);
+      }
+
+      final notificationIndex = notifications.indexOf(notification);
+
+      notification = notification.copyWith(status: NotificationStatus.read);
+
+      notifications[notificationIndex] = notification;
+
+      final notificationsJson =
+          jsonEncode(notifications.map((e) => e.toMap()).toList());
+
+      final writeResult = await localStorageService.write<String>(
+          LocalStorageKey.notifications, notificationsJson);
+
+      if (writeResult.isError()) {
+        return writeResult;
+      }
+
+      return const Success(true);
     } on GenericException catch (e) {
       return Failure(e);
     } catch (e) {

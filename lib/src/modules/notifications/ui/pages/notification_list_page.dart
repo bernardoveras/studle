@@ -129,12 +129,18 @@ class _NotificationListPageState extends State<NotificationListPage> {
                               RefreshIndicator(
                                 key: const ValueKey('notifications.all'),
                                 onRefresh: () => cubit.fetch(refreshing: true),
-                                child: NotificationList(data: allData),
+                                child: NotificationList(
+                                  data: allData,
+                                  markAsRead: cubit.markAsRead,
+                                ),
                               ),
                               RefreshIndicator(
                                 key: const ValueKey('notifications.unread'),
                                 onRefresh: () => cubit.fetch(refreshing: true),
-                                child: NotificationList(data: unreadData),
+                                child: NotificationList(
+                                  data: unreadData,
+                                  markAsRead: cubit.markAsRead,
+                                ),
                               ),
                             ],
                           ),

@@ -9,9 +9,11 @@ class NotificationList extends StatefulWidget {
   const NotificationList({
     super.key,
     required this.data,
+    this.markAsRead,
   });
 
   final List<NotificationEntity> data;
+  final ValueChanged<int>? markAsRead;
 
   @override
   State<NotificationList> createState() => _NotificationListState();
@@ -58,6 +60,7 @@ class _NotificationListState extends State<NotificationList>
           ],
           child: NotificationCard(
             notification: notification,
+            markAsRead: widget.markAsRead,
           ),
         );
       },
