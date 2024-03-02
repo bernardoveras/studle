@@ -5,6 +5,8 @@ import 'base_color.dart';
 final class MonoChromaticColors {
   static Color get white => Colors.white;
   static Color get transparent => Colors.transparent;
+  static Color get skeleton => gray.v200;
+  static Color get divider => gray.v100;
 
   static BaseColor get gray => BaseColor(
         const <int, String>{

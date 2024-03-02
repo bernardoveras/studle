@@ -22,7 +22,7 @@ abstract class AppTheme {
       ),
       shape: Border(
         bottom: BorderSide(
-          color: MonoChromaticColors.gray.v100,
+          color: MonoChromaticColors.divider,
           width: 1.5,
         ),
       ),
