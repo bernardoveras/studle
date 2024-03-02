@@ -71,19 +71,21 @@ class _NotificationListPageState extends State<NotificationListPage> {
                 Expanded(
                   child: switch (state) {
                     InitialState _ => const SizedBox(),
-                    ErrorState _ => SingleChildScrollView(
-                        padding: EdgeInsets.only(
-                          left: 20,
-                          right: 20,
-                          top: 48,
-                          bottom: 20 + MediaQuery.paddingOf(context).bottom,
-                        ),
-                        child: ErrorStateDisplay(
-                          description: state.error.message,
-                          primaryButtonText: 'Recarregar',
-                          onPressedPrimaryButton: () => cubit.fetch(),
-                          secondaryButtonText: 'Falar com o suporte',
-                          onPressedSecondaryButton: () {},
+                    ErrorState _ => Center(
+                        child: SingleChildScrollView(
+                          padding: EdgeInsets.only(
+                            left: 20,
+                            right: 20,
+                            bottom: MediaQuery.paddingOf(context).bottom +
+                                DefaultAppBar.defaultHeight,
+                          ),
+                          child: ErrorStateDisplay(
+                            description: state.error.message,
+                            primaryButtonText: 'Recarregar',
+                            onPressedPrimaryButton: () => cubit.fetch(),
+                            secondaryButtonText: 'Falar com o suporte',
+                            onPressedSecondaryButton: () {},
+                          ),
                         ),
                       ),
                     LoadingState _ => ListView.separated(
@@ -104,18 +106,20 @@ class _NotificationListPageState extends State<NotificationListPage> {
                             const NotificationSkeletonCard(),
                       ),
                     _ => allData.isEmpty
-                        ? SingleChildScrollView(
-                            padding: EdgeInsets.only(
-                              left: 20,
-                              right: 20,
-                              top: 48,
-                              bottom: 20 + MediaQuery.paddingOf(context).bottom,
-                            ),
-                            child: EmptyStateDisplay(
-                              imageSource: ImageSourceConstants
-                                  .notificationsIllustration,
-                              description:
-                                  'Não encontramos notificações no momento.',
+                        ? Center(
+                            child: SingleChildScrollView(
+                              padding: EdgeInsets.only(
+                                left: 20,
+                                right: 20,
+                                bottom: MediaQuery.paddingOf(context).bottom +
+                                    DefaultAppBar.defaultHeight,
+                              ),
+                              child: EmptyStateDisplay(
+                                imageSource: ImageSourceConstants
+                                    .notificationsIllustration,
+                                description:
+                                    'Não encontramos notificações no momento.',
+                              ),
                             ),
                           )
                         : PageView(
