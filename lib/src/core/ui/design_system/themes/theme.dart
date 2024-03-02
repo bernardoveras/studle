@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../colors/colors.dart';
+import '../design_system.dart';
 
 abstract class AppTheme {
   static ThemeData theme = ThemeData(
@@ -9,6 +9,23 @@ abstract class AppTheme {
     bottomSheetTheme: const BottomSheetThemeData(
       backgroundColor: Colors.transparent,
       elevation: 0.0,
+    ),
+    tooltipTheme: TooltipThemeData(
+      decoration: BoxDecoration(
+        color: MonoChromaticColors.gray.v700.withOpacity(0.8),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      textStyle: const Button3Typography(
+        color: Colors.white,
+      ),
+    ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: PrimaryColors.brand,
+      elevation: 0,
+      highlightElevation: 0,
+      focusElevation: 0,
+      hoverElevation: 0,
+      disabledElevation: 0,
     ),
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.white,
