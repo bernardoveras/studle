@@ -51,6 +51,7 @@ class _NotificationListPageState extends State<NotificationListPage> {
         body: BlocBuilder<NotificationListCubit, NotificationListState>(
           bloc: cubit,
           builder: (context, state) {
+            final isError = state is ErrorState;
             final isSuccess = state is SuccessState;
             final allData =
                 state is SuccessState ? state.allData : <NotificationEntity>[];
@@ -60,11 +61,12 @@ class _NotificationListPageState extends State<NotificationListPage> {
 
             return Column(
               children: [
-                NotificationTabBar(
-                  onChanged: onChangeTab,
-                  unreadCount: unreadData.length,
-                  disabled: !isSuccess,
-                ),
+                if (!isError)
+                  NotificationTabBar(
+                    onChanged: onChangeTab,
+                    unreadCount: unreadData.length,
+                    disabled: !isSuccess,
+                  ),
                 Expanded(
                   child: switch (state) {
                     InitialState _ => const SizedBox(),
@@ -76,8 +78,7 @@ class _NotificationListPageState extends State<NotificationListPage> {
                           bottom: 20 + MediaQuery.paddingOf(context).bottom,
                         ),
                         child: ErrorStateDisplay(
-                          description:
-                              'Por favor, verifique sua conexão com a internet. Se o problema persistir, entre em contato com o suporte para assistência.',
+                          description: state.error.message,
                           primaryButtonText: 'Recarregar',
                           onPressedPrimaryButton: () => cubit.fetch(),
                           secondaryButtonText: 'Falar com o suporte',

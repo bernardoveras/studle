@@ -26,7 +26,9 @@ abstract class AppRouter {
       GoRoute(
         path: NotificationListPage.route,
         builder: (context, state) => BlocProvider.value(
-          value: NotificationListCubit(),
+          value: NotificationListCubit(
+            notificationService: Injector.resolve(),
+          ),
           child: const NotificationListPage(),
         ),
       ),

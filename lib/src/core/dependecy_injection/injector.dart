@@ -19,21 +19,15 @@ abstract class Injector {
   /// This method can be used to await the initialization of all dependencies.
   static Future<void> allReady() => _getIt.allReady();
 
-  /// Register service dependencies.
-  ///
-  /// This private method registers various service implementations with GetIt.
-  static void _registerServices() {
-    _getIt
-      ..registerAuthenticationServices()
-      ..registerLocalStorageServices();
-  }
-
   /// Register all dependencies.
   ///
   /// Call this method to register all dependencies, including services and other dependencies.
   static void registerDependencies() {
     /// Services
-    _registerServices();
-    _getIt.registerUserSession();
+    _getIt
+      ..registerAuthenticationServices()
+      ..registerLocalStorageServices()
+      ..registerNotificationServices()
+      ..registerUserSession();
   }
 }
