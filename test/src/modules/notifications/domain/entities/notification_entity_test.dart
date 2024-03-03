@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:myschool/src/core/utils/nullable_value.dart';
 import 'package:myschool/src/modules/notifications/domain/entities/notification_entity.dart';
 import 'package:myschool/src/modules/notifications/domain/enums/notification_link_type_enum.dart';
 import 'package:myschool/src/modules/notifications/domain/enums/notification_status_enum.dart';
@@ -144,6 +145,45 @@ void main() {
     final expectedEntity = mock.entityWithLink;
 
     final entity = NotificationEntity.fromJson(mock.jsonWithLink);
+
+    expect(entity, expectedEntity);
+  });
+
+  test('NotificationEntity - copyWith', () {
+    final expectedEntity = NotificationEntity(
+      id: mock.entityWithLink.id,
+      title: 'Changed title',
+      description: 'Changed description',
+      status: mock.entityWithLink.status,
+      link: mock.entityWithLink.link,
+      linkType: mock.entityWithLink.linkType,
+      createdAt: mock.entityWithLink.createdAt,
+    );
+
+    final entity = mock.entityWithLink.copyWith(
+      title: 'Changed title',
+      description: 'Changed description',
+      link: null,
+    );
+
+    expect(entity, expectedEntity);
+  });
+
+  test('NotificationEntity - copyWith - null values', () {
+    final expectedEntity = NotificationEntity(
+      id: mock.entityWithLink.id,
+      title: mock.entityWithLink.title,
+      description: mock.entityWithLink.description,
+      status: mock.entityWithLink.status,
+      link: null,
+      linkType: null,
+      createdAt: mock.entityWithLink.createdAt,
+    );
+
+    final entity = mock.entityWithLink.copyWith(
+      link: const NullableValue(null),
+      linkType: const NullableValue(null),
+    );
 
     expect(entity, expectedEntity);
   });

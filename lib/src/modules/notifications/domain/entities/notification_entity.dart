@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-import '../../../../core/utils/copy_with_value.dart';
+import '../../../../core/utils/nullable_value.dart';
 import '../enums/notification_link_type_enum.dart';
 import '../enums/notification_status_enum.dart';
 
@@ -31,21 +31,20 @@ class NotificationEntity extends Equatable {
           'You must either provide both a link and link type, or neither.',
         );
 
-  //TODO: Create unit test
   NotificationEntity copyWith({
     String? title,
     String? description,
     NotificationStatus? status,
-    CopyWithValue<String>? link,
-    CopyWithValue<NotificationLinkType>? linkType,
+    NullableValue<String?>? link,
+    NullableValue<NotificationLinkType?>? linkType,
   }) {
     return NotificationEntity(
       id: id,
       title: title ?? this.title,
       description: description ?? this.description,
       status: status ?? this.status,
-      link: link == null ? this.link : link.value,
-      linkType: linkType == null ? this.linkType : linkType.value,
+      link: link != null ? link.value : this.link,
+      linkType: linkType != null ? linkType.value : this.linkType,
       createdAt: createdAt,
     );
   }
