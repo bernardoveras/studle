@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
+import '../../../utils/redirect_to_url.dart';
 import '../../design_system/design_system.dart';
 
 class ErrorStateDisplay extends StatelessWidget {
@@ -12,7 +13,7 @@ class ErrorStateDisplay extends StatelessWidget {
     required this.description,
     this.primaryButtonText,
     this.onPressedPrimaryButton,
-    this.secondaryButtonText,
+    this.secondaryButtonText = 'Falar com o suporte',
     this.onPressedSecondaryButton,
   });
   final IconData icon;
@@ -73,7 +74,12 @@ class ErrorStateDisplay extends StatelessWidget {
             const SizedBox(height: 16),
             SolidButton.outlined(
               label: secondaryButtonText!,
-              onPressed: onPressedSecondaryButton,
+              onPressed: onPressedSecondaryButton ??
+                  () {
+                    redirectToUrl(
+                      'https://github.com/bernardoveras/myschool/discussions/new/choose',
+                    );
+                  },
             ),
           ],
         ],

@@ -159,8 +159,6 @@ class _NotificationListPageState extends State<NotificationListPage> {
                               description: state.error.message,
                               primaryButtonText: 'Recarregar',
                               onPressedPrimaryButton: () => cubit.fetch(),
-                              secondaryButtonText: 'Falar com o suporte',
-                              onPressedSecondaryButton: () {},
                             ),
                           ),
                         ),
