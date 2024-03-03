@@ -53,63 +53,10 @@ class _NotificationListPageState extends State<NotificationListPage> {
     return DefaultTabController(
       key: widget.key,
       length: 2,
-      child: Scaffold(
-        appBar: const DefaultAppBar(
-          title: 'Notificações',
-        ),
-        floatingActionButton: FloatingActionButton(
-          tooltip: 'Include test data',
-          onPressed: () {
-            final localStorageService =
-                Injector.resolve<ILocalStorageService>();
-
-            localStorageService.write(
-                LocalStorageKey.notifications,
-                jsonEncode([
-                  NotificationEntity(
-                    id: 2,
-                    title: 'Open Design 2024',
-                    description:
-                        'Não fique de fora do Open! Garante sua inscrição no maior evento de design da região!',
-                    status: NotificationStatus.unread,
-                    createdAt: DateTime(2024, 2, 16, 15, 20),
-                  ),
-                  NotificationEntity(
-                    id: 1,
-                    title: '6º Encontro de Clássicos na My School',
-                    description:
-                        'Já estamos em fevereiro e o evento mais aguardado pelos amantes de carro chegou!',
-                    status: NotificationStatus.unread,
-                    createdAt: DateTime(2024, 2, 14, 12, 50),
-                    link: 'https://google.com',
-                    linkType: NotificationLinkType.redirectToSite,
-                  ),
-                  NotificationEntity(
-                    id: 4,
-                    title: 'Nova matéria',
-                    description:
-                        'Foi cadastrada uma nova matéria no seu registro! 🥳📚',
-                    status: NotificationStatus.unread,
-                    createdAt: DateTime(2024, 3, 1, 12, 50),
-                  ),
-                  NotificationEntity(
-                    id: 3,
-                    title: 'Reitoria',
-                    description:
-                        'Participe da campanha do Vestibular 2024! A seleção está acontecendo hoje (30/08), das 20h às 23h',
-                    status: NotificationStatus.unread,
-                    createdAt: DateTime(2024, 3, 1, 12, 30),
-                  ),
-                ].map((e) => e.toMap()).toList()));
-
-            cubit.fetch();
-          },
-          child: const Icon(PhosphorIconsRegular.bug),
-        ),
-        body: BlocBuilder<NotificationListCubit, NotificationListState>(
+      child: BlocBuilder<NotificationListCubit, NotificationListState>(
           bloc: cubit,
           builder: (context, state) {
-            final isError = state is ErrorState;
+            final isLoading = state is LoadingState;
             final isSuccess = state is SuccessState;
             final allData =
                 state is SuccessState ? state.allData : <NotificationEntity>[];
@@ -117,97 +64,169 @@ class _NotificationListPageState extends State<NotificationListPage> {
                 ? state.unreadData
                 : <NotificationEntity>[];
 
-            return Column(
-              children: [
-                if (!isError)
-                  NotificationTabBar(
-                    onChanged: onChangeTab,
-                    unreadCount: unreadData.length,
-                    disabled: !isSuccess,
-                  ),
-                Expanded(
-                  child: switch (state) {
-                    InitialState _ => const SizedBox(),
-                    ErrorState _ => Center(
-                        child: SingleChildScrollView(
-                          padding: EdgeInsets.only(
-                            left: 20,
-                            right: 20,
-                            bottom: MediaQuery.paddingOf(context).bottom +
-                                DefaultAppBar.defaultHeight,
-                          ),
-                          child: ErrorStateDisplay(
-                            description: state.error.message,
-                            primaryButtonText: 'Recarregar',
-                            onPressedPrimaryButton: () => cubit.fetch(),
-                            secondaryButtonText: 'Falar com o suporte',
-                            onPressedSecondaryButton: () {},
-                          ),
+            return Scaffold(
+              appBar: const DefaultAppBar(
+                title: 'Notificações',
+              ),
+              floatingActionButton: isLoading
+                  ? null
+                  : allData.isEmpty
+                      ? FloatingActionButton(
+                          tooltip: 'Include test data',
+                          onPressed: () {
+                            final localStorageService =
+                                Injector.resolve<ILocalStorageService>();
+
+                            localStorageService.write(
+                                LocalStorageKey.notifications,
+                                jsonEncode([
+                                  NotificationEntity(
+                                    id: 2,
+                                    title: 'Open Design 2024',
+                                    description:
+                                        'Não fique de fora do Open! Garante sua inscrição no maior evento de design da região!',
+                                    status: NotificationStatus.unread,
+                                    createdAt: DateTime(2024, 2, 16, 15, 20),
+                                  ),
+                                  NotificationEntity(
+                                    id: 1,
+                                    title:
+                                        '6º Encontro de Clássicos na My School',
+                                    description:
+                                        'Já estamos em fevereiro e o evento mais aguardado pelos amantes de carro chegou!',
+                                    status: NotificationStatus.unread,
+                                    createdAt: DateTime(2024, 2, 14, 12, 50),
+                                    link: 'https://google.com',
+                                    linkType:
+                                        NotificationLinkType.redirectToSite,
+                                  ),
+                                  NotificationEntity(
+                                    id: 4,
+                                    title: 'Nova matéria',
+                                    description:
+                                        'Foi cadastrada uma nova matéria no seu registro! 🥳📚',
+                                    status: NotificationStatus.unread,
+                                    createdAt: DateTime(2024, 3, 1, 12, 50),
+                                  ),
+                                  NotificationEntity(
+                                    id: 3,
+                                    title: 'Reitoria',
+                                    description:
+                                        'Participe da campanha do Vestibular 2024! A seleção está acontecendo hoje (30/08), das 20h às 23h',
+                                    status: NotificationStatus.unread,
+                                    createdAt: DateTime(2024, 3, 1, 12, 30),
+                                  ),
+                                ].map((e) => e.toMap()).toList()));
+
+                            cubit.fetch();
+                          },
+                          child: const Icon(PhosphorIconsRegular.bug),
+                        )
+                      : FloatingActionButton(
+                          tooltip: 'Remove all data',
+                          onPressed: () {
+                            final localStorageService =
+                                Injector.resolve<ILocalStorageService>();
+
+                            localStorageService
+                                .delete(LocalStorageKey.notifications);
+
+                            cubit.fetch();
+                          },
+                          child: const Icon(PhosphorIconsRegular.trashSimple),
                         ),
-                      ),
-                    LoadingState _ => ListView.separated(
-                        itemCount: 5,
-                        shrinkWrap: true,
-                        padding: EdgeInsets.only(
-                          left: 16,
-                          right: 16,
-                          top: 16,
-                          bottom: 16 + MediaQuery.paddingOf(context).bottom,
-                        ),
-                        separatorBuilder: (_, __) => Container(
-                          height: 1.5,
-                          color: MonoChromaticColors.divider,
-                          margin: const EdgeInsets.only(bottom: 24),
-                        ),
-                        itemBuilder: (_, __) =>
-                            const NotificationSkeletonCard(),
-                      ),
-                    _ => allData.isEmpty
-                        ? Center(
-                            child: SingleChildScrollView(
-                              padding: EdgeInsets.only(
-                                left: 20,
-                                right: 20,
-                                bottom: MediaQuery.paddingOf(context).bottom +
-                                    DefaultAppBar.defaultHeight,
-                              ),
-                              child: EmptyStateDisplay(
-                                imageSource: ImageSourceConstants
-                                    .notificationsIllustration,
-                                description:
-                                    'Não encontramos notificações no momento.',
-                              ),
+              body: Column(
+                children: [
+                  if ((isSuccess && allData.isNotEmpty) || isLoading)
+                    NotificationTabBar(
+                      onChanged: onChangeTab,
+                      unreadCount: unreadData.length,
+                      disabled: !isSuccess,
+                    ),
+                  Expanded(
+                    child: switch (state) {
+                      InitialState _ => const SizedBox(),
+                      ErrorState _ => Center(
+                          child: SingleChildScrollView(
+                            padding: EdgeInsets.only(
+                              left: 20,
+                              right: 20,
+                              bottom: MediaQuery.paddingOf(context).bottom +
+                                  DefaultAppBar.defaultHeight,
                             ),
-                          )
-                        : PageView(
-                            controller: pageController,
-                            physics: const NeverScrollableScrollPhysics(),
-                            children: [
-                              RefreshIndicator(
-                                key: const ValueKey('notifications.all'),
-                                onRefresh: () => cubit.fetch(refreshing: true),
-                                child: NotificationList(
-                                  data: allData,
-                                  markAsRead: cubit.markAsRead,
-                                ),
-                              ),
-                              RefreshIndicator(
-                                key: const ValueKey('notifications.unread'),
-                                onRefresh: () => cubit.fetch(refreshing: true),
-                                child: NotificationList(
-                                  data: unreadData,
-                                  markAsRead: cubit.markAsRead,
-                                ),
-                              ),
-                            ],
+                            child: ErrorStateDisplay(
+                              description: state.error.message,
+                              primaryButtonText: 'Recarregar',
+                              onPressedPrimaryButton: () => cubit.fetch(),
+                              secondaryButtonText: 'Falar com o suporte',
+                              onPressedSecondaryButton: () {},
+                            ),
                           ),
-                  },
-                )
-              ],
+                        ),
+                      LoadingState _ => ListView.separated(
+                          itemCount: 5,
+                          shrinkWrap: true,
+                          padding: EdgeInsets.only(
+                            left: 16,
+                            right: 16,
+                            top: 16,
+                            bottom: 16 + MediaQuery.paddingOf(context).bottom,
+                          ),
+                          separatorBuilder: (_, __) => Container(
+                            height: 1.5,
+                            color: MonoChromaticColors.divider,
+                            margin: const EdgeInsets.only(bottom: 24),
+                          ),
+                          itemBuilder: (_, __) =>
+                              const NotificationSkeletonCard(),
+                        ),
+                      _ => allData.isEmpty
+                          ? Center(
+                              child: SingleChildScrollView(
+                                padding: EdgeInsets.only(
+                                  left: 20,
+                                  right: 20,
+                                  bottom: MediaQuery.paddingOf(context).bottom +
+                                      DefaultAppBar.defaultHeight,
+                                ),
+                                child: EmptyStateDisplay(
+                                  imageSource: ImageSourceConstants
+                                      .notificationsIllustration,
+                                  description:
+                                      'Não encontramos notificações no momento.',
+                                ),
+                              ),
+                            )
+                          : PageView(
+                              controller: pageController,
+                              physics: const NeverScrollableScrollPhysics(),
+                              children: [
+                                RefreshIndicator(
+                                  key: const ValueKey('notifications.all'),
+                                  onRefresh: () =>
+                                      cubit.fetch(refreshing: true),
+                                  child: NotificationList(
+                                    data: allData,
+                                    markAsRead: cubit.markAsRead,
+                                  ),
+                                ),
+                                RefreshIndicator(
+                                  key: const ValueKey('notifications.unread'),
+                                  onRefresh: () =>
+                                      cubit.fetch(refreshing: true),
+                                  child: NotificationList(
+                                    data: unreadData,
+                                    markAsRead: cubit.markAsRead,
+                                  ),
+                                ),
+                              ],
+                            ),
+                    },
+                  )
+                ],
+              ),
             );
-          },
-        ),
-      ),
+          }),
     );
   }
 }
