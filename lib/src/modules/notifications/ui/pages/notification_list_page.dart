@@ -68,6 +68,7 @@ class _NotificationListPageState extends State<NotificationListPage> {
               appBar: const DefaultAppBar(
                 title: 'Notificações',
               ),
+              //TODO: Remove floating action button when it goes to production!
               floatingActionButton: isLoading
                   ? null
                   : allData.isEmpty
