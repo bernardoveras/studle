@@ -22,6 +22,8 @@ class NotificationListCubit extends Cubit<NotificationListState> {
         emit(const LoadingState());
       }
 
+      await Future.delayed(const Duration(milliseconds: 500));
+
       final result = await notificationService.fetch();
 
       if (result.isError()) {
