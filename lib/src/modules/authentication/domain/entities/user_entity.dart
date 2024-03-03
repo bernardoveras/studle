@@ -8,8 +8,12 @@ class UserEntity extends Equatable {
   final String refreshToken;
   final String name;
   final String email;
-  final String? picture;
+  final String registrationNumber;
+  final String? pictureUrl;
   final String cpf;
+
+  String get firstLetterName => name[0];
+  bool get hasPicture => pictureUrl != null;
 
   const UserEntity({
     required this.id,
@@ -17,7 +21,8 @@ class UserEntity extends Equatable {
     required this.refreshToken,
     required this.name,
     required this.email,
-    this.picture,
+    required this.registrationNumber,
+    this.pictureUrl,
     required this.cpf,
   });
 
@@ -28,7 +33,8 @@ class UserEntity extends Equatable {
       'refresh_token': refreshToken,
       'name': name,
       'email': email,
-      'picture': picture,
+      'registration_number': registrationNumber,
+      'picture_url': pictureUrl,
       'cpf': cpf,
     };
 
@@ -42,7 +48,8 @@ class UserEntity extends Equatable {
       refreshToken: map['refresh_token'],
       name: map['name'],
       email: map['email'],
-      picture: map['picture'],
+      registrationNumber: map['registration_number'],
+      pictureUrl: map['picture_url'],
       cpf: map['cpf'],
     );
   }
@@ -59,7 +66,8 @@ class UserEntity extends Equatable {
         refreshToken,
         name,
         email,
-        picture,
+        registrationNumber,
+        pictureUrl,
         cpf,
       ];
 }

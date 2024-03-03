@@ -11,7 +11,7 @@ abstract class AppTheme {
       elevation: 0.0,
     ),
     appBarTheme: AppBarTheme(
-      backgroundColor: Colors.white,
+      backgroundColor: MonoChromaticColors.backgroundColor,
       elevation: 0,
       foregroundColor: MonoChromaticColors.gray.v800,
       actionsIconTheme: IconThemeData(
@@ -65,7 +65,7 @@ abstract class AppTheme {
         ),
       ),
     ),
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: MonoChromaticColors.backgroundColor,
     colorScheme: ColorScheme.fromSeed(
       seedColor: PrimaryColors.brand,
       background: Colors.white,

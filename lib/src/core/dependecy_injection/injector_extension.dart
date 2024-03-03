@@ -37,12 +37,23 @@ extension InjectorExtension on GetIt {
               (await localStorage.read<bool>(LocalStorageKey.firstAccess))
                       .getOrNull() ??
                   true;
-          final user = (await localStorage.read<String>(LocalStorageKey.user))
-              .getOrNull();
+
+          final userJson =
+              (await localStorage.read<String>(LocalStorageKey.user))
+                  .getOrNull();
+
+          UserEntity? user;
+          if (userJson != null) {
+            try {
+              user = UserEntity.fromJson(userJson);
+            } catch (e) {
+              await localStorage.delete(LocalStorageKey.user);
+            }
+          }
 
           return UserSession(
             firstAccess: firstAccess,
-            user: user == null ? null : UserEntity.fromJson(user),
+            user: user,
             localStorageService: Injector.resolve(),
           );
         },

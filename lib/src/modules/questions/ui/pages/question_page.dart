@@ -35,7 +35,8 @@ class QuestionPage extends StatelessWidget {
             icon: PhosphorIconsRegular.question,
             style: SolidButtonStyle.outlined,
             onPressed: () => redirectToUrl(
-                'https://github.com/bernardoveras/myschool/discussions'),
+              'https://github.com/bernardoveras/myschool/discussions/new/choose',
+            ),
           ),
         ),
       ),

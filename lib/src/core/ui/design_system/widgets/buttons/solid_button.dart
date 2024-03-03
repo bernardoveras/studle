@@ -175,6 +175,7 @@ class SolidButton extends StatelessWidget {
     double? iconSize,
     bool disabled = false,
     double? radius,
+    Color? foregroundColor,
     SolidButtonStyle? style,
   }) {
     return SolidButton._(
@@ -185,7 +186,7 @@ class SolidButton extends StatelessWidget {
       height: height,
       width: width,
       backgroundColor: MonoChromaticColors.gray,
-      foregroundColor: MonoChromaticColors.gray.v600,
+      foregroundColor: foregroundColor ?? MonoChromaticColors.gray.v600,
       icon: icon,
       iconSize: iconSize,
       disabled: disabled,

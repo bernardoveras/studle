@@ -26,6 +26,7 @@ class AuthMockServiceImpl implements IAuthService {
       refreshToken: '48b38423c45f4daaab8d7ed782fb8dc8',
       name: 'Bernardo Veras',
       email: 'contato@bernardoveras.com.br',
+      registrationNumber: '00123456',
       cpf: '00000000000',
     );
 

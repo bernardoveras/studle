@@ -13,7 +13,9 @@ void main() {
       refreshToken: '48b38423c45f4daaab8d7ed782fb8dc8',
       name: 'Bernardo Veras',
       email: 'contato@bernardoveras.com.br',
+      registrationNumber: '00123456',
       cpf: '00000000000',
+      pictureUrl: 'https://google.com',
     );
 
     const entity2 = UserEntity(
@@ -22,7 +24,9 @@ void main() {
       refreshToken: '48b38423c45f4daaab8d7ed782fb8dc8',
       name: 'Bernardo Veras',
       email: 'contato@bernardoveras.com.br',
+      registrationNumber: '00123456',
       cpf: '00000000000',
+      pictureUrl: 'https://google.com',
     );
 
     expect(entity1, entity2);
@@ -38,7 +42,9 @@ void main() {
     expect(map['refresh_token'], expectedEntity.refreshToken);
     expect(map['name'], expectedEntity.name);
     expect(map['email'], expectedEntity.email);
+    expect(map['registration_number'], expectedEntity.registrationNumber);
     expect(map['cpf'], expectedEntity.cpf);
+    expect(map['picture_url'], expectedEntity.pictureUrl);
   });
 
   test('UserEntity - to json', () {
@@ -53,7 +59,9 @@ void main() {
     expect(map['refresh_token'], expectedEntity.refreshToken);
     expect(map['name'], expectedEntity.name);
     expect(map['email'], expectedEntity.email);
+    expect(map['registration_number'], expectedEntity.registrationNumber);
     expect(map['cpf'], expectedEntity.cpf);
+    expect(map['picture_url'], expectedEntity.pictureUrl);
   });
 
   test('UserEntity - from map', () {

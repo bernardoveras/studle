@@ -2,13 +2,14 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import '../modules/authentication/ui/pages/login_page.dart';
-import '../modules/questions/ui/pages/question_page.dart';
 import '../modules/authentication/ui/store/login_store.dart';
 import '../modules/campaigns/ui/pages/campaign_page.dart';
 import '../modules/campaigns/ui/parameters/campaign_page_parameter.dart';
 import '../modules/home/ui/pages/home_page.dart';
 import '../modules/onboarding/ui/pages/onboarding_page.dart';
 import '../modules/onboarding/ui/stores/onboarding_store.dart';
+import '../modules/profile/ui/pages/profile_page.dart';
+import '../modules/questions/ui/pages/question_page.dart';
 import 'dependecy_injection/injector.dart';
 import 'route_guard.dart';
 import 'user_session.dart';
@@ -20,6 +21,10 @@ abstract class AppRouter {
       GoRoute(
         path: HomePage.route,
         builder: (context, state) => const HomePage(),
+      ),
+      GoRoute(
+        path: ProfilePage.route,
+        builder: (context, state) => const ProfilePage(),
       ),
       GoRoute(
         path: OnboardingPage.route,
