@@ -33,11 +33,7 @@ class NotificationLocalServiceImpl implements INotificationService {
         return Failure(result.exceptionOrNull()!);
       }
 
-      final response = result.getOrNull();
-
-      if (response == null) {
-        return const Success([]);
-      }
+      final response = result.getOrNull()!;
 
       final decodedJson = jsonDecode(response);
 
@@ -110,7 +106,9 @@ class NotificationLocalServiceImpl implements INotificationService {
           jsonEncode(notifications.map((e) => e.toMap()).toList());
 
       final writeResult = await localStorageService.write<String>(
-          LocalStorageKey.notifications, notificationsJson);
+        LocalStorageKey.notifications,
+        notificationsJson,
+      );
 
       if (writeResult.isError()) {
         return writeResult;
