@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:go_router/go_router.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../../../core/dependecy_injection/injector.dart';
 import '../../../../core/ui/design_system/design_system.dart';
 import '../../../../core/ui/widgets/default_app_bar.dart';
+import '../../../../core/ui/widgets/tiles/default_list_tile.dart';
 import '../../../../core/user_session.dart';
-import '../../../../core/utils/redirect_to_url.dart';
+import '../../../questions/ui/pages/question_page.dart';
 import '../widgets/profile_picture.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -83,10 +85,10 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                     ),
                     const SizedBox(height: 8),
-                    const Text(
-                      'Aluno  •  00123456',
+                    Text(
+                      'Aluno  •  ${user.registrationNumber}',
                       textAlign: TextAlign.center,
-                      style: Text2Typography(
+                      style: const Text2Typography(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
                       ),
@@ -112,13 +114,26 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       child: Column(
                         children: [
+                          DefaultListTile(
+                            items: [
+                              DefaultListTileItem(
+                                title: 'Dados pessoais',
+                                icon: PhosphorIconsRegular.student,
+                                onTap: () {},
+                              ),
+                              DefaultListTileItem(
+                                title: 'Carteirinha',
+                                icon: PhosphorIconsRegular.creditCard,
+                                onTap: () {},
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 24),
                           SolidButton.primary(
-                            label: 'Preciso de ajuda',
+                            label: 'Ajuda',
                             icon: PhosphorIconsRegular.question,
                             style: SolidButtonStyle.outlined,
-                            onPressed: () => redirectToUrl(
-                              'https://github.com/bernardoveras/myschool/discussions/new/choose',
-                            ),
+                            onPressed: () => context.push(QuestionPage.route),
                           ),
                         ],
                       ),
