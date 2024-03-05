@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import '../modules/authentication/ui/pages/login_page.dart';
+import '../modules/questions/ui/pages/question_page.dart';
 import '../modules/authentication/ui/store/login_store.dart';
 import '../modules/campaigns/ui/pages/campaign_page.dart';
 import '../modules/campaigns/ui/parameters/campaign_page_parameter.dart';
@@ -60,6 +61,10 @@ abstract class AppRouter {
             from: state.uri.queryParameters['from'],
           ),
         ),
+      ),
+      GoRoute(
+        path: QuestionPage.route,
+        builder: (context, state) => const QuestionPage(),
       ),
     ],
     redirect: RouteGuard.redirect,
