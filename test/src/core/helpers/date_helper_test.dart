@@ -1,7 +1,13 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:intl/intl.dart';
 import 'package:myschool/src/core/helpers/date_helper.dart';
 
 void main() {
+  setUpAll(() async {
+    Intl.defaultLocale = 'pt_BR';
+    await initializeDateFormatting('pt_BR');
+  });
   group('Format', () {
     test('Format with default pattern', () {
       final date = DateTime(2024, 3, 1, 12, 30);

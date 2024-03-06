@@ -7,6 +7,7 @@ import '../../../../core/ui/design_system/design_system.dart';
 import '../../../../core/ui/widgets/default_app_bar.dart';
 import '../../../../core/user_session.dart';
 import '../../../activities/ui/pages/additional_activities_page.dart';
+import '../../../notifications/ui/pages/notification_list_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -33,6 +34,13 @@ class _HomePageState extends State<HomePage> {
       appBar: DefaultAppBar(
         title: 'Home',
         actions: [
+          IconButton(
+            onPressed: () => context.push(NotificationListPage.route),
+            splashColor: Colors.transparent,
+            icon: const Icon(
+              PhosphorIconsRegular.bellSimple,
+            ),
+          ),
           IconButton(
             onPressed: userSession.logout,
             splashColor: Colors.transparent,
