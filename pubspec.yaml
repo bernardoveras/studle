@@ -25,6 +25,7 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   shared_preferences: ^2.2.2
   intl: ^0.18.1
+  mask_text_input_formatter: ^2.9.0
 
 dev_dependencies:
   flutter_test:
