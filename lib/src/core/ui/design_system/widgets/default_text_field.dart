@@ -223,11 +223,15 @@ class DefaultTextField extends StatefulWidget {
     TapRegionCallback? onTapOutside,
     Widget? suffixIcon,
   }) {
-    final phoneFormatter = MaskTextInputFormatter(
+    final formatter = MaskTextInputFormatter(
       mask: '(##) #####-####',
       filter: {'#': RegExp(r'[0-9]')},
       type: MaskAutoCompletionType.lazy,
     );
+
+    if (initialValue != null) {
+      initialValue = formatter.maskText(initialValue);
+    }
 
     return DefaultTextField._(
       key: key,
@@ -237,7 +241,7 @@ class DefaultTextField extends StatefulWidget {
       errorText: errorText,
       controller: controller,
       textInputAction: textInputAction,
-      inputFormatters: inputFormatters ?? [phoneFormatter],
+      inputFormatters: inputFormatters ?? [formatter],
       autofillHints: autofillHints,
       autocorrect: autocorrect,
       enableSuggestions: enableSuggestions,
@@ -290,11 +294,15 @@ class DefaultTextField extends StatefulWidget {
     DateTime? lastDate,
     DateTime? currentDate,
   }) {
-    final dateFormatter = MaskTextInputFormatter(
+    final formatter = MaskTextInputFormatter(
       mask: '##/##/####',
       filter: {'#': RegExp(r'[0-9]')},
       type: MaskAutoCompletionType.lazy,
     );
+
+    if (initialValue != null) {
+      initialValue = formatter.maskText(initialValue);
+    }
 
     return DefaultTextField._(
       key: key,
@@ -304,7 +312,7 @@ class DefaultTextField extends StatefulWidget {
       errorText: errorText,
       controller: controller,
       textInputAction: textInputAction,
-      inputFormatters: inputFormatters ?? [dateFormatter],
+      inputFormatters: inputFormatters ?? [formatter],
       autofillHints: autofillHints,
       autocorrect: autocorrect,
       enableSuggestions: enableSuggestions,
@@ -430,12 +438,13 @@ class DefaultTextField extends StatefulWidget {
   //   TapRegionCallback? onTapOutside,
   //   Widget? suffixIcon,
   // }) {
-  //   final currencyMask = CurrencyTextInputFormatter(
+  //   final formatter = CurrencyTextInputFormatter(
   //     prefix: 'R\$ ',
   //     allowNegative: false,
   //     decimalSeparator: ',',
   //     groupSeparator: '.',
   //   );
+  //
   //   return DefaultTextField._(
   //     key: key,
   //     keyboardType: TextInputType.number,
@@ -444,7 +453,7 @@ class DefaultTextField extends StatefulWidget {
   //     errorText: errorText,
   //     controller: controller,
   //     textInputAction: textInputAction,
-  //     inputFormatters: inputFormatters ?? [currencyMask],
+  //     inputFormatters: inputFormatters ?? [formatter],
   //     autofillHints: autofillHints,
   //     autocorrect: autocorrect,
   //     enableSuggestions: enableSuggestions,
@@ -491,10 +500,11 @@ class DefaultTextField extends StatefulWidget {
   //   TapRegionCallback? onTapOutside,
   //   Widget? suffixIcon,
   // }) {
-  //   final decimalMask = NumberTextInputFormatter(
+  //   final formatter = NumberTextInputFormatter(
   //     allowNegative: false,
   //     decimalDigits: 0,
   //   );
+  //
   //   return DefaultTextField._(
   //     key: key,
   //     keyboardType: TextInputType.number,
@@ -503,7 +513,7 @@ class DefaultTextField extends StatefulWidget {
   //     errorText: errorText,
   //     controller: controller,
   //     textInputAction: textInputAction,
-  //     inputFormatters: inputFormatters ?? [decimalMask],
+  //     inputFormatters: inputFormatters ?? [formatter],
   //     autofillHints: autofillHints,
   //     autocorrect: autocorrect,
   //     enableSuggestions: enableSuggestions,
@@ -550,11 +560,15 @@ class DefaultTextField extends StatefulWidget {
     TapRegionCallback? onTapOutside,
     Widget? suffixIcon,
   }) {
-    final cnpjFormatter = MaskTextInputFormatter(
+    final formatter = MaskTextInputFormatter(
       mask: '##.###.###/####-##',
       filter: {'#': RegExp(r'[0-9]')},
       type: MaskAutoCompletionType.lazy,
     );
+
+    if (initialValue != null) {
+      initialValue = formatter.maskText(initialValue);
+    }
 
     return DefaultTextField._(
       key: key,
@@ -564,7 +578,7 @@ class DefaultTextField extends StatefulWidget {
       errorText: errorText,
       controller: controller,
       textInputAction: textInputAction,
-      inputFormatters: inputFormatters ?? [cnpjFormatter],
+      inputFormatters: inputFormatters ?? [formatter],
       autofillHints: autofillHints,
       autocorrect: autocorrect,
       enableSuggestions: enableSuggestions,
@@ -612,11 +626,15 @@ class DefaultTextField extends StatefulWidget {
     TapRegionCallback? onTapOutside,
     Widget? suffixIcon,
   }) {
-    final cpfFormatter = MaskTextInputFormatter(
+    final formatter = MaskTextInputFormatter(
       mask: '###.###.###-##',
       filter: {'#': RegExp(r'[0-9]')},
       type: MaskAutoCompletionType.lazy,
     );
+
+    if (initialValue != null) {
+      initialValue = formatter.maskText(initialValue);
+    }
 
     return DefaultTextField._(
       key: key,
@@ -626,7 +644,7 @@ class DefaultTextField extends StatefulWidget {
       errorText: errorText,
       controller: controller,
       textInputAction: textInputAction,
-      inputFormatters: inputFormatters ?? [cpfFormatter],
+      inputFormatters: inputFormatters ?? [formatter],
       autofillHints: autofillHints,
       autocorrect: autocorrect,
       enableSuggestions: enableSuggestions,
@@ -674,11 +692,15 @@ class DefaultTextField extends StatefulWidget {
     TapRegionCallback? onTapOutside,
     Widget? suffixIcon,
   }) {
-    final cepFormatter = MaskTextInputFormatter(
+    final formatter = MaskTextInputFormatter(
       mask: '#####-###',
       filter: {'#': RegExp(r'[0-9]')},
       type: MaskAutoCompletionType.lazy,
     );
+
+    if (initialValue != null) {
+      initialValue = formatter.maskText(initialValue);
+    }
 
     return DefaultTextField._(
       key: key,
@@ -688,7 +710,7 @@ class DefaultTextField extends StatefulWidget {
       errorText: errorText,
       controller: controller,
       textInputAction: textInputAction,
-      inputFormatters: inputFormatters ?? [cepFormatter],
+      inputFormatters: inputFormatters ?? [formatter],
       autofillHints: autofillHints,
       autocorrect: autocorrect,
       enableSuggestions: enableSuggestions,
