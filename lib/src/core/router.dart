@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../modules/authentication/ui/pages/login_page.dart';
 import '../modules/authentication/ui/store/login_store.dart';
+import '../modules/calendar/ui/pages/calendar_page.dart';
 import '../modules/campaigns/ui/pages/campaign_page.dart';
 import '../modules/campaigns/ui/parameters/campaign_page_parameter.dart';
 import '../modules/home/ui/pages/home_page.dart';
@@ -26,6 +27,10 @@ abstract class AppRouter {
       GoRoute(
         path: HomePage.route,
         builder: (context, state) => const HomePage(),
+      ),
+      GoRoute(
+        path: CalendarPage.route,
+        builder: (context, state) => const CalendarPage(),
       ),
       GoRoute(
         path: NotificationListPage.route,
