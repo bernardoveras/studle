@@ -3,9 +3,9 @@ import 'package:go_router/go_router.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../../../core/dependecy_injection/injector.dart';
-import '../../../../core/ui/design_system/design_system.dart';
 import '../../../../core/ui/widgets/default_app_bar.dart';
 import '../../../../core/user_session.dart';
+import '../../../profile/ui/pages/profile_page.dart';
 import '../../../notifications/ui/pages/notification_list_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -41,11 +41,10 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           IconButton(
-            onPressed: userSession.logout,
+            onPressed: ()=> context.push(ProfilePage.route),
             splashColor: Colors.transparent,
-            icon: Icon(
-              PhosphorIconsRegular.signOut,
-              color: SemanticColors.negative,
+            icon: const Icon(
+              PhosphorIconsRegular.user,
             ),
           ),
         ],
