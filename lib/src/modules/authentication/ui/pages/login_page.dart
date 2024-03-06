@@ -10,13 +10,17 @@ import '../../../../core/ui/design_system/design_system.dart';
 import '../../../../core/ui/widgets/default_app_bar.dart';
 import '../../../home/ui/pages/home_page.dart';
 import '../store/login_store.dart';
+import '../../../questions/ui/pages/question_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({
     super.key,
+    this.from,
   });
 
   static String get route => '/auth';
+
+  final String? from;
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -64,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
         title: 'Login',
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () => context.push(QuestionPage.route),
             splashColor: Colors.transparent,
             icon: Icon(
               PhosphorIconsRegular.question,
@@ -120,6 +124,12 @@ class _LoginPageState extends State<LoginPage> {
                           Validatorless.required(TextConstants.requiredField),
                       onChanged: store.changePassword,
                       onFieldSubmitted: (_) => submit(),
+                    ),
+                    const SizedBox(height: 20),
+                    DefaultCheckboxTile(
+                      title: 'Permanecer logado',
+                      value: store.stayLogged,
+                      onChanged: store.changeStayLogged,
                     ),
                     const SizedBox(height: 56),
                     SolidButton.primary(

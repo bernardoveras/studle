@@ -39,23 +39,9 @@ class OnboardingBottomSheet extends StatelessWidget {
               duration: Duration(milliseconds: 300),
             ),
           ],
-          child: GestureDetector(
-            onTap: previous,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                shape: BoxShape.circle,
-                border: Border.all(
-                  color: PrimaryColors.brand,
-                ),
-              ),
-              height: 56,
-              width: 56,
-              child: Icon(
-                PhosphorIconsRegular.arrowLeft,
-                color: PrimaryColors.brand,
-              ),
-            ),
+          child: DefaultIconButton.outlined(
+            icon: PhosphorIconsRegular.arrowLeft,
+            onPressed: previous,
           ),
         ),
         const Spacer(),
@@ -71,20 +57,9 @@ class OnboardingBottomSheet extends StatelessWidget {
           ),
         ),
         const Spacer(),
-        GestureDetector(
-          onTap: () => next(context),
-          child: Container(
-            decoration: BoxDecoration(
-              color: PrimaryColors.brand,
-              shape: BoxShape.circle,
-            ),
-            height: 56,
-            width: 56,
-            child: const Icon(
-              PhosphorIconsRegular.arrowRight,
-              color: Colors.white,
-            ),
-          ),
+        DefaultIconButton.solid(
+          icon: PhosphorIconsRegular.arrowRight,
+          onPressed: () => next(context),
         ),
       ],
     );

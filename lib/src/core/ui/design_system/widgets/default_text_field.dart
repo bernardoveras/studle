@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:validatorless/validatorless.dart';
 
 import '../../../constants/text_constants.dart';
+import '../../../helpers/date_helper.dart';
+import '../../../validators/cep_validatorless.dart';
+import '../../../validators/cnpj_validatorless.dart';
+import '../../../validators/cpf_validatorless.dart';
+import '../../../validators/date_validatorless.dart';
+import '../../../validators/phone_number_validatorless.dart';
 import '../design_system.dart';
 
 class DefaultTextField extends StatefulWidget {
@@ -191,144 +198,167 @@ class DefaultTextField extends StatefulWidget {
     );
   }
 
-  // factory DefaultTextField.phoneNumber({
-  //   Key? key,
-  //   String? label,
-  //   String? hintText,
-  //   String? errorText,
-  //   TextEditingController? controller,
-  //   TextInputAction? textInputAction,
-  //   Iterable<String>? autofillHints = const [AutofillHints.telephoneNumber],
-  //   bool autocorrect = false,
-  //   bool enableSuggestions = false,
-  //   FormFieldValidator<String>? validator,
-  //   ValueChanged<String>? onFieldSubmitted,
-  //   ValueChanged<String>? onChanged,
-  //   bool autofocus = false,
-  //   AutovalidateMode? autovalidateMode,
-  //   List<TextInputFormatter>? inputFormatters,
-  //   FocusNode? focusNode,
-  //   String? initialValue,
-  //   bool? enabled,
-  //   bool obscureText = false,
-  //   bool readOnly = false,
-  //   bool loading = false,
-  //   TapRegionCallback? onTapOutside,
-  //   Widget? suffixIcon,
-  // }) {
-  //   final phoneMask = PhoneNumberMaskTextInputFormatter();
+  factory DefaultTextField.phoneNumber({
+    Key? key,
+    String? label,
+    String? hintText,
+    String? errorText,
+    TextEditingController? controller,
+    TextInputAction? textInputAction,
+    Iterable<String>? autofillHints = const [AutofillHints.telephoneNumber],
+    bool autocorrect = false,
+    bool enableSuggestions = false,
+    FormFieldValidator<String>? validator,
+    ValueChanged<String>? onFieldSubmitted,
+    ValueChanged<String>? onChanged,
+    bool autofocus = false,
+    AutovalidateMode? autovalidateMode,
+    List<TextInputFormatter>? inputFormatters,
+    FocusNode? focusNode,
+    String? initialValue,
+    bool? enabled,
+    bool obscureText = false,
+    bool readOnly = false,
+    bool loading = false,
+    TapRegionCallback? onTapOutside,
+    Widget? suffixIcon,
+  }) {
+    final formatter = MaskTextInputFormatter(
+      mask: '(##) #####-####',
+      filter: {'#': RegExp(r'[0-9]')},
+      type: MaskAutoCompletionType.lazy,
+    );
 
-  //   return DefaultTextField._(
-  //     key: key,
-  //     keyboardType: TextInputType.phone,
-  //     label: label,
-  //     hintText: hintText,
-  //     errorText: errorText,
-  //     controller: controller,
-  //     textInputAction: textInputAction,
-  //     inputFormatters: inputFormatters ?? [phoneMask],
-  //     autofillHints: autofillHints,
-  //     autocorrect: autocorrect,
-  //     enableSuggestions: enableSuggestions,
-  //     validator: Validatorless.multiple([
-  //       if (validator != null) validator,
-  //       PhoneNumberFormValidator.validate,
-  //     ]),
-  //     onFieldSubmitted: onFieldSubmitted,
-  //     onChanged: onChanged,
-  //     autofocus: autofocus,
-  //     autovalidateMode: autovalidateMode,
-  //     focusNode: focusNode,
-  //     initialValue: initialValue,
-  //     enabled: enabled,
-  //     obscureText: obscureText,
-  //     readOnly: readOnly,
-  //     loading: loading,
-  //     onTapOutside: onTapOutside,
-  //     suffixIcon: suffixIcon,
-  //   );
-  // }
+    if (initialValue != null) {
+      initialValue = formatter.maskText(initialValue);
+    }
 
-  // factory DefaultTextField.date({
-  //   Key? key,
-  //   String? label,
-  //   String? hintText,
-  //   String? errorText,
-  //   TextEditingController? controller,
-  //   TextInputAction? textInputAction,
-  //   Iterable<String>? autofillHints,
-  //   bool autocorrect = false,
-  //   bool enableSuggestions = false,
-  //   FormFieldValidator<String>? validator,
-  //   ValueChanged<String>? onFieldSubmitted,
-  //   ValueChanged<String>? onChanged,
-  //   bool autofocus = false,
-  //   AutovalidateMode? autovalidateMode,
-  //   List<TextInputFormatter>? inputFormatters,
-  //   FocusNode? focusNode,
-  //   String? initialValue,
-  //   bool? enabled,
-  //   bool obscureText = false,
-  //   bool readOnly = false,
-  //   bool loading = false,
-  //   TapRegionCallback? onTapOutside,
-  //   Widget? suffixIcon,
-  //   String? helpText,
-  //   DateTime? initialDate,
-  //   DateTime? firstDate,
-  //   DateTime? lastDate,
-  //   DateTime? currentDate,
-  // }) {
-  //   return DefaultTextField._(
-  //     key: key,
-  //     keyboardType: TextInputType.datetime,
-  //     label: label,
-  //     hintText: hintText,
-  //     errorText: errorText,
-  //     controller: controller,
-  //     textInputAction: textInputAction,
-  //     inputFormatters: inputFormatters ?? [dateFormatter],
-  //     autofillHints: autofillHints,
-  //     autocorrect: autocorrect,
-  //     enableSuggestions: enableSuggestions,
-  //     validator: Validatorless.multiple([
-  //       if (validator != null) validator,
-  //       DateFormValidator.validate,
-  //     ]),
-  //     onFieldSubmitted: onFieldSubmitted,
-  //     onChanged: onChanged,
-  //     autofocus: autofocus,
-  //     autovalidateMode: autovalidateMode,
-  //     focusNode: focusNode,
-  //     initialValue: initialValue,
-  //     enabled: enabled,
-  //     obscureText: obscureText,
-  //     readOnly: true,
-  //     loading: loading,
-  //     onTapOutside: onTapOutside,
-  //     suffixIcon: suffixIcon,
-  //     onTap: (context) async {
-  //       if (readOnly) return;
+    return DefaultTextField._(
+      key: key,
+      keyboardType: TextInputType.phone,
+      label: label,
+      hintText: hintText,
+      errorText: errorText,
+      controller: controller,
+      textInputAction: textInputAction,
+      inputFormatters: inputFormatters ?? [formatter],
+      autofillHints: autofillHints,
+      autocorrect: autocorrect,
+      enableSuggestions: enableSuggestions,
+      validator: Validatorless.multiple([
+        if (validator != null) validator,
+        PhoneNumberValidatorless.validate,
+      ]),
+      onFieldSubmitted: onFieldSubmitted,
+      onChanged: onChanged,
+      autofocus: autofocus,
+      autovalidateMode: autovalidateMode,
+      focusNode: focusNode,
+      initialValue: initialValue,
+      enabled: enabled,
+      obscureText: obscureText,
+      readOnly: readOnly,
+      loading: loading,
+      onTapOutside: onTapOutside,
+      suffixIcon: suffixIcon,
+    );
+  }
 
-  //       final result = await showDatePicker(
-  //         context: context,
-  //         initialDate: initialDate ?? DateTime.now(),
-  //         firstDate:
-  //             firstDate ?? DateTime.now().add(const Duration(days: -365)),
-  //         lastDate: lastDate ?? DateTime.now().add(const Duration(days: 365)),
-  //         confirmText: 'Confirmar',
-  //         cancelText: 'Cancelar',
-  //         helpText: helpText,
-  //         currentDate: currentDate,
-  //       );
+  factory DefaultTextField.date({
+    Key? key,
+    String? label,
+    String? hintText,
+    String? errorText,
+    TextEditingController? controller,
+    TextInputAction? textInputAction,
+    Iterable<String>? autofillHints,
+    bool autocorrect = false,
+    bool enableSuggestions = false,
+    FormFieldValidator<String>? validator,
+    ValueChanged<String>? onFieldSubmitted,
+    ValueChanged<String>? onChanged,
+    bool autofocus = false,
+    AutovalidateMode? autovalidateMode,
+    List<TextInputFormatter>? inputFormatters,
+    FocusNode? focusNode,
+    DateTime? initialValue,
+    bool? enabled,
+    bool obscureText = false,
+    bool readOnly = false,
+    bool loading = false,
+    TapRegionCallback? onTapOutside,
+    Widget? suffixIcon,
+    String? helpText,
+    DateTime? initialDate,
+    DateTime? firstDate,
+    DateTime? lastDate,
+    DateTime? currentDate,
+  }) {
+    final formatter = MaskTextInputFormatter(
+      mask: '##/##/####',
+      filter: {'#': RegExp(r'[0-9]')},
+      type: MaskAutoCompletionType.lazy,
+    );
 
-  //       if (result == null) return;
+    String? initialValueFormatted;
 
-  //       controller?.text = result.format() ?? '';
-  //       onChanged?.call(result.format() ?? '');
-  //     },
-  //   );
-  // }
+    if (initialValue != null) {
+      initialValueFormatted =
+          DateHelper.format(initialValue, pattern: 'dd/MM/yyyy');
+    }
+
+    return DefaultTextField._(
+      key: key,
+      keyboardType: TextInputType.datetime,
+      label: label,
+      hintText: hintText,
+      errorText: errorText,
+      controller: controller,
+      textInputAction: textInputAction,
+      inputFormatters: inputFormatters ?? [formatter],
+      autofillHints: autofillHints,
+      autocorrect: autocorrect,
+      enableSuggestions: enableSuggestions,
+      validator: Validatorless.multiple([
+        if (validator != null) validator,
+        DateValidatorless.validate,
+      ]),
+      onFieldSubmitted: onFieldSubmitted,
+      onChanged: onChanged,
+      autofocus: autofocus,
+      autovalidateMode: autovalidateMode,
+      focusNode: focusNode,
+      initialValue: initialValueFormatted,
+      enabled: enabled,
+      obscureText: obscureText,
+      readOnly: true,
+      loading: loading,
+      onTapOutside: onTapOutside,
+      suffixIcon: suffixIcon,
+      onTap: (context) async {
+        if (readOnly) return;
+
+        final result = await showDatePicker(
+          context: context,
+          initialDate: initialDate ?? DateTime.now(),
+          firstDate:
+              firstDate ?? DateTime.now().add(const Duration(days: -365)),
+          lastDate: lastDate ?? DateTime.now().add(const Duration(days: 365)),
+          confirmText: 'Confirmar',
+          cancelText: 'Cancelar',
+          helpText: helpText,
+          currentDate: currentDate,
+        );
+
+        if (result == null) return;
+
+        final formattedDate = DateHelper.format(result);
+
+        controller?.text = formattedDate;
+        onChanged?.call(formattedDate);
+      },
+    );
+  }
 
   // factory DefaultTextField.hour({
   //   Key? key,
@@ -411,12 +441,13 @@ class DefaultTextField extends StatefulWidget {
   //   TapRegionCallback? onTapOutside,
   //   Widget? suffixIcon,
   // }) {
-  //   final currencyMask = CurrencyTextInputFormatter(
+  //   final formatter = CurrencyTextInputFormatter(
   //     prefix: 'R\$ ',
   //     allowNegative: false,
   //     decimalSeparator: ',',
   //     groupSeparator: '.',
   //   );
+  //
   //   return DefaultTextField._(
   //     key: key,
   //     keyboardType: TextInputType.number,
@@ -425,7 +456,7 @@ class DefaultTextField extends StatefulWidget {
   //     errorText: errorText,
   //     controller: controller,
   //     textInputAction: textInputAction,
-  //     inputFormatters: inputFormatters ?? [currencyMask],
+  //     inputFormatters: inputFormatters ?? [formatter],
   //     autofillHints: autofillHints,
   //     autocorrect: autocorrect,
   //     enableSuggestions: enableSuggestions,
@@ -472,10 +503,11 @@ class DefaultTextField extends StatefulWidget {
   //   TapRegionCallback? onTapOutside,
   //   Widget? suffixIcon,
   // }) {
-  //   final decimalMask = NumberTextInputFormatter(
+  //   final formatter = NumberTextInputFormatter(
   //     allowNegative: false,
   //     decimalDigits: 0,
   //   );
+  //
   //   return DefaultTextField._(
   //     key: key,
   //     keyboardType: TextInputType.number,
@@ -484,7 +516,7 @@ class DefaultTextField extends StatefulWidget {
   //     errorText: errorText,
   //     controller: controller,
   //     textInputAction: textInputAction,
-  //     inputFormatters: inputFormatters ?? [decimalMask],
+  //     inputFormatters: inputFormatters ?? [formatter],
   //     autofillHints: autofillHints,
   //     autocorrect: autocorrect,
   //     enableSuggestions: enableSuggestions,
@@ -506,191 +538,203 @@ class DefaultTextField extends StatefulWidget {
   //   );
   // }
 
-  // factory DefaultTextField.cnpj({
-  //   Key? key,
-  //   String? label,
-  //   String? hintText,
-  //   String? errorText,
-  //   TextEditingController? controller,
-  //   TextInputAction? textInputAction,
-  //   Iterable<String>? autofillHints,
-  //   bool autocorrect = false,
-  //   bool enableSuggestions = false,
-  //   FormFieldValidator<String>? validator,
-  //   ValueChanged<String>? onFieldSubmitted,
-  //   ValueChanged<String>? onChanged,
-  //   bool autofocus = false,
-  //   AutovalidateMode? autovalidateMode,
-  //   List<TextInputFormatter>? inputFormatters,
-  //   FocusNode? focusNode,
-  //   String? initialValue,
-  //   bool? enabled,
-  //   bool obscureText = false,
-  //   bool readOnly = false,
-  //   bool loading = false,
-  //   TapRegionCallback? onTapOutside,
-  //   Widget? suffixIcon,
-  // }) {
-  //   final cnpjMask = MaskTextInputFormatter(
-  //     mask: '##.###.###/####-##',
-  //     filter: {'#': RegExp(r'[0-9]')},
-  //     type: MaskAutoCompletionType.lazy,
-  //   );
+  factory DefaultTextField.cnpj({
+    Key? key,
+    String? label,
+    String? hintText,
+    String? errorText,
+    TextEditingController? controller,
+    TextInputAction? textInputAction,
+    Iterable<String>? autofillHints,
+    bool autocorrect = false,
+    bool enableSuggestions = false,
+    FormFieldValidator<String>? validator,
+    ValueChanged<String>? onFieldSubmitted,
+    ValueChanged<String>? onChanged,
+    bool autofocus = false,
+    AutovalidateMode? autovalidateMode,
+    List<TextInputFormatter>? inputFormatters,
+    FocusNode? focusNode,
+    String? initialValue,
+    bool? enabled,
+    bool obscureText = false,
+    bool readOnly = false,
+    bool loading = false,
+    TapRegionCallback? onTapOutside,
+    Widget? suffixIcon,
+  }) {
+    final formatter = MaskTextInputFormatter(
+      mask: '##.###.###/####-##',
+      filter: {'#': RegExp(r'[0-9]')},
+      type: MaskAutoCompletionType.lazy,
+    );
 
-  //   return DefaultTextField._(
-  //     key: key,
-  //     keyboardType: TextInputType.number,
-  //     label: label,
-  //     hintText: hintText,
-  //     errorText: errorText,
-  //     controller: controller,
-  //     textInputAction: textInputAction,
-  //     inputFormatters: inputFormatters ?? [cnpjMask],
-  //     autofillHints: autofillHints,
-  //     autocorrect: autocorrect,
-  //     enableSuggestions: enableSuggestions,
-  //     validator: Validatorless.multiple([
-  //       if (validator != null) validator,
-  //       CnpjFormValidator.validate,
-  //     ]),
-  //     onFieldSubmitted: onFieldSubmitted,
-  //     onChanged: onChanged,
-  //     autofocus: autofocus,
-  //     autovalidateMode: autovalidateMode,
-  //     focusNode: focusNode,
-  //     initialValue: initialValue,
-  //     enabled: enabled,
-  //     obscureText: obscureText,
-  //     readOnly: readOnly,
-  //     loading: loading,
-  //     onTapOutside: onTapOutside,
-  //     suffixIcon: suffixIcon,
-  //   );
-  // }
+    if (initialValue != null) {
+      initialValue = formatter.maskText(initialValue);
+    }
 
-  // factory DefaultTextField.cpf({
-  //   Key? key,
-  //   String? label,
-  //   String? hintText,
-  //   String? errorText,
-  //   TextEditingController? controller,
-  //   TextInputAction? textInputAction,
-  //   Iterable<String>? autofillHints,
-  //   bool autocorrect = false,
-  //   bool enableSuggestions = false,
-  //   FormFieldValidator<String>? validator,
-  //   ValueChanged<String>? onFieldSubmitted,
-  //   ValueChanged<String>? onChanged,
-  //   bool autofocus = false,
-  //   AutovalidateMode? autovalidateMode,
-  //   List<TextInputFormatter>? inputFormatters,
-  //   FocusNode? focusNode,
-  //   String? initialValue,
-  //   bool? enabled,
-  //   bool obscureText = false,
-  //   bool readOnly = false,
-  //   bool loading = false,
-  //   TapRegionCallback? onTapOutside,
-  //   Widget? suffixIcon,
-  // }) {
-  //   final cpfMask = MaskTextInputFormatter(
-  //     mask: '###.###.###-##',
-  //     filter: {'#': RegExp(r'[0-9]')},
-  //     type: MaskAutoCompletionType.lazy,
-  //   );
+    return DefaultTextField._(
+      key: key,
+      keyboardType: TextInputType.number,
+      label: label,
+      hintText: hintText,
+      errorText: errorText,
+      controller: controller,
+      textInputAction: textInputAction,
+      inputFormatters: inputFormatters ?? [formatter],
+      autofillHints: autofillHints,
+      autocorrect: autocorrect,
+      enableSuggestions: enableSuggestions,
+      validator: Validatorless.multiple([
+        if (validator != null) validator,
+        CnpjValidatorless.validate,
+      ]),
+      onFieldSubmitted: onFieldSubmitted,
+      onChanged: onChanged,
+      autofocus: autofocus,
+      autovalidateMode: autovalidateMode,
+      focusNode: focusNode,
+      initialValue: initialValue,
+      enabled: enabled,
+      obscureText: obscureText,
+      readOnly: readOnly,
+      loading: loading,
+      onTapOutside: onTapOutside,
+      suffixIcon: suffixIcon,
+    );
+  }
 
-  //   return DefaultTextField._(
-  //     key: key,
-  //     keyboardType: TextInputType.number,
-  //     label: label,
-  //     hintText: hintText,
-  //     errorText: errorText,
-  //     controller: controller,
-  //     textInputAction: textInputAction,
-  //     inputFormatters: inputFormatters ?? [cpfMask],
-  //     autofillHints: autofillHints,
-  //     autocorrect: autocorrect,
-  //     enableSuggestions: enableSuggestions,
-  //     validator: Validatorless.multiple([
-  //       if (validator != null) validator,
-  //       CpfFormValidator.validate,
-  //     ]),
-  //     onFieldSubmitted: onFieldSubmitted,
-  //     onChanged: onChanged,
-  //     autofocus: autofocus,
-  //     autovalidateMode: autovalidateMode,
-  //     focusNode: focusNode,
-  //     initialValue: initialValue,
-  //     enabled: enabled,
-  //     obscureText: obscureText,
-  //     readOnly: readOnly,
-  //     loading: loading,
-  //     onTapOutside: onTapOutside,
-  //     suffixIcon: suffixIcon,
-  //   );
-  // }
+  factory DefaultTextField.cpf({
+    Key? key,
+    String? label,
+    String? hintText,
+    String? errorText,
+    TextEditingController? controller,
+    TextInputAction? textInputAction,
+    Iterable<String>? autofillHints,
+    bool autocorrect = false,
+    bool enableSuggestions = false,
+    FormFieldValidator<String>? validator,
+    ValueChanged<String>? onFieldSubmitted,
+    ValueChanged<String>? onChanged,
+    bool autofocus = false,
+    AutovalidateMode? autovalidateMode,
+    List<TextInputFormatter>? inputFormatters,
+    FocusNode? focusNode,
+    String? initialValue,
+    bool? enabled,
+    bool obscureText = false,
+    bool readOnly = false,
+    bool loading = false,
+    TapRegionCallback? onTapOutside,
+    Widget? suffixIcon,
+  }) {
+    final formatter = MaskTextInputFormatter(
+      mask: '###.###.###-##',
+      filter: {'#': RegExp(r'[0-9]')},
+      type: MaskAutoCompletionType.lazy,
+    );
 
-  // factory DefaultTextField.cep({
-  //   Key? key,
-  //   String? label,
-  //   String? hintText,
-  //   String? errorText,
-  //   TextEditingController? controller,
-  //   TextInputAction? textInputAction,
-  //   Iterable<String>? autofillHints,
-  //   bool autocorrect = false,
-  //   bool enableSuggestions = false,
-  //   FormFieldValidator<String>? validator,
-  //   ValueChanged<String>? onFieldSubmitted,
-  //   ValueChanged<String>? onChanged,
-  //   bool autofocus = false,
-  //   AutovalidateMode? autovalidateMode,
-  //   List<TextInputFormatter>? inputFormatters,
-  //   FocusNode? focusNode,
-  //   String? initialValue,
-  //   bool? enabled,
-  //   bool obscureText = false,
-  //   bool readOnly = false,
-  //   bool loading = false,
-  //   TapRegionCallback? onTapOutside,
-  //   Widget? suffixIcon,
-  // }) {
-  //   final cepMask = MaskTextInputFormatter(
-  //     mask: '#####-###',
-  //     filter: {'#': RegExp(r'[0-9]')},
-  //     type: MaskAutoCompletionType.lazy,
-  //   );
+    if (initialValue != null) {
+      initialValue = formatter.maskText(initialValue);
+    }
 
-  //   return DefaultTextField._(
-  //     key: key,
-  //     keyboardType: TextInputType.number,
-  //     label: label,
-  //     hintText: hintText,
-  //     errorText: errorText,
-  //     controller: controller,
-  //     textInputAction: textInputAction,
-  //     inputFormatters: inputFormatters ?? [cepMask],
-  //     autofillHints: autofillHints,
-  //     autocorrect: autocorrect,
-  //     enableSuggestions: enableSuggestions,
-  //     validator: Validatorless.multiple([
-  //       if (validator != null) validator,
-  //       CepFormValidator.validate,
-  //     ]),
-  //     onFieldSubmitted: onFieldSubmitted,
-  //     onChanged: onChanged,
-  //     autofocus: autofocus,
-  //     autovalidateMode: autovalidateMode,
-  //     focusNode: focusNode,
-  //     initialValue: initialValue,
-  //     enabled: enabled,
-  //     obscureText: obscureText,
-  //     readOnly: readOnly,
-  //     loading: loading,
-  //     onTapOutside: onTapOutside,
-  //     suffixIcon: suffixIcon,
-  //   );
-  // }
+    return DefaultTextField._(
+      key: key,
+      keyboardType: TextInputType.number,
+      label: label,
+      hintText: hintText,
+      errorText: errorText,
+      controller: controller,
+      textInputAction: textInputAction,
+      inputFormatters: inputFormatters ?? [formatter],
+      autofillHints: autofillHints,
+      autocorrect: autocorrect,
+      enableSuggestions: enableSuggestions,
+      validator: Validatorless.multiple([
+        if (validator != null) validator,
+        CpfValidatorless.validate,
+      ]),
+      onFieldSubmitted: onFieldSubmitted,
+      onChanged: onChanged,
+      autofocus: autofocus,
+      autovalidateMode: autovalidateMode,
+      focusNode: focusNode,
+      initialValue: initialValue,
+      enabled: enabled,
+      obscureText: obscureText,
+      readOnly: readOnly,
+      loading: loading,
+      onTapOutside: onTapOutside,
+      suffixIcon: suffixIcon,
+    );
+  }
+
+  factory DefaultTextField.cep({
+    Key? key,
+    String? label,
+    String? hintText,
+    String? errorText,
+    TextEditingController? controller,
+    TextInputAction? textInputAction,
+    Iterable<String>? autofillHints,
+    bool autocorrect = false,
+    bool enableSuggestions = false,
+    FormFieldValidator<String>? validator,
+    ValueChanged<String>? onFieldSubmitted,
+    ValueChanged<String>? onChanged,
+    bool autofocus = false,
+    AutovalidateMode? autovalidateMode,
+    List<TextInputFormatter>? inputFormatters,
+    FocusNode? focusNode,
+    String? initialValue,
+    bool? enabled,
+    bool obscureText = false,
+    bool readOnly = false,
+    bool loading = false,
+    TapRegionCallback? onTapOutside,
+    Widget? suffixIcon,
+  }) {
+    final formatter = MaskTextInputFormatter(
+      mask: '#####-###',
+      filter: {'#': RegExp(r'[0-9]')},
+      type: MaskAutoCompletionType.lazy,
+    );
+
+    if (initialValue != null) {
+      initialValue = formatter.maskText(initialValue);
+    }
+
+    return DefaultTextField._(
+      key: key,
+      keyboardType: TextInputType.number,
+      label: label,
+      hintText: hintText,
+      errorText: errorText,
+      controller: controller,
+      textInputAction: textInputAction,
+      inputFormatters: inputFormatters ?? [formatter],
+      autofillHints: autofillHints,
+      autocorrect: autocorrect,
+      enableSuggestions: enableSuggestions,
+      validator: Validatorless.multiple([
+        if (validator != null) validator,
+        CepValidatorless.validate,
+      ]),
+      onFieldSubmitted: onFieldSubmitted,
+      onChanged: onChanged,
+      autofocus: autofocus,
+      autovalidateMode: autovalidateMode,
+      focusNode: focusNode,
+      initialValue: initialValue,
+      enabled: enabled,
+      obscureText: obscureText,
+      readOnly: readOnly,
+      loading: loading,
+      onTapOutside: onTapOutside,
+      suffixIcon: suffixIcon,
+    );
+  }
 
   factory DefaultTextField.password({
     Key? key,
@@ -775,7 +819,9 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
             widget.label!,
             style: Button3Typography(
               fontWeight: FontWeight.w500,
-              color: MonoChromaticColors.gray.v600,
+              color: widget.enabled == false
+                  ? MonoChromaticColors.gray.v400
+                  : MonoChromaticColors.gray.v600,
             ),
           ),
           const SizedBox(height: 12),
@@ -809,7 +855,9 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
               maxLines: widget.maxLines,
               textAlignVertical: widget.textAlignVertical,
               style: Text2Typography(
-                color: MonoChromaticColors.gray.v800,
+                color: widget.enabled == false
+                    ? MonoChromaticColors.gray.v400
+                    : MonoChromaticColors.gray.v800,
                 fontWeight: FontWeight.w500,
               ),
               decoration: InputDecoration(
@@ -826,7 +874,9 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
                             dimension: 16.0,
                             child: CircularProgressIndicator(
                               strokeWidth: 2,
-                              color: PrimaryColors.brand,
+                              color: widget.enabled == false
+                                  ? MonoChromaticColors.gray.v400
+                                  : PrimaryColors.brand,
                             ),
                           ),
                         ),
@@ -846,8 +896,12 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
                               splashColor: Colors.transparent,
                               disabledColor: Colors.transparent,
                               highlightColor: Colors.transparent,
-                              color: PrimaryColors.brand,
-                              onPressed: handlePasswordVisibility,
+                              color: widget.enabled == false
+                                  ? MonoChromaticColors.gray.v400
+                                  : PrimaryColors.brand,
+                              onPressed: widget.enabled == false
+                                  ? null
+                                  : handlePasswordVisibility,
                             ),
                           )
                         : widget.suffixIcon,
@@ -863,28 +917,36 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(
-                    color: MonoChromaticColors.gray.v300,
+                    color: widget.enabled == false
+                        ? MonoChromaticColors.gray.v400
+                        : MonoChromaticColors.gray.v300,
                     width: 1.5,
                   ),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(
-                    color: MonoChromaticColors.gray.v300,
+                    color: widget.enabled == false
+                        ? MonoChromaticColors.gray.v400
+                        : MonoChromaticColors.gray.v300,
                     width: 1.5,
                   ),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(
-                    color: PrimaryColors.brand,
+                    color: widget.enabled == false
+                        ? MonoChromaticColors.gray.v400
+                        : PrimaryColors.brand,
                     width: 1.5,
                   ),
                 ),
                 focusedErrorBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(
-                    color: SemanticColors.negative,
+                    color: widget.enabled == false
+                        ? MonoChromaticColors.gray.v400
+                        : SemanticColors.negative,
                     width: 1.5,
                   ),
                 ),

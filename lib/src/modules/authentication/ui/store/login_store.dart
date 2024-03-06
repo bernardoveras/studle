@@ -29,6 +29,12 @@ class LoginStore extends ChangeNotifier with LoadingChangeNotifierMixin {
     notifyListeners();
   }
 
+  bool stayLogged = true;
+  void changeStayLogged(bool value) {
+    stayLogged = value;
+    notifyListeners();
+  }
+
   bool get formIsValid => login.isNotEmpty && password.isNotEmpty;
 
   AsyncResult<UserEntity, GenericException> submit() async {
@@ -52,7 +58,10 @@ class LoginStore extends ChangeNotifier with LoadingChangeNotifierMixin {
 
       final user = result.getOrNull()!;
 
-      userSession.setUser(user);
+      userSession.setUser(
+        user,
+        saveOnLocalStorage: stayLogged,
+      );
 
       return Success(user);
     } finally {
