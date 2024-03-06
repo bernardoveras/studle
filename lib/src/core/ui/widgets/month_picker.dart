@@ -100,7 +100,12 @@ class _MonthPickerState extends State<MonthPicker> {
               onTap: () => changeMonth(date.month),
               child: Chip(
                 label: Text(
-                    DateHelper.format(date, pattern: 'MMMM').toCapitalized()),
+                  DateHelper.format(date, pattern: 'MMMM').capitalize(),
+                  style: Button2Typography(
+                    color: isActive ? PrimaryColors.brand : Colors.white,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
                 elevation: 0,
                 backgroundColor: isActive ? Colors.white : PrimaryColors.brand,
                 shape: !isActive
@@ -114,10 +119,6 @@ class _MonthPickerState extends State<MonthPicker> {
                 padding: const EdgeInsets.symmetric(
                   horizontal: 16,
                   vertical: 12,
-                ),
-                labelStyle: Button2Typography(
-                  color: isActive ? PrimaryColors.brand : Colors.white,
-                  fontWeight: FontWeight.w600,
                 ),
               ),
             ),
