@@ -816,7 +816,9 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
             widget.label!,
             style: Button3Typography(
               fontWeight: FontWeight.w500,
-              color: MonoChromaticColors.gray.v600,
+              color: widget.enabled == false
+                  ? MonoChromaticColors.gray.v400
+                  : MonoChromaticColors.gray.v600,
             ),
           ),
           const SizedBox(height: 12),
@@ -850,7 +852,9 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
               maxLines: widget.maxLines,
               textAlignVertical: widget.textAlignVertical,
               style: Text2Typography(
-                color: MonoChromaticColors.gray.v800,
+                color: widget.enabled == false
+                    ? MonoChromaticColors.gray.v400
+                    : MonoChromaticColors.gray.v800,
                 fontWeight: FontWeight.w500,
               ),
               decoration: InputDecoration(
@@ -867,7 +871,9 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
                             dimension: 16.0,
                             child: CircularProgressIndicator(
                               strokeWidth: 2,
-                              color: PrimaryColors.brand,
+                              color: widget.enabled == false
+                                  ? MonoChromaticColors.gray.v400
+                                  : PrimaryColors.brand,
                             ),
                           ),
                         ),
@@ -887,8 +893,12 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
                               splashColor: Colors.transparent,
                               disabledColor: Colors.transparent,
                               highlightColor: Colors.transparent,
-                              color: PrimaryColors.brand,
-                              onPressed: handlePasswordVisibility,
+                              color: widget.enabled == false
+                                  ? MonoChromaticColors.gray.v400
+                                  : PrimaryColors.brand,
+                              onPressed: widget.enabled == false
+                                  ? null
+                                  : handlePasswordVisibility,
                             ),
                           )
                         : widget.suffixIcon,
@@ -904,28 +914,36 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(
-                    color: MonoChromaticColors.gray.v300,
+                    color: widget.enabled == false
+                        ? MonoChromaticColors.gray.v400
+                        : MonoChromaticColors.gray.v300,
                     width: 1.5,
                   ),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(
-                    color: MonoChromaticColors.gray.v300,
+                    color: widget.enabled == false
+                        ? MonoChromaticColors.gray.v400
+                        : MonoChromaticColors.gray.v300,
                     width: 1.5,
                   ),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(
-                    color: PrimaryColors.brand,
+                    color: widget.enabled == false
+                        ? MonoChromaticColors.gray.v400
+                        : PrimaryColors.brand,
                     width: 1.5,
                   ),
                 ),
                 focusedErrorBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(
-                    color: SemanticColors.negative,
+                    color: widget.enabled == false
+                        ? MonoChromaticColors.gray.v400
+                        : SemanticColors.negative,
                     width: 1.5,
                   ),
                 ),
