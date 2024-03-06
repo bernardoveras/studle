@@ -25,6 +25,9 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: title != null ? Text(title!) : null,
       backgroundColor: backgroundColor,
       foregroundColor: foregroundColor,
+      titleTextStyle: Theme.of(context).appBarTheme.titleTextStyle?.copyWith(
+            color: foregroundColor,
+          ),
       actions: actions,
       shape: shape,
       iconTheme: Theme.of(context).appBarTheme.iconTheme?.copyWith(

@@ -10,6 +10,7 @@ import '../modules/onboarding/ui/pages/onboarding_page.dart';
 import '../modules/onboarding/ui/stores/onboarding_store.dart';
 import '../modules/profile/ui/pages/personal_data_page.dart';
 import '../modules/profile/ui/pages/profile_page.dart';
+import '../modules/profile/ui/pages/student_identity_page.dart';
 import '../modules/questions/ui/pages/question_page.dart';
 import 'dependecy_injection/injector.dart';
 import 'route_guard.dart';
@@ -30,6 +31,10 @@ abstract class AppRouter {
           GoRoute(
             path: PersonalDataPage.subRoute,
             builder: (context, state) => const PersonalDataPage(),
+          ),
+          GoRoute(
+            path: StudentIdentityPage.subRoute,
+            builder: (context, state) => const StudentIdentityPage(),
           ),
         ],
       ),

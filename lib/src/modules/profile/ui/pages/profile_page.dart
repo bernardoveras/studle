@@ -10,6 +10,7 @@ import '../../../../core/user_session.dart';
 import '../../../questions/ui/pages/question_page.dart';
 import '../widgets/profile_picture.dart';
 import 'personal_data_page.dart';
+import 'student_identity_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -127,7 +128,8 @@ class _ProfilePageState extends State<ProfilePage> {
                               DefaultListTileItem(
                                 title: 'Carteirinha',
                                 icon: PhosphorIconsRegular.creditCard,
-                                onTap: () {},
+                                onTap: () =>
+                                    context.push(StudentIdentityPage.route),
                               ),
                             ],
                           ),

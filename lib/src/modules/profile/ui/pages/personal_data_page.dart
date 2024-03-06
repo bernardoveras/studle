@@ -9,8 +9,8 @@ import '../../../authentication/domain/entities/user_entity.dart';
 class PersonalDataPage extends StatefulWidget {
   const PersonalDataPage({super.key});
 
-  static String get route => '/profile/personaldata';
-  static String get subRoute => 'personaldata';
+  static String get route => '/profile/personalData';
+  static String get subRoute => 'personalData';
 
   @override
   State<PersonalDataPage> createState() => _PersonalDataPageState();
