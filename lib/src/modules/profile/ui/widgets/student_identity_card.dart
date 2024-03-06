@@ -31,8 +31,8 @@ class StudentIdentityCard extends StatelessWidget {
           ),
         ],
         border: Border.all(
-          color: MonoChromaticColors.gray.v200,
-          width: 1,
+          color: MonoChromaticColors.gray.v100,
+          width: 0.5,
         ),
       ),
       margin: const EdgeInsets.only(
