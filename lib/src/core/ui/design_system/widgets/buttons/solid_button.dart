@@ -283,11 +283,11 @@ class SolidButton extends StatelessWidget {
 
             if (style == SolidButtonStyle.outlined) {
               if (states.contains(MaterialState.pressed)) {
-                return foregroundColor;
+                return backgroundColor;
               }
 
               // return foregroundColor.v600;
-              return foregroundColor;
+              return backgroundColor;
             }
 
             return foregroundColor;
