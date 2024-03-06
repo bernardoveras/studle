@@ -2,7 +2,6 @@
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/bernardoveras/myschool)
 ![GitHub language count](https://img.shields.io/github/languages/count/bernardoveras/myschool)
-![GitHub forks](https://img.shields.io/github/forks/bernardoveras/myschool)
 ![Github open issues](https://img.shields.io/github/issues/bernardoveras/myschool)
 ![Github open pull requests](https://img.shields.io/github/issues-pr/bernardoveras/myschool)
 
