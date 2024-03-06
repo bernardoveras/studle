@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 
 import '../../../../core/extensions/string_extension.dart';
+import '../../../../core/utils/nullable_value.dart';
 import '../enums/person_gender_enum.dart';
 
 class UserEntity extends Equatable {
@@ -99,6 +100,67 @@ class UserEntity extends Equatable {
 
   factory UserEntity.fromJson(String source) =>
       UserEntity.fromMap(json.decode(source));
+
+// String? pictureUrl;
+// DateTime? birthday;
+// PersonGender? gender;
+  UserEntity copyWith({
+    int? id,
+    String? accessToken,
+    String? refreshToken,
+    String? name,
+    String? email,
+    String? registrationNumber,
+    NullableValue<String?>? pictureUrl, //
+    String? cpf,
+    String? phoneNumber,
+    NullableValue<DateTime?>? birthday,
+    NullableValue<PersonGender?>? gender,
+    String? addressStreet,
+    String? addressNumber,
+    String? addressNeighborhood,
+    String? addressCity,
+    String? addressZipCode,
+    String? addressState,
+  }) {
+    return UserEntity(
+      id: id ?? this.id,
+      accessToken: accessToken ?? this.accessToken,
+      refreshToken: refreshToken ?? this.refreshToken,
+      name: name ?? this.name,
+      email: email ?? this.email,
+      registrationNumber: registrationNumber ?? this.registrationNumber,
+      pictureUrl: pictureUrl != null ? pictureUrl.value : this.pictureUrl,
+      cpf: cpf ?? this.cpf,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
+      birthday: birthday != null ? birthday.value : this.birthday,
+      gender: gender != null ? gender.value : this.gender,
+      addressStreet: addressStreet ?? this.addressStreet,
+      addressNumber: addressNumber ?? this.addressNumber,
+      addressNeighborhood: addressNeighborhood ?? this.addressNeighborhood,
+      addressCity: addressCity ?? this.addressCity,
+      addressZipCode: addressZipCode ?? this.addressZipCode,
+      addressState: addressState ?? this.addressState,
+    );
+  }
+
+  // NotificationEntity copyWith({
+  //   String? title,
+  //   String? description,
+  //   NotificationStatus? status,
+  //   NullableValue<String?>? link,
+  //   NullableValue<NotificationLinkType?>? linkType,
+  // }) {
+  //   return NotificationEntity(
+  //     id: id,
+  //     title: title ?? this.title,
+  //     description: description ?? this.description,
+  //     status: status ?? this.status,
+  //     link: link != null ? link.value : this.link,
+  //     linkType: linkType != null ? linkType.value : this.linkType,
+  //     createdAt: createdAt,
+  //   );
+  // }
 
   @override
   List<Object?> get props => [

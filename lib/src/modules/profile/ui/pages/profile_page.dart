@@ -66,28 +66,35 @@ class _ProfilePageState extends State<ProfilePage> {
           ? Container(color: MonoChromaticColors.backgroundColor)
           : Column(
               children: [
-                Column(
-                  children: [
-                    ProfilePicture(user: user),
-                    const SizedBox(height: 16),
-                    Text(
-                      user.name,
-                      textAlign: TextAlign.center,
-                      style: const Text1Typography(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      'Aluno  •  ${user.registrationNumber}',
-                      textAlign: TextAlign.center,
-                      style: const Text2Typography(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
+                ListenableBuilder(
+                  listenable: userSession,
+                  builder: (_, __) {
+                    if (userSession.isLogged) user = userSession.user;
+
+                    return Column(
+                      children: [
+                        ProfilePicture(user: user!),
+                        const SizedBox(height: 16),
+                        Text(
+                          user!.name,
+                          textAlign: TextAlign.center,
+                          style: const Text1Typography(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          'Aluno  •  ${user!.registrationNumber}',
+                          textAlign: TextAlign.center,
+                          style: const Text2Typography(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    );
+                  },
                 ),
                 Expanded(
                   child: Container(
@@ -109,6 +116,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       child: Column(
                         children: [
                           DefaultListTile(
+                            backgroundColor: MonoChromaticColors.gray.v100,
                             items: [
                               DefaultListTileItem(
                                 title: 'Dados pessoais',

@@ -21,16 +21,25 @@ class DefaultListTile extends StatelessWidget {
   const DefaultListTile({
     super.key,
     required this.items,
+    this.backgroundColor,
+    this.dividerColor,
+    this.contentPadding = const EdgeInsets.symmetric(
+      horizontal: 20,
+      vertical: 16,
+    ),
   });
 
   final List<DefaultListTileItem> items;
+  final Color? backgroundColor;
+  final Color? dividerColor;
+  final EdgeInsets contentPadding;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       key: key,
       decoration: BoxDecoration(
-        color: MonoChromaticColors.gray.v100,
+        color: backgroundColor,
         borderRadius: BorderRadius.circular(8),
       ),
       child: ListView.separated(
@@ -40,7 +49,7 @@ class DefaultListTile extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         separatorBuilder: (context, index) => Container(
           height: 1.5,
-          color: MonoChromaticColors.gray.v300,
+          color: dividerColor ?? MonoChromaticColors.gray.v300,
         ),
         itemBuilder: (context, index) {
           final item = items[index];
@@ -48,10 +57,7 @@ class DefaultListTile extends StatelessWidget {
           return ListTile(
             key: item.key,
             visualDensity: VisualDensity.compact,
-            contentPadding: const EdgeInsets.symmetric(
-              horizontal: 20,
-              vertical: 16,
-            ),
+            contentPadding: contentPadding,
             onTap: item.onTap,
             leading: item.icon == null
                 ? null
