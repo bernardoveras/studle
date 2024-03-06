@@ -4,6 +4,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../modules/authentication/data/services/auth_mock_service_impl.dart';
 import '../../modules/authentication/domain/entities/user_entity.dart';
 import '../../modules/authentication/domain/services/i_auth_service.dart';
+import '../../modules/notifications/data/services/notification_local_service_impl.dart';
+import '../../modules/notifications/domain/services/i_notification_service.dart';
 import '../constants/local_storage_key.dart';
 import '../services/local_storage/data/services/local_storage_shared_preferences_service_impl.dart';
 import '../services/local_storage/domain/services/i_local_storage_service.dart';
@@ -43,6 +45,7 @@ extension InjectorExtension on GetIt {
                   .getOrNull();
 
           UserEntity? user;
+          
           if (userJson != null) {
             try {
               user = UserEntity.fromJson(userJson);
@@ -52,14 +55,23 @@ extension InjectorExtension on GetIt {
           }
 
           return UserSession(
-            firstAccess: firstAccess,
             user: user,
+            firstAccess: firstAccess,
             localStorageService: Injector.resolve(),
           );
         },
         dependsOn: [
           ILocalStorageService,
         ],
+      );
+  }
+
+  GetIt registerNotificationServices() {
+    return this
+      ..registerLazySingleton<INotificationService>(
+        () => NotificationLocalServiceImpl(
+          localStorageService: Injector.resolve(),
+        ),
       );
   }
 }

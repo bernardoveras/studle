@@ -26,6 +26,8 @@ dependencies:
   shared_preferences: ^2.2.2
   intl: ^0.18.1
   mask_text_input_formatter: ^2.9.0
+  flutter_bloc: ^8.1.4
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:

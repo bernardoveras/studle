@@ -8,6 +8,7 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.foregroundColor,
     this.actions,
     this.shape,
+    this.bottom,
   });
 
   final String? title;
@@ -15,9 +16,13 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Color? foregroundColor;
   final List<Widget>? actions;
   final ShapeBorder? shape;
+  final PreferredSizeWidget? bottom;
+
+  static double defaultHeight = 64.0;
 
   @override
-  Size get preferredSize => const Size.fromHeight(64);
+  Size get preferredSize =>
+      Size.fromHeight(defaultHeight + (bottom?.preferredSize.height ?? 0.0));
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +38,7 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
       iconTheme: Theme.of(context).appBarTheme.iconTheme?.copyWith(
             color: foregroundColor,
           ),
+      bottom: bottom,
     );
   }
 }
