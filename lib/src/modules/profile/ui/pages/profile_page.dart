@@ -25,7 +25,7 @@ class _ProfilePageState extends State<ProfilePage> {
   late final UserSession userSession;
 
   Future<void> logout() async {
-    showModalBottomSheet(
+    return showModalBottomSheet(
       context: context,
       isScrollControlled: true,
       builder: (context) => ConfirmationModal(
