@@ -24,6 +24,8 @@ class UserEntity extends Equatable {
   final String addressCity;
   final String addressZipCode;
   final String addressState;
+  final String startYear;
+  final String validityYear;
 
   String get firstLetterName => name[0];
   bool get hasPicture => pictureUrl != null;
@@ -46,6 +48,8 @@ class UserEntity extends Equatable {
     required this.addressCity,
     required this.addressZipCode,
     required this.addressState,
+    required this.startYear,
+    required this.validityYear,
   });
 
   Map<String, dynamic> toMap() {
@@ -67,6 +71,8 @@ class UserEntity extends Equatable {
       'address_city': addressCity,
       'address_zip_code': addressZipCode.removeSpecialCharacters(),
       'address_state': addressState,
+      'start_year': startYear,
+      'validity_year': validityYear,
     };
 
     return result;
@@ -93,6 +99,8 @@ class UserEntity extends Equatable {
       addressCity: map['address_city'],
       addressZipCode: map['address_zip_code'],
       addressState: map['address_state'],
+      startYear: map['start_year'],
+      validityYear: map['validity_year'],
     );
   }
 
@@ -101,9 +109,6 @@ class UserEntity extends Equatable {
   factory UserEntity.fromJson(String source) =>
       UserEntity.fromMap(json.decode(source));
 
-// String? pictureUrl;
-// DateTime? birthday;
-// PersonGender? gender;
   UserEntity copyWith({
     int? id,
     String? accessToken,
@@ -111,7 +116,7 @@ class UserEntity extends Equatable {
     String? name,
     String? email,
     String? registrationNumber,
-    NullableValue<String?>? pictureUrl, //
+    NullableValue<String?>? pictureUrl,
     String? cpf,
     String? phoneNumber,
     NullableValue<DateTime?>? birthday,
@@ -122,6 +127,8 @@ class UserEntity extends Equatable {
     String? addressCity,
     String? addressZipCode,
     String? addressState,
+    String? startYear,
+    String? validityYear,
   }) {
     return UserEntity(
       id: id ?? this.id,
@@ -141,26 +148,10 @@ class UserEntity extends Equatable {
       addressCity: addressCity ?? this.addressCity,
       addressZipCode: addressZipCode ?? this.addressZipCode,
       addressState: addressState ?? this.addressState,
+      startYear: startYear ?? this.startYear,
+      validityYear: validityYear ?? this.validityYear,
     );
   }
-
-  // NotificationEntity copyWith({
-  //   String? title,
-  //   String? description,
-  //   NotificationStatus? status,
-  //   NullableValue<String?>? link,
-  //   NullableValue<NotificationLinkType?>? linkType,
-  // }) {
-  //   return NotificationEntity(
-  //     id: id,
-  //     title: title ?? this.title,
-  //     description: description ?? this.description,
-  //     status: status ?? this.status,
-  //     link: link != null ? link.value : this.link,
-  //     linkType: linkType != null ? linkType.value : this.linkType,
-  //     createdAt: createdAt,
-  //   );
-  // }
 
   @override
   List<Object?> get props => [
@@ -181,5 +172,7 @@ class UserEntity extends Equatable {
         addressCity,
         addressZipCode,
         addressState,
+        startYear,
+        validityYear,
       ];
 }

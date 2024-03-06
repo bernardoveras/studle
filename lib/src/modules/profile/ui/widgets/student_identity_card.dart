@@ -236,7 +236,7 @@ class StudentIdentityCard extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
-                                  '2024',
+                                  user.validityYear,
                                   style: Text3Typography(
                                     color: MonoChromaticColors.gray,
                                   ),
@@ -256,7 +256,7 @@ class StudentIdentityCard extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
-                                  '2020',
+                                  user.startYear,
                                   style: Text3Typography(
                                     color: MonoChromaticColors.gray,
                                   ),

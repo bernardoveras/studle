@@ -27,6 +27,8 @@ void main() {
       addressCity: 'São Miguel Arcanjo',
       addressZipCode: '18230000',
       addressState: 'São Paulo',
+      startYear: '2023',
+      validityYear: '2024',
     );
 
     final entity2 = UserEntity(
@@ -47,6 +49,8 @@ void main() {
       addressCity: 'São Miguel Arcanjo',
       addressZipCode: '18230000',
       addressState: 'São Paulo',
+      startYear: '2023',
+      validityYear: '2024',
     );
 
     expect(entity1, entity2);
@@ -78,6 +82,8 @@ void main() {
     expect(map['address_zip_code'],
         expectedEntity.addressZipCode.removeSpecialCharacters());
     expect(map['address_state'], expectedEntity.addressState);
+    expect(map['start_year'], expectedEntity.startYear);
+    expect(map['validity_year'], expectedEntity.validityYear);
   });
 
   test('UserEntity - to json', () {
@@ -106,6 +112,8 @@ void main() {
     expect(map['address_zip_code'],
         expectedEntity.addressZipCode.removeSpecialCharacters());
     expect(map['address_state'], expectedEntity.addressState);
+    expect(map['start_year'], expectedEntity.startYear);
+    expect(map['validity_year'], expectedEntity.validityYear);
   });
 
   test('UserEntity - from map', () {

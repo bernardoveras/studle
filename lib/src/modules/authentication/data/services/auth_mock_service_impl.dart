@@ -39,6 +39,8 @@ class AuthMockServiceImpl implements IAuthService {
       addressCity: 'São Miguel Arcanjo',
       addressZipCode: '18230000',
       addressState: 'São Paulo',
+      startYear: '2023',
+      validityYear: '2024',
     );
 
     return Success(user);
