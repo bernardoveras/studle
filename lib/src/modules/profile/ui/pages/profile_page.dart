@@ -25,9 +25,18 @@ class _ProfilePageState extends State<ProfilePage> {
   late final UserSession userSession;
 
   Future<void> logout() async {
-    //TODO: Show confirmation modal or dialog.
-
-    userSession.logout();
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (context) => ConfirmationModal(
+        title: 'Sair da conta',
+        description:
+            'Você será redirecionado e poderá realizar o login novamente depois.',
+        style: ConfirmationModalStyle.negative,
+        confirmationText: 'Sair da conta',
+        onConfirmationTap: userSession.logout,
+      ),
+    );
   }
 
   @override
