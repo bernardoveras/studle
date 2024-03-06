@@ -281,7 +281,7 @@ class DefaultTextField extends StatefulWidget {
     AutovalidateMode? autovalidateMode,
     List<TextInputFormatter>? inputFormatters,
     FocusNode? focusNode,
-    String? initialValue,
+    DateTime? initialValue,
     bool? enabled,
     bool obscureText = false,
     bool readOnly = false,
@@ -300,8 +300,11 @@ class DefaultTextField extends StatefulWidget {
       type: MaskAutoCompletionType.lazy,
     );
 
+    String? initialValueFormatted;
+
     if (initialValue != null) {
-      initialValue = formatter.maskText(initialValue);
+      initialValueFormatted =
+          DateHelper.format(initialValue, pattern: 'dd/MM/yyyy');
     }
 
     return DefaultTextField._(
@@ -325,7 +328,7 @@ class DefaultTextField extends StatefulWidget {
       autofocus: autofocus,
       autovalidateMode: autovalidateMode,
       focusNode: focusNode,
-      initialValue: initialValue,
+      initialValue: initialValueFormatted,
       enabled: enabled,
       obscureText: obscureText,
       readOnly: true,

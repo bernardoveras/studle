@@ -53,7 +53,7 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
             const SizedBox(height: 24),
             DefaultTextField.date(
               label: 'Data de nascimento',
-              // initialValue: user.birthday,
+              initialValue: user.birthday,
               enabled: false,
             ),
             const SizedBox(height: 24),

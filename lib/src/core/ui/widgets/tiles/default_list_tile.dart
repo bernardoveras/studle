@@ -37,6 +37,7 @@ class DefaultListTile extends StatelessWidget {
         itemCount: items.length,
         padding: EdgeInsets.zero,
         shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
         separatorBuilder: (context, index) => Container(
           height: 1.5,
           color: MonoChromaticColors.gray.v300,

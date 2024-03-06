@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -56,17 +55,11 @@ class _ProfilePageState extends State<ProfilePage> {
           right: 16,
           bottom: bottomPadding + 16,
         ),
-        child: Animate(
-          delay: 500.ms,
-          effects: const [
-            FadeEffect(curve: Curves.ease),
-          ],
-          child: SolidButton.transparent(
-            label: 'Sair da conta',
-            icon: PhosphorIconsRegular.signOut,
-            foregroundColor: SemanticColors.negative,
-            onPressed: logout,
-          ),
+        child: SolidButton.transparent(
+          label: 'Sair da conta',
+          icon: PhosphorIconsRegular.signOut,
+          foregroundColor: SemanticColors.negative,
+          onPressed: logout,
         ),
       ),
       body: user == null
@@ -120,7 +113,8 @@ class _ProfilePageState extends State<ProfilePage> {
                               DefaultListTileItem(
                                 title: 'Dados pessoais',
                                 icon: PhosphorIconsRegular.student,
-                                onTap: () => context.push(PersonalDataPage.route),
+                                onTap: () =>
+                                    context.push(PersonalDataPage.route),
                               ),
                               DefaultListTileItem(
                                 title: 'Carteirinha',
