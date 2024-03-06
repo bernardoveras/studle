@@ -7,10 +7,11 @@ import 'package:validatorless/validatorless.dart';
 
 import '../../../../core/constants/text_constants.dart';
 import '../../../../core/ui/design_system/design_system.dart';
+import '../../../../core/ui/services/snackbar/snackbar_service.dart';
 import '../../../../core/ui/widgets/default_app_bar.dart';
 import '../../../home/ui/pages/home_page.dart';
-import '../store/login_store.dart';
 import '../../../questions/ui/pages/question_page.dart';
+import '../store/login_store.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({
@@ -41,12 +42,12 @@ class _LoginPageState extends State<LoginPage> {
     if (!mounted) return;
 
     if (result.isError()) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(result.exceptionOrNull()!.message),
-          backgroundColor: SemanticColors.negative,
-        ),
+      SnackBarService.show(
+        context,
+        text: result.exceptionOrNull()!.message,
+        type: SnackBarType.error,
       );
+
       return;
     }
 

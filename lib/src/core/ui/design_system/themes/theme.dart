@@ -13,7 +13,7 @@ abstract class AppTheme {
     snackBarTheme: SnackBarThemeData(
       backgroundColor: Colors.white,
       behavior: SnackBarBehavior.floating,
-      elevation: 2,
+      elevation: 1,
       contentTextStyle: Button2Typography(
         color: MonoChromaticColors.gray.v900,
       ),

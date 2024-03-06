@@ -46,7 +46,7 @@ abstract class SnackBarService {
               child: Text(
                 text,
                 style: Button2Typography(
-                  color: MonoChromaticColors.gray.v900,
+                  color: MonoChromaticColors.gray.v700,
                   fontWeight: FontWeight.w500,
                 ),
               ),
