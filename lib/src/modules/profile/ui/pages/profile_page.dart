@@ -10,6 +10,7 @@ import '../../../../core/ui/widgets/tiles/default_list_tile.dart';
 import '../../../../core/user_session.dart';
 import '../../../questions/ui/pages/question_page.dart';
 import '../widgets/profile_picture.dart';
+import 'personal_data_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -119,7 +120,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               DefaultListTileItem(
                                 title: 'Dados pessoais',
                                 icon: PhosphorIconsRegular.student,
-                                onTap: () {},
+                                onTap: () => context.push(PersonalDataPage.route),
                               ),
                               DefaultListTileItem(
                                 title: 'Carteirinha',

@@ -2,6 +2,9 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
+import '../../../../core/extensions/string_extension.dart';
+import '../enums/person_gender_enum.dart';
+
 class UserEntity extends Equatable {
   final int id;
   final String accessToken;
@@ -11,6 +14,15 @@ class UserEntity extends Equatable {
   final String registrationNumber;
   final String? pictureUrl;
   final String cpf;
+  final String phoneNumber;
+  final DateTime? birthday;
+  final PersonGender? gender;
+  final String addressStreet;
+  final String addressNumber;
+  final String addressNeighborhood;
+  final String addressCity;
+  final String addressZipCode;
+  final String addressState;
 
   String get firstLetterName => name[0];
   bool get hasPicture => pictureUrl != null;
@@ -24,6 +36,15 @@ class UserEntity extends Equatable {
     required this.registrationNumber,
     this.pictureUrl,
     required this.cpf,
+    required this.phoneNumber,
+    this.birthday,
+    this.gender,
+    required this.addressStreet,
+    required this.addressNumber,
+    required this.addressNeighborhood,
+    required this.addressCity,
+    required this.addressZipCode,
+    required this.addressState,
   });
 
   Map<String, dynamic> toMap() {
@@ -35,7 +56,16 @@ class UserEntity extends Equatable {
       'email': email,
       'registration_number': registrationNumber,
       'picture_url': pictureUrl,
-      'cpf': cpf,
+      'cpf': cpf.removeSpecialCharacters(),
+      'phone_number': phoneNumber.removeSpecialCharacters(),
+      'birthday': birthday?.toIso8601String(),
+      'gender': gender?.index,
+      'address_street': addressStreet,
+      'address_number': addressNumber,
+      'address_neighborhood': addressNeighborhood,
+      'address_city': addressCity,
+      'address_zip_code': addressZipCode.removeSpecialCharacters(),
+      'address_state': addressState,
     };
 
     return result;
@@ -51,6 +81,17 @@ class UserEntity extends Equatable {
       registrationNumber: map['registration_number'],
       pictureUrl: map['picture_url'],
       cpf: map['cpf'],
+      phoneNumber: map['phone_number'],
+      birthday:
+          map['birthday'] == null ? null : DateTime.parse(map['birthday']),
+      gender:
+          map['gender'] == null ? null : PersonGender.fromInt(map['gender']),
+      addressStreet: map['address_street'],
+      addressNumber: map['address_number'],
+      addressNeighborhood: map['address_neighborhood'],
+      addressCity: map['address_city'],
+      addressZipCode: map['address_zip_code'],
+      addressState: map['address_state'],
     );
   }
 
@@ -69,5 +110,14 @@ class UserEntity extends Equatable {
         registrationNumber,
         pictureUrl,
         cpf,
+        phoneNumber,
+        birthday,
+        gender,
+        addressStreet,
+        addressNumber,
+        addressNeighborhood,
+        addressCity,
+        addressZipCode,
+        addressState,
       ];
 }

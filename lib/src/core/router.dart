@@ -8,6 +8,7 @@ import '../modules/campaigns/ui/parameters/campaign_page_parameter.dart';
 import '../modules/home/ui/pages/home_page.dart';
 import '../modules/onboarding/ui/pages/onboarding_page.dart';
 import '../modules/onboarding/ui/stores/onboarding_store.dart';
+import '../modules/profile/ui/pages/personal_data_page.dart';
 import '../modules/profile/ui/pages/profile_page.dart';
 import '../modules/questions/ui/pages/question_page.dart';
 import 'dependecy_injection/injector.dart';
@@ -25,6 +26,12 @@ abstract class AppRouter {
       GoRoute(
         path: ProfilePage.route,
         builder: (context, state) => const ProfilePage(),
+        routes: [
+          GoRoute(
+            path: PersonalDataPage.subRoute,
+            builder: (context, state) => const PersonalDataPage(),
+          ),
+        ],
       ),
       GoRoute(
         path: OnboardingPage.route,
