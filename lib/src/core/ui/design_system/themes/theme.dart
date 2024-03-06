@@ -10,6 +10,14 @@ abstract class AppTheme {
       backgroundColor: Colors.transparent,
       elevation: 0.0,
     ),
+    snackBarTheme: SnackBarThemeData(
+      backgroundColor: Colors.white,
+      behavior: SnackBarBehavior.floating,
+      elevation: 1,
+      contentTextStyle: Button2Typography(
+        color: MonoChromaticColors.gray.v900,
+      ),
+    ),
     tooltipTheme: TooltipThemeData(
       decoration: BoxDecoration(
         color: MonoChromaticColors.gray.v700.withOpacity(0.8),
