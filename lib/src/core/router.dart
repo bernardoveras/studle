@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-import '../modules/activities/ui/pages/additional_activities.dart';
+import '../modules/activities/ui/pages/additional_activities_page.dart';
 import '../modules/authentication/ui/pages/login_page.dart';
 import '../modules/questions/ui/pages/question_page.dart';
 import '../modules/authentication/ui/store/login_store.dart';

@@ -6,7 +6,7 @@ import '../../../../core/dependecy_injection/injector.dart';
 import '../../../../core/ui/design_system/design_system.dart';
 import '../../../../core/ui/widgets/default_app_bar.dart';
 import '../../../../core/user_session.dart';
-import '../../../activities/ui/pages/additional_activities.dart';
+import '../../../activities/ui/pages/additional_activities_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -30,22 +30,23 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: DefaultAppBar(
-          title: 'Home',
-          actions: [
-            IconButton(
-              onPressed: userSession.logout,
-              splashColor: Colors.transparent,
-              icon: Icon(
-                PhosphorIconsRegular.signOut,
-                color: SemanticColors.negative,
-              ),
+      appBar: DefaultAppBar(
+        title: 'Home',
+        actions: [
+          IconButton(
+            onPressed: userSession.logout,
+            splashColor: Colors.transparent,
+            icon: Icon(
+              PhosphorIconsRegular.signOut,
+              color: SemanticColors.negative,
             ),
-          ],
-        ),
-        body: ElevatedButton(
-          child: const Text('Adicionar Atividade'),
-          onPressed: () => context.push(AdditionalActivities.route),
-        ));
+          ),
+        ],
+      ),
+      body: ElevatedButton(
+        child: const Text('Adicionar Atividade'),
+        onPressed: () => context.push(AdditionalActivities.route),
+      ),
+    );
   }
 }
