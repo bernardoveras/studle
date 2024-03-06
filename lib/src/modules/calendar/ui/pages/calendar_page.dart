@@ -23,14 +23,17 @@ class _CalendarPageState extends State<CalendarPage> {
   int? viewMonth;
   DateTime? viewStartDate;
 
-  void changeDate(DateTime? value) => setState(() {
-        selectedDate = value;
-      });
+  void changeDate(DateTime? value) {
+    setState(() {
+      selectedDate = value;
+    });
+  }
 
   void changeViewMonth(DateTime? startDate) {
     setState(() {
       viewMonth = startDate?.month;
       viewStartDate = startDate;
+      datePickerController.selectedDate = null;
       datePickerController.displayDate = DateTime.now().copyWith(
         day: 1,
         month: startDate?.month,
@@ -96,6 +99,7 @@ class _CalendarPageState extends State<CalendarPage> {
                           : DateHelper.format(viewStartDate!,
                                   pattern: "MMMM 'de' yyyy")
                               .capitalize(),
+                      textAlign: TextAlign.center,
                       style: Button1Typography(
                         fontWeight: FontWeight.w600,
                         color: MonoChromaticColors.gray.v900,
@@ -112,6 +116,10 @@ class _CalendarPageState extends State<CalendarPage> {
                             changeViewMonth(args.visibleDateRange.startDate);
                           });
                         },
+                        toggleDaySelection: true,
+                        showActionButtons: false,
+                        showTodayButton: false,
+                        showNavigationArrow: false,
                         headerHeight: 0,
                         monthViewSettings: DateRangePickerMonthViewSettings(
                           viewHeaderStyle: DateRangePickerViewHeaderStyle(
