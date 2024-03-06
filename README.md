@@ -17,19 +17,20 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Onboarding
 - [x] Login
 - [ ] Boas-vindas
-- [ ] Dúvidas frequentes
+- [x] Dúvidas frequentes
 - [ ] Tela Inicial
-- [ ] Dados pessoais
+- [x] Perfil
+- [x] Dados pessoais
 - [ ] Aulas
 - [ ] Notas
 - [ ] Atividades complementares
 - [ ] Progressão acadêmica
 - [ ] Financeiro
-- [ ] Notificações
+- [x] Notificações
 - [ ] Calendário
-- [ ] Carteirinha
+- [x] Carteirinha
 - [ ] Serviço de Atendimento ao Aluno
-- [ ] Campanha
+- [x] Campanha
 
 ## 💻 Pré-requisitos
 
