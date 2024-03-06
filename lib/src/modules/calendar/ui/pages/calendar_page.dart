@@ -59,9 +59,9 @@ class _CalendarPageState extends State<CalendarPage> {
     return Scaffold(
       appBar: DefaultAppBar(
         title: 'Calendário',
-        shape: LinearBorder.none,
         backgroundColor: PrimaryColors.brand,
         foregroundColor: Colors.white,
+        shape: LinearBorder.none,
       ),
       backgroundColor: PrimaryColors.brand,
       body: Column(
@@ -95,7 +95,7 @@ class _CalendarPageState extends State<CalendarPage> {
                           ? 'Selecione um mês'
                           : DateHelper.format(viewStartDate!,
                                   pattern: "MMMM 'de' yyyy")
-                              .toCapitalized(),
+                              .capitalize(),
                       style: Button1Typography(
                         fontWeight: FontWeight.w600,
                         color: MonoChromaticColors.gray.v900,

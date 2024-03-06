@@ -15,7 +15,7 @@ extension StringExtension on String? {
     return this!.replaceAll(regex, '').removeWhiteSpace();
   }
 
-  String toCapitalized() {
+  String capitalize() {
     if (isBlank) return '';
 
     if (this!.length == 1) return this!.toUpperCase();
