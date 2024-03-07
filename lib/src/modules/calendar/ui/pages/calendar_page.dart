@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
-import '../../../../core/extensions/string_extension.dart';
-import '../../../../core/helpers/date_helper.dart';
 import '../../../../core/ui/design_system/design_system.dart';
 import '../../../../core/ui/widgets/default_app_bar.dart';
 import '../../../../core/ui/widgets/month_picker.dart';
+import '../widgets/calendar_picker.dart';
 
 class CalendarPage extends StatefulWidget {
   const CalendarPage({super.key});
@@ -93,86 +92,14 @@ class _CalendarPageState extends State<CalendarPage> {
                 ),
                 child: Column(
                   children: [
-                    Text(
-                      viewStartDate == null
-                          ? 'Selecione um mês'
-                          : DateHelper.format(viewStartDate!,
-                                  pattern: "MMMM 'de' yyyy")
-                              .capitalize(),
-                      textAlign: TextAlign.center,
-                      style: Button1Typography(
-                        fontWeight: FontWeight.w600,
-                        color: MonoChromaticColors.gray.v900,
-                      ),
-                    ),
-                    const SizedBox(height: 16),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: SfDateRangePicker(
+                      child: CalendarPicker(
                         controller: datePickerController,
-                        onSelectionChanged: (args) => changeDate(args.value),
-                        onViewChanged: (args) {
-                          WidgetsBinding.instance.addPostFrameCallback((_) {
-                            changeViewMonth(args.visibleDateRange.startDate);
-                          });
-                        },
-                        toggleDaySelection: true,
-                        showActionButtons: false,
-                        showTodayButton: false,
-                        showNavigationArrow: false,
-                        headerHeight: 0,
-                        monthViewSettings: DateRangePickerMonthViewSettings(
-                          viewHeaderStyle: DateRangePickerViewHeaderStyle(
-                            textStyle: Button1Typography(
-                              color: MonoChromaticColors.gray.v400,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ),
-                        selectionTextStyle: const Button1Typography(
-                          color: Colors.white,
-                        ),
-                        selectionColor: Colors.transparent,
-                        cellBuilder: (context, cellDetails) => Container(
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            color: cellDetails.date == selectedDate
-                                ? PrimaryColors.brand
-                                : Colors.transparent,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Stack(
-                            clipBehavior: Clip.none,
-                            children: [
-                              //TODO: Alterar a lógica para os dias que tem atividade.
-                              if (cellDetails.date.day.isEven)
-                                Positioned(
-                                  top: -4,
-                                  right: -8,
-                                  child: Badge(
-                                    backgroundColor: SemanticColors.negative,
-                                  ),
-                                ),
-                              Text(
-                                cellDetails.date.day.toString(),
-                                style: Button1Typography(
-                                  color: cellDetails.date == selectedDate
-                                      ? Colors.white
-                                      : MonoChromaticColors.gray.v600,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        monthCellStyle: DateRangePickerMonthCellStyle(
-                          todayTextStyle: Button1Typography(
-                            color: MonoChromaticColors.gray.v400,
-                            fontWeight: FontWeight.w500,
-                          ),
-                          textStyle: Button1Typography(
-                            color: MonoChromaticColors.gray.v600,
-                          ),
-                        ),
+                        selectedDate: selectedDate,
+                        viewStartDate: viewStartDate,
+                        changeDate: changeDate,
+                        changeViewMonth: changeViewMonth,
                       ),
                     ),
                     const SizedBox(height: 16),
