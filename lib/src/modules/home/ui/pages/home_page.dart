@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: ElevatedButton(
         child: const Text('Adicionar Atividade'),
-        onPressed: () => context.push(AdditionalActivities.route),
+        onPressed: () => context.push(AdditionalActivitiesPage.route),
       ),
     );
   }

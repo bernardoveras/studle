@@ -7,10 +7,10 @@ import '../../../../core/utils/redirect_to_url.dart';
 import '../widgets/activity_progress_card_widget.dart';
 import '../widgets/teacher_information_card_widget.dart';
 
-class AdditionalActivities extends StatelessWidget {
-  const AdditionalActivities({super.key});
+class AdditionalActivitiesPage extends StatelessWidget {
+  const AdditionalActivitiesPage({super.key});
 
-  static String get route => '/activities';
+  static String get route => '/additionalActivities';
 
   @override
   Widget build(BuildContext context) {

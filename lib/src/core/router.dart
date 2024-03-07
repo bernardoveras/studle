@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 
 import '../modules/activities/ui/pages/additional_activities_page.dart';
 import '../modules/authentication/ui/pages/login_page.dart';
-import '../modules/questions/ui/pages/question_page.dart';
 import '../modules/authentication/ui/store/login_store.dart';
 import '../modules/campaigns/ui/pages/campaign_page.dart';
 import '../modules/campaigns/ui/parameters/campaign_page_parameter.dart';
@@ -13,6 +12,7 @@ import '../modules/notifications/ui/cubits/notification_list_cubit.dart';
 import '../modules/notifications/ui/pages/notification_list_page.dart';
 import '../modules/onboarding/ui/pages/onboarding_page.dart';
 import '../modules/onboarding/ui/stores/onboarding_store.dart';
+import '../modules/questions/ui/pages/question_page.dart';
 import 'dependecy_injection/injector.dart';
 import 'route_guard.dart';
 import 'user_session.dart';
@@ -68,8 +68,8 @@ abstract class AppRouter {
         builder: (context, state) => const QuestionPage(),
       ),
       GoRoute(
-        path: AdditionalActivities.route,
-        builder: (context, state) => const AdditionalActivities(),
+        path: AdditionalActivitiesPage.route,
+        builder: (context, state) => const AdditionalActivitiesPage(),
       ),
     ],
     redirect: RouteGuard.redirect,
