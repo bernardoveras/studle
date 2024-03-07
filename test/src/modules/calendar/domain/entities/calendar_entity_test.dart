@@ -12,6 +12,7 @@ void main() {
     final entity1 = CalendarEntity(
       activities: [
         CalendarActivityEntity(
+          id: 1,
           teacherName: 'Prof. Angela Maria',
           schoolSubjects:
               'Pesquisa, Extensão e Inovação: Trabalho de Graduação',
@@ -31,6 +32,7 @@ void main() {
     final entity2 = CalendarEntity(
       activities: [
         CalendarActivityEntity(
+          id: 1,
           teacherName: 'Prof. Angela Maria',
           schoolSubjects:
               'Pesquisa, Extensão e Inovação: Trabalho de Graduação',

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 
 class CalendarActivityEntity extends Equatable {
+  final int id;
   final String teacherName;
   final String schoolSubjects;
   final String location;
@@ -10,6 +11,7 @@ class CalendarActivityEntity extends Equatable {
   final DateTime endDate;
 
   const CalendarActivityEntity({
+    required this.id,
     required this.teacherName,
     required this.schoolSubjects,
     required this.location,
@@ -19,6 +21,7 @@ class CalendarActivityEntity extends Equatable {
 
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{
+      'id': id,
       'teacher_name': teacherName,
       'school_subjects': schoolSubjects,
       'location': location,
@@ -31,6 +34,7 @@ class CalendarActivityEntity extends Equatable {
 
   factory CalendarActivityEntity.fromMap(Map<String, dynamic> map) {
     return CalendarActivityEntity(
+      id: map['id'],
       teacherName: map['teacher_name'],
       schoolSubjects: map['school_subjects'],
       location: map['location'],
@@ -47,6 +51,7 @@ class CalendarActivityEntity extends Equatable {
   @override
   List<Object?> get props {
     return [
+      id,
       teacherName,
       schoolSubjects,
       location,

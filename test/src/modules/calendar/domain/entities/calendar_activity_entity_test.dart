@@ -8,6 +8,7 @@ import '../../../../../mocks/calendar_activity_entity_mock.dart' as mock;
 void main() {
   test('CalendarActivityEntity - equality', () {
     final entity1 = CalendarActivityEntity(
+      id: 1,
       teacherName: 'Prof. Angela Maria',
       schoolSubjects: 'Pesquisa, Extensão e Inovação: Trabalho de Graduação',
       location: 'EAD',
@@ -16,6 +17,7 @@ void main() {
     );
 
     final entity2 = CalendarActivityEntity(
+      id: 1,
       teacherName: 'Prof. Angela Maria',
       schoolSubjects: 'Pesquisa, Extensão e Inovação: Trabalho de Graduação',
       location: 'EAD',
@@ -31,6 +33,7 @@ void main() {
 
     final map = expectedEntity.toMap();
 
+    expect(map['id'], expectedEntity.id);
     expect(map['teacher_name'], expectedEntity.teacherName);
     expect(map['school_subjects'], expectedEntity.schoolSubjects);
     expect(map['location'], expectedEntity.location);
@@ -45,6 +48,7 @@ void main() {
 
     final map = jsonDecode(json);
 
+    expect(map['id'], expectedEntity.id);
     expect(map['teacher_name'], expectedEntity.teacherName);
     expect(map['school_subjects'], expectedEntity.schoolSubjects);
     expect(map['location'], expectedEntity.location);
