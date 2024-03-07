@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 import '../../../../core/exceptions/exceptions.dart';
-import '../../domain/entities/calendar_entity.dart';
+import '../../domain/entities/i_calendar_child.dart';
 
 sealed class CalendarState extends Equatable {
   const CalendarState();
@@ -15,10 +15,12 @@ class InitialState extends CalendarState {
 }
 
 class SuccessState extends CalendarState {
-  final CalendarEntity data;
+  final Map<DateTime, List<ICalendarChild>> data;
+  final List<DateTime> busyDates;
 
   const SuccessState({
     required this.data,
+    required this.busyDates,
   });
 
   @override

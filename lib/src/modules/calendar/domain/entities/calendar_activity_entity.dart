@@ -1,21 +1,19 @@
 import 'dart:convert';
 
-import 'package:equatable/equatable.dart';
+import 'i_calendar_child.dart';
 
-class CalendarActivityEntity extends Equatable {
-  final int id;
+class CalendarActivityEntity extends ICalendarChild {
   final String teacherName;
   final String schoolSubjects;
   final String location;
-  final DateTime startDate;
   final DateTime endDate;
 
   const CalendarActivityEntity({
-    required this.id,
+    required super.id,
     required this.teacherName,
     required this.schoolSubjects,
     required this.location,
-    required this.startDate,
+    required super.startDate,
     required this.endDate,
   });
 
@@ -51,11 +49,10 @@ class CalendarActivityEntity extends Equatable {
   @override
   List<Object?> get props {
     return [
-      id,
+      ...super.props,
       teacherName,
       schoolSubjects,
       location,
-      startDate,
       endDate,
     ];
   }

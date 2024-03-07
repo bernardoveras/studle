@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:myschool/src/core/extension_types/guid.dart';
 import 'package:myschool/src/modules/calendar/domain/entities/calendar_day_off_entity.dart';
 
 import '../../../../../mocks/calendar_day_off_entity_mock.dart' as mock;
@@ -8,13 +9,15 @@ import '../../../../../mocks/calendar_day_off_entity_mock.dart' as mock;
 void main() {
   test('CalendarDayOffEntity - equality', () {
     final entity1 = CalendarDayOffEntity(
+      id: Guid.empty(),
       name: 'Feriado (Independência do Brasil)',
-      date: DateTime(2024, 9, 7),
+      startDate: DateTime(2024, 9, 7),
     );
 
     final entity2 = CalendarDayOffEntity(
+      id: Guid.empty(),
       name: 'Feriado (Independência do Brasil)',
-      date: DateTime(2024, 9, 7),
+      startDate: DateTime(2024, 9, 7),
     );
 
     expect(entity1, entity2);
@@ -25,8 +28,9 @@ void main() {
 
     final map = expectedEntity.toMap();
 
+    expect(map['id'], expectedEntity.id);
     expect(map['name'], expectedEntity.name);
-    expect(map['date'], expectedEntity.date.toIso8601String());
+    expect(map['date'], expectedEntity.startDate.toIso8601String());
   });
 
   test('CalendarDayOffEntity - to json', () {
@@ -36,8 +40,9 @@ void main() {
 
     final map = jsonDecode(json);
 
+    expect(map['id'], expectedEntity.id);
     expect(map['name'], expectedEntity.name);
-    expect(map['date'], expectedEntity.date.toIso8601String());
+    expect(map['date'], expectedEntity.startDate.toIso8601String());
   });
 
   test('CalendarDayOffEntity - from map', () {

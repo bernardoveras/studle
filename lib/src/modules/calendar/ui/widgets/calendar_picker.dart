@@ -13,6 +13,7 @@ class CalendarPicker extends StatefulWidget {
     this.controller,
     this.selectedDate,
     this.viewStartDate,
+    this.busyDates,
   });
 
   final ValueChanged<DateTime?>? changeViewMonth;
@@ -20,6 +21,7 @@ class CalendarPicker extends StatefulWidget {
   final DateRangePickerController? controller;
   final DateTime? selectedDate;
   final DateTime? viewStartDate;
+  final List<DateTime>? busyDates;
 
   @override
   State<CalendarPicker> createState() => _CalendarPickerState();
@@ -42,6 +44,10 @@ class _CalendarPickerState extends State<CalendarPicker> {
     if (oldWidget.viewStartDate != widget.viewStartDate) {
       viewStartDate = widget.viewStartDate;
     }
+  }
+
+  bool isBusy(DateTime date) {
+    return widget.busyDates?.contains(date) == true;
   }
 
   @override
@@ -81,9 +87,8 @@ class _CalendarPickerState extends State<CalendarPicker> {
           controller: datePickerController,
           onSelectionChanged: (args) => widget.changeDate?.call(args.value),
           onViewChanged: (args) {
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              widget.changeViewMonth?.call(args.visibleDateRange.startDate);
-            });
+            Future.delayed(Duration.zero).then((value) =>
+                widget.changeViewMonth?.call(args.visibleDateRange.startDate));
           },
           toggleDaySelection: true,
           showActionButtons: false,
@@ -102,37 +107,38 @@ class _CalendarPickerState extends State<CalendarPicker> {
             color: Colors.white,
           ),
           selectionColor: Colors.transparent,
-          cellBuilder: (context, cellDetails) => Container(
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: cellDetails.date == selectedDate
-                  ? PrimaryColors.brand
-                  : Colors.transparent,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Stack(
-              clipBehavior: Clip.none,
-              children: [
-                //TODO: Alterar a lógica para os dias que tem atividade.
-                if (cellDetails.date.day.isEven)
-                  Positioned(
-                    top: -4,
-                    right: -8,
-                    child: Badge(
-                      backgroundColor: SemanticColors.negative,
+          cellBuilder: (context, cellDetails) {
+            return Container(
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: cellDetails.date == selectedDate
+                    ? PrimaryColors.brand
+                    : Colors.transparent,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  if (isBusy(cellDetails.date))
+                    Positioned(
+                      top: -4,
+                      right: -8,
+                      child: Badge(
+                        backgroundColor: SemanticColors.negative,
+                      ),
+                    ),
+                  Text(
+                    cellDetails.date.day.toString(),
+                    style: Button1Typography(
+                      color: cellDetails.date == selectedDate
+                          ? Colors.white
+                          : MonoChromaticColors.gray.v600,
                     ),
                   ),
-                Text(
-                  cellDetails.date.day.toString(),
-                  style: Button1Typography(
-                    color: cellDetails.date == selectedDate
-                        ? Colors.white
-                        : MonoChromaticColors.gray.v600,
-                  ),
-                ),
-              ],
-            ),
-          ),
+                ],
+              ),
+            );
+          },
           monthCellStyle: DateRangePickerMonthCellStyle(
             todayTextStyle: Button1Typography(
               color: MonoChromaticColors.gray.v400,

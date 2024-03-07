@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:myschool/src/core/extension_types/guid.dart';
 import 'package:myschool/src/modules/calendar/domain/entities/calendar_activity_entity.dart';
 import 'package:myschool/src/modules/calendar/domain/entities/calendar_day_off_entity.dart';
 import 'package:myschool/src/modules/calendar/domain/entities/calendar_entity.dart';
@@ -12,7 +13,7 @@ void main() {
     final entity1 = CalendarEntity(
       activities: [
         CalendarActivityEntity(
-          id: 1,
+          id: Guid.empty(),
           teacherName: 'Prof. Angela Maria',
           schoolSubjects:
               'Pesquisa, Extensão e Inovação: Trabalho de Graduação',
@@ -23,8 +24,9 @@ void main() {
       ],
       daysOff: [
         CalendarDayOffEntity(
+          id: Guid.empty(),
           name: 'Feriado (Independência do Brasil)',
-          date: DateTime(2024, 9, 7),
+          startDate: DateTime(2024, 9, 7),
         ),
       ],
     );
@@ -32,7 +34,7 @@ void main() {
     final entity2 = CalendarEntity(
       activities: [
         CalendarActivityEntity(
-          id: 1,
+          id: Guid.empty(),
           teacherName: 'Prof. Angela Maria',
           schoolSubjects:
               'Pesquisa, Extensão e Inovação: Trabalho de Graduação',
@@ -43,8 +45,9 @@ void main() {
       ],
       daysOff: [
         CalendarDayOffEntity(
+          id: Guid.empty(),
           name: 'Feriado (Independência do Brasil)',
-          date: DateTime(2024, 9, 7),
+          startDate: DateTime(2024, 9, 7),
         ),
       ],
     );

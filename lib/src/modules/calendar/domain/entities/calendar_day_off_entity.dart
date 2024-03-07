@@ -1,20 +1,21 @@
 import 'dart:convert';
 
-import 'package:equatable/equatable.dart';
+import 'i_calendar_child.dart';
 
-class CalendarDayOffEntity extends Equatable {
+class CalendarDayOffEntity extends ICalendarChild {
   final String name;
-  final DateTime date;
 
   const CalendarDayOffEntity({
+    required super.id,
     required this.name,
-    required this.date,
+    required super.startDate,
   });
 
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{
+      'id': id,
       'name': name,
-      'date': date.toIso8601String(),
+      'date': startDate.toIso8601String(),
     };
 
     return result;
@@ -22,8 +23,9 @@ class CalendarDayOffEntity extends Equatable {
 
   factory CalendarDayOffEntity.fromMap(Map<String, dynamic> map) {
     return CalendarDayOffEntity(
+      id: map['id'],
       name: map['name'],
-      date: DateTime.parse(map['date']),
+      startDate: DateTime.parse(map['date']),
     );
   }
 
@@ -34,7 +36,7 @@ class CalendarDayOffEntity extends Equatable {
 
   @override
   List<Object?> get props => [
+        ...super.props,
         name,
-        date,
       ];
 }

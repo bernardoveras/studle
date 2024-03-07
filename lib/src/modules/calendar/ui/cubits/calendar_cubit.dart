@@ -1,6 +1,8 @@
+import 'package:collection/collection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/exceptions/exceptions.dart';
+import '../../../../core/extensions/date_time_extension.dart';
 import '../../domain/services/i_calendar_service.dart';
 import 'calendar_state.dart';
 
@@ -32,7 +34,17 @@ class CalendarCubit extends Cubit<CalendarState> {
 
       final data = result.getOrThrow();
 
-      emit(SuccessState(data: data));
+      final response = groupBy(
+        [...data.activities, ...data.daysOff],
+        (p) => p.startDate.dateOnly,
+      );
+
+      final busyDates = response.keys.toList();
+
+      emit(SuccessState(
+        data: response,
+        busyDates: busyDates,
+      ));
     } on GenericException catch (e) {
       emit(ErrorState(e));
     } catch (e) {

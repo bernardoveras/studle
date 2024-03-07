@@ -8,26 +8,31 @@ class SkeletonContainer extends StatelessWidget {
     super.key,
     this.height = 16,
     this.width,
-    this.backgroundColor,
+    this.baseColor,
+    this.highlightColor,
     this.radius = 4,
+    this.shape,
   });
 
   final double height;
   final double? width;
-  final Color? backgroundColor;
+  final Color? baseColor;
+  final Color? highlightColor;
   final double radius;
+  final BoxShape? shape;
 
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: MonoChromaticColors.skeleton,
-      highlightColor: MonoChromaticColors.gray.v200,
+      baseColor: baseColor ?? MonoChromaticColors.skeleton,
+      highlightColor: highlightColor ?? MonoChromaticColors.gray.v200,
       child: Container(
         height: height,
         width: width,
         decoration: BoxDecoration(
-          color: backgroundColor ?? MonoChromaticColors.skeleton,
-          borderRadius: BorderRadius.circular(radius),
+          shape: shape ?? BoxShape.rectangle,
+          color: baseColor ?? MonoChromaticColors.skeleton,
+          borderRadius: shape != null ? null : BorderRadius.circular(radius),
         ),
       ),
     );

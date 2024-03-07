@@ -2,12 +2,13 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
+import '../../../../core/extension_types/guid.dart';
 import '../../../../core/extensions/string_extension.dart';
 import '../../../../core/utils/nullable_value.dart';
 import '../enums/person_gender_enum.dart';
 
 class UserEntity extends Equatable {
-  final int id;
+  final Guid id;
   final String accessToken;
   final String refreshToken;
   final String name;
@@ -80,7 +81,7 @@ class UserEntity extends Equatable {
 
   factory UserEntity.fromMap(Map<String, dynamic> map) {
     return UserEntity(
-      id: map['id'],
+      id: Guid(map['id']),
       accessToken: map['access_token'],
       refreshToken: map['refresh_token'],
       name: map['name'],
@@ -110,7 +111,6 @@ class UserEntity extends Equatable {
       UserEntity.fromMap(json.decode(source));
 
   UserEntity copyWith({
-    int? id,
     String? accessToken,
     String? refreshToken,
     String? name,
@@ -131,7 +131,7 @@ class UserEntity extends Equatable {
     String? validityYear,
   }) {
     return UserEntity(
-      id: id ?? this.id,
+      id: id,
       accessToken: accessToken ?? this.accessToken,
       refreshToken: refreshToken ?? this.refreshToken,
       name: name ?? this.name,
