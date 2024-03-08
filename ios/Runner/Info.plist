@@ -45,5 +45,9 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Precisamos da permissão para que você possa compartilhar fotos e vídeos da sua biblioteca.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Precisamos da permissão para que você possa tirar fotos e vídeos da sua câmera.</string>
 </dict>
 </plist>

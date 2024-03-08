@@ -9,6 +9,8 @@ import '../../modules/calendar/domain/services/i_calendar_service.dart';
 import '../../modules/notifications/data/services/notification_local_service_impl.dart';
 import '../../modules/notifications/domain/services/i_notification_service.dart';
 import '../constants/local_storage_key.dart';
+import '../services/image_picker/data/services/image_picker_service_impl.dart';
+import '../services/image_picker/domain/services/i_image_picker_service.dart';
 import '../services/local_storage/data/services/local_storage_shared_preferences_service_impl.dart';
 import '../services/local_storage/domain/services/i_local_storage_service.dart';
 import '../user_session.dart';
@@ -26,6 +28,13 @@ extension InjectorExtension on GetIt {
     return this
       ..registerLazySingleton<ICalendarService>(
         () => CalendarMockServiceImpl(),
+      );
+  }
+
+  GetIt registerImagePickerService() {
+    return this
+      ..registerLazySingleton<IImagePickerService>(
+        () => ImagePickerServiceImpl(),
       );
   }
 

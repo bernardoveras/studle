@@ -27,6 +27,7 @@ abstract class Injector {
     _getIt
       ..registerAuthenticationServices()
       ..registerLocalStorageServices()
+      ..registerImagePickerService()
       ..registerNotificationServices()
       ..registerCalendarServices()
       ..registerUserSession();
