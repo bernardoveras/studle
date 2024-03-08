@@ -48,7 +48,7 @@ class ActivityProgressCard extends StatelessWidget {
           const SizedBox(height: 12),
           LinearProgressIndicator(
             value: progress / 100,
-            backgroundColor: PrimaryColors.brand.v200,
+            backgroundColor: MonoChromaticColors.gray.v300,
             borderRadius: BorderRadius.circular(9999),
           ),
         ],
