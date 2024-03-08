@@ -7,6 +7,7 @@ import '../../../../core/extensions/query_parameters_extension.dart';
 import '../../../../core/ui/design_system/design_system.dart';
 import '../../../../core/ui/widgets/default_app_bar.dart';
 import '../../../../core/user_session.dart';
+import '../../../activities/ui/pages/additional_activities_page.dart';
 import '../../../calendar/ui/pages/calendar_page.dart';
 import '../../../notifications/ui/pages/notification_list_page.dart';
 import '../../../profile/ui/pages/profile_page.dart';
@@ -60,6 +61,10 @@ class _HomePageState extends State<HomePage> {
               label: 'Calendário',
               onPressed: () => context.push(CalendarPage.route
                   .addQuery('?date=${DateTime(2024, 3, 7).toIso8601String()}')),
+            ),
+            SolidButton.primary(
+              label: 'Atividades complementares',
+              onPressed: () => context.push(AdditionalActivitiesPage.route),
             ),
           ],
         ),

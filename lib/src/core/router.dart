@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
+import '../modules/activities/ui/pages/additional_activities_page.dart';
 import '../modules/authentication/ui/pages/login_page.dart';
 import '../modules/authentication/ui/store/login_store.dart';
 import '../modules/calendar/ui/cubits/calendar_cubit.dart';
@@ -100,6 +101,10 @@ abstract class AppRouter {
       GoRoute(
         path: QuestionPage.route,
         builder: (context, state) => const QuestionPage(),
+      ),
+      GoRoute(
+        path: AdditionalActivitiesPage.route,
+        builder: (context, state) => const AdditionalActivitiesPage(),
       ),
     ],
     redirect: RouteGuard.redirect,
