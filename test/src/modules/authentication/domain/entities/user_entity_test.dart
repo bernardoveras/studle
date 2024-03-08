@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:myschool/src/core/extension_types/guid.dart';
-import 'package:myschool/src/core/extensions/string_extension.dart';
-import 'package:myschool/src/modules/authentication/domain/entities/user_entity.dart';
-import 'package:myschool/src/modules/authentication/domain/enums/person_gender_enum.dart';
+import 'package:studle/src/core/extension_types/guid.dart';
+import 'package:studle/src/core/extensions/string_extension.dart';
+import 'package:studle/src/modules/authentication/domain/entities/user_entity.dart';
+import 'package:studle/src/modules/authentication/domain/enums/person_gender_enum.dart';
 
 import '../../../../../mocks/user_entity_mock.dart' as mock;
 

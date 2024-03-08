@@ -1,12 +1,12 @@
-# Studle
+# Studle: Simplifique sua vida acadêmica!
 
-![GitHub repo size](https://img.shields.io/github/repo-size/bernardoveras/myschool)
-![Github open issues](https://img.shields.io/github/issues/bernardoveras/myschool)
-![Github open pull requests](https://img.shields.io/github/issues-pr/bernardoveras/myschool)
+![GitHub repo size](https://img.shields.io/github/repo-size/bernardoveras/studle)
+![Github open issues](https://img.shields.io/github/issues/bernardoveras/studle)
+![Github open pull requests](https://img.shields.io/github/issues-pr/bernardoveras/studle)
 
 <!-- <img src="imagem.png" alt="Exemplo imagem"> -->
 
-> O Aplicativo My School é um aplicativo que permite os alunos acessar os horários das aulas, ver quantidades de faltas, olhar as notas do semestre, ver matérias cursadas, ter acesso ao financeiro e outras diversas funções.
+> O Aplicativo Studle é um aplicativo que permite os alunos acessar os horários das aulas, ver quantidades de faltas, olhar as notas do semestre, ver matérias cursadas, ter acesso ao financeiro e outras diversas funções.
 
 ### Ajustes e melhorias
 
@@ -38,16 +38,16 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
 ## 🚀 Instalando
 
-Para instalar o My School, siga estas etapas:
+Para instalar o Studle, siga estas etapas:
 
 ```
 # clonar o repositório
-git clone https://github.com/bernardoveras/myschool.git
+git clone https://github.com/bernardoveras/studle.git
 ```
 
-## ☕ Usando My School
+## ☕ Usando Studle
 
-Para usar My School, siga estas etapas:
+Para usar Studle, siga estas etapas:
 
 ```
 # obter as dependências
@@ -57,14 +57,14 @@ flutter pub get
 flutter run
 ```
 
-## 📫 Contribuindo para My School
+## 📫 Contribuindo para Studle
 
-Para contribuir com My School, siga estas etapas:
+Para contribuir com Studle, siga estas etapas:
 
 1. Bifurque este repositório.
 2. Crie um branch: `git checkout -b <nome_branch>`.
 3. Faça suas alterações e confirme-as: `git commit -m '<mensagem_commit>'`
-4. Envie para o branch original: `git push origin myschool`
+4. Envie para o branch original: `git push origin studle`
 5. Crie a solicitação de pull.
 
 Como alternativa, consulte a documentação do GitHub em [como criar uma solicitação pull](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).

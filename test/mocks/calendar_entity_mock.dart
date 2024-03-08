@@ -1,7 +1,7 @@
-import 'package:myschool/src/core/extension_types/guid.dart';
-import 'package:myschool/src/modules/calendar/domain/entities/calendar_activity_entity.dart';
-import 'package:myschool/src/modules/calendar/domain/entities/calendar_day_off_entity.dart';
-import 'package:myschool/src/modules/calendar/domain/entities/calendar_entity.dart';
+import 'package:studle/src/core/extension_types/guid.dart';
+import 'package:studle/src/modules/calendar/domain/entities/calendar_activity_entity.dart';
+import 'package:studle/src/modules/calendar/domain/entities/calendar_day_off_entity.dart';
+import 'package:studle/src/modules/calendar/domain/entities/calendar_entity.dart';
 
 final entity = CalendarEntity(activities: [
   CalendarActivityEntity(

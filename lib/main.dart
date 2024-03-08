@@ -53,7 +53,7 @@ Future<void> main() async {
         ),
         NotificationEntity(
           id: Guid.random(),
-          title: '6º Encontro de Clássicos na My School',
+          title: '6º Encontro de Clássicos na Studle',
           description:
               'Já estamos em fevereiro e o evento mais aguardado pelos amantes de carro chegou!',
           status: NotificationStatus.unread,

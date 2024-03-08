@@ -29,7 +29,7 @@
     <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
-        android:label="My School"
+        android:label="Studle"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

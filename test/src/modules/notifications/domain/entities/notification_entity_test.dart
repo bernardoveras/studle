@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:myschool/src/core/extension_types/guid.dart';
-import 'package:myschool/src/core/utils/nullable_value.dart';
-import 'package:myschool/src/modules/notifications/domain/entities/notification_entity.dart';
-import 'package:myschool/src/modules/notifications/domain/enums/notification_link_type_enum.dart';
-import 'package:myschool/src/modules/notifications/domain/enums/notification_status_enum.dart';
+import 'package:studle/src/core/extension_types/guid.dart';
+import 'package:studle/src/core/utils/nullable_value.dart';
+import 'package:studle/src/modules/notifications/domain/entities/notification_entity.dart';
+import 'package:studle/src/modules/notifications/domain/enums/notification_link_type_enum.dart';
+import 'package:studle/src/modules/notifications/domain/enums/notification_status_enum.dart';
 
 import '../../../../../mocks/notification_entity_mock.dart' as mock;
 
@@ -13,7 +13,7 @@ void main() {
   test('NotificationEntity - equality', () {
     final entity1 = NotificationEntity(
       id: Guid.empty(),
-      title: '6º Encontro de Clássicos na My School',
+      title: '6º Encontro de Clássicos na Studle',
       description:
           'Já estamos em fevereiro e o evento mais aguardado pelos amantes de carro chegou!',
       status: NotificationStatus.read,
@@ -22,7 +22,7 @@ void main() {
 
     final entity2 = NotificationEntity(
       id: Guid.empty(),
-      title: '6º Encontro de Clássicos na My School',
+      title: '6º Encontro de Clássicos na Studle',
       description:
           'Já estamos em fevereiro e o evento mais aguardado pelos amantes de carro chegou!',
       status: NotificationStatus.read,
@@ -35,7 +35,7 @@ void main() {
   test('NotificationEntity - equality - with link', () {
     final entity1 = NotificationEntity(
       id: Guid.empty(),
-      title: '6º Encontro de Clássicos na My School',
+      title: '6º Encontro de Clássicos na Studle',
       description:
           'Já estamos em fevereiro e o evento mais aguardado pelos amantes de carro chegou!',
       link: 'https://google.com',
@@ -46,7 +46,7 @@ void main() {
 
     final entity2 = NotificationEntity(
       id: Guid.empty(),
-      title: '6º Encontro de Clássicos na My School',
+      title: '6º Encontro de Clássicos na Studle',
       description:
           'Já estamos em fevereiro e o evento mais aguardado pelos amantes de carro chegou!',
       link: 'https://google.com',

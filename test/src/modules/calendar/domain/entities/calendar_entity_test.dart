@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:myschool/src/core/extension_types/guid.dart';
-import 'package:myschool/src/modules/calendar/domain/entities/calendar_activity_entity.dart';
-import 'package:myschool/src/modules/calendar/domain/entities/calendar_day_off_entity.dart';
-import 'package:myschool/src/modules/calendar/domain/entities/calendar_entity.dart';
+import 'package:studle/src/core/extension_types/guid.dart';
+import 'package:studle/src/modules/calendar/domain/entities/calendar_activity_entity.dart';
+import 'package:studle/src/modules/calendar/domain/entities/calendar_day_off_entity.dart';
+import 'package:studle/src/modules/calendar/domain/entities/calendar_entity.dart';
 
 import '../../../../../mocks/calendar_entity_mock.dart' as mock;
 

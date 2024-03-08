@@ -1,6 +1,6 @@
 # Como contribuir?
 
-Este é um projeto totalmente livre que aceita contribuições via pull requests no GitHub. Este documento tem a responsabilidade de alinhar as contribuições de acordo com os padrões estabelecidos no mesmo. Em caso de dúvidas, [abra uma issue](https://github.com/bernardoveras/myschool/issues/new).
+Este é um projeto totalmente livre que aceita contribuições via pull requests no GitHub. Este documento tem a responsabilidade de alinhar as contribuições de acordo com os padrões estabelecidos no mesmo. Em caso de dúvidas, [abra uma issue](https://github.com/bernardoveras/studle/issues/new).
 
 ## Passos
 
@@ -11,4 +11,4 @@ Este é um projeto totalmente livre que aceita contribuições via pull requests
 
 ## Recomendação
 
-Para uma melhor semântica nos commits, recomendamos nossa documentação sobre [commit's semânticos](https://github.com/bernardoveras/myschool/documentation/commits/semantic-commit-messages.md). Assim ficará mais fácil para avaliar seu pull request.
+Para uma melhor semântica nos commits, recomendamos nossa documentação sobre [commit's semânticos](https://github.com/bernardoveras/studle/documentation/commits/semantic-commit-messages.md). Assim ficará mais fácil para avaliar seu pull request.

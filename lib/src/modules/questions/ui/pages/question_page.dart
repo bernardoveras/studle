@@ -69,7 +69,7 @@ class _QuestionPageState extends State<QuestionPage> {
             icon: PhosphorIconsRegular.question,
             style: SolidButtonStyle.outlined,
             onPressed: () => redirectToUrl(
-              'https://github.com/bernardoveras/myschool/discussions/new/choose',
+              'https://github.com/bernardoveras/studle/discussions/new/choose',
             ),
           ),
         ),

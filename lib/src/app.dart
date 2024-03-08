@@ -12,7 +12,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       key: key,
-      title: 'My School',
+      title: 'Studle',
       theme: AppTheme.theme,
       routerConfig: AppRouter.router,
       debugShowCheckedModeBanner: false,
