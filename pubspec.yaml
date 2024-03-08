@@ -31,6 +31,9 @@ dependencies:
   syncfusion_flutter_datepicker: ^24.2.9
   uuid: ^4.3.3
   image_picker: ^1.0.7
+  permission_handler: ^11.3.0
+  device_info_plus: ^9.1.2
+  app_settings: ^5.1.1
 
 dev_dependencies:
   flutter_test:

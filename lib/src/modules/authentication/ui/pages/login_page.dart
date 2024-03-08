@@ -9,6 +9,7 @@ import '../../../../core/constants/text_constants.dart';
 import '../../../../core/ui/design_system/design_system.dart';
 import '../../../../core/ui/services/snackbar/snackbar_service.dart';
 import '../../../../core/ui/widgets/default_app_bar.dart';
+import '../../../../core/utils/hide_keyboard.dart';
 import '../../../home/ui/pages/home_page.dart';
 import '../../../questions/ui/pages/question_page.dart';
 import '../store/login_store.dart';
@@ -35,6 +36,8 @@ class _LoginPageState extends State<LoginPage> {
   bool validateForm() => formKey.currentState?.validate() != true;
 
   Future<void> submit() async {
+    hideKeyboard();
+
     if (validateForm()) return;
 
     final result = await store.submit();
