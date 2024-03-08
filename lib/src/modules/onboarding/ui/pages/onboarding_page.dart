@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../core/extensions/build_context_extension.dart';
 import '../stores/onboarding_store.dart';
 import '../widgets/onboarding_bottom_sheet.dart';
 import '../widgets/onboarding_step.dart';
@@ -35,7 +36,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
             padding: EdgeInsets.only(
               left: 16,
               right: 16,
-              bottom: 16 + MediaQuery.viewPaddingOf(context).bottom,
+              bottom: 16 + context.bottomPadding,
             ),
             child: Animate(
               effects: const [

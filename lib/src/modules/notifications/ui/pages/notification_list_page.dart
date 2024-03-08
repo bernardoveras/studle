@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/constants/image_source_constants.dart';
+import '../../../../core/extensions/build_context_extension.dart';
 import '../../../../core/ui/design_system/design_system.dart';
 import '../../../../core/ui/widgets/default_app_bar.dart';
 import '../../../../core/ui/widgets/states/states.dart';
@@ -75,8 +76,8 @@ class _NotificationListPageState extends State<NotificationListPage> {
                           padding: EdgeInsets.only(
                             left: 20,
                             right: 20,
-                            bottom: MediaQuery.paddingOf(context).bottom +
-                                DefaultAppBar.defaultHeight,
+                            bottom: DefaultAppBar.defaultHeight +
+                                context.bottomPadding,
                           ),
                           child: ErrorStateDisplay(
                             description: state.error.message,
@@ -92,7 +93,7 @@ class _NotificationListPageState extends State<NotificationListPage> {
                           left: 16,
                           right: 16,
                           top: 16,
-                          bottom: 16 + MediaQuery.paddingOf(context).bottom,
+                          bottom: 16 + context.bottomPadding,
                         ),
                         separatorBuilder: (_, __) => Container(
                           height: 1.5,
@@ -108,8 +109,8 @@ class _NotificationListPageState extends State<NotificationListPage> {
                               padding: EdgeInsets.only(
                                 left: 20,
                                 right: 20,
-                                bottom: MediaQuery.paddingOf(context).bottom +
-                                    DefaultAppBar.defaultHeight,
+                                bottom: DefaultAppBar.defaultHeight +
+                                    context.bottomPadding,
                               ),
                               child: const EmptyStateDisplay(
                                 imageSource: ImageSourceConstants

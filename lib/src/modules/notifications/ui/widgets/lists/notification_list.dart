@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
 import '../../../../../core/extension_types/guid.dart';
+import '../../../../../core/extensions/build_context_extension.dart';
 import '../../../../../core/ui/design_system/design_system.dart';
 import '../../../domain/entities/notification_entity.dart';
 import '../notification_card.dart';
@@ -36,7 +37,7 @@ class _NotificationListState extends State<NotificationList>
         left: 16,
         right: 16,
         top: 16,
-        bottom: 16 + MediaQuery.paddingOf(context).bottom,
+        bottom: 16 + context.bottomPadding,
       ),
       separatorBuilder: (_, __) => Container(
         height: 1.5,

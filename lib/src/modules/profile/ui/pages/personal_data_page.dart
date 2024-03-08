@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/dependecy_injection/injector.dart';
+import '../../../../core/extensions/build_context_extension.dart';
 import '../../../../core/ui/design_system/design_system.dart';
 import '../../../../core/ui/widgets/default_app_bar.dart';
 import '../../../../core/user_session.dart';
@@ -30,8 +31,6 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
 
   @override
   Widget build(BuildContext context) {
-    var bottomPadding = MediaQuery.paddingOf(context).bottom;
-
     return Scaffold(
       appBar: const DefaultAppBar(
         title: 'Dados pessoais',
@@ -41,7 +40,7 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
           top: 16,
           left: 16,
           right: 16,
-          bottom: 24 + bottomPadding,
+          bottom: 24 + context.bottomPadding,
         ),
         child: Column(
           children: [

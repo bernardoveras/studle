@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 import '../../../../core/constants/image_source_constants.dart';
+import '../../../../core/extensions/build_context_extension.dart';
 import '../../../../core/extensions/date_time_extension.dart';
 import '../../../../core/extensions/string_extension.dart';
 import '../../../../core/helpers/date_helper.dart';
@@ -132,8 +133,6 @@ class _CalendarPageState extends State<CalendarPage> {
 
   @override
   Widget build(BuildContext context) {
-    var bottomPadding = MediaQuery.paddingOf(context).bottom;
-
     return Scaffold(
       appBar: DefaultAppBar(
         title: 'Calendário',
@@ -185,7 +184,7 @@ class _CalendarPageState extends State<CalendarPage> {
                     child: SingleChildScrollView(
                       padding: EdgeInsets.only(
                         top: 20,
-                        bottom: 20 + bottomPadding,
+                        bottom: 20 + context.bottomPadding,
                       ),
                       controller: scrollController,
                       child: Column(
