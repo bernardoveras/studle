@@ -1,7 +1,10 @@
 import 'dart:io';
 
+import 'package:app_settings/app_settings.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../../../core/dependecy_injection/injector.dart';
@@ -41,9 +44,100 @@ class _ProfilePictureState extends State<ProfilePicture> {
     context.pop();
   }
 
+  Future<bool> requestGalleryPermission() async {
+    try {
+      Future<PermissionStatus> requestPermission() async {
+        if (Platform.isAndroid) {
+          final androidInfo = await DeviceInfoPlugin().androidInfo;
+
+          if (androidInfo.version.sdkInt <= 32) {
+            return await Permission.storage.request();
+          } else {
+            return await Permission.photos.request();
+          }
+        }
+
+        return await Permission.photos.request();
+      }
+
+      var permissionStatus = await requestPermission();
+
+      if (permissionStatus.isGranted) {
+        return true;
+      }
+
+      final isPermanentlyDenied = await requestPermission().isPermanentlyDenied;
+
+      if (isPermanentlyDenied) {
+        await AppSettings.openAppSettings();
+        return await requestPermission().isGranted;
+      }
+
+      permissionStatus = await requestPermission();
+
+      return permissionStatus.isGranted;
+    } catch (e) {
+      if (mounted) {
+        SnackBarService.show(
+          context,
+          text: e.toString(),
+          type: SnackBarType.error,
+        );
+      }
+      rethrow;
+    }
+  }
+
+  Future<bool> requestCameraPermission() async {
+    try {
+      Future<PermissionStatus> requestPermission() async {
+        return await Permission.camera.request();
+      }
+
+      var permissionStatus = await requestPermission();
+
+      if (permissionStatus.isGranted) {
+        return true;
+      }
+
+      final isPermanentlyDenied = await requestPermission().isPermanentlyDenied;
+
+      if (isPermanentlyDenied) {
+        await AppSettings.openAppSettings();
+        return await requestPermission().isGranted;
+      }
+
+      permissionStatus = await requestPermission();
+
+      return permissionStatus.isGranted;
+    } catch (e) {
+      if (mounted) {
+        SnackBarService.show(
+          context,
+          text: e.toString(),
+          type: SnackBarType.error,
+        );
+      }
+      rethrow;
+    }
+  }
+
   Future<File?> pickImageFromGallery() async {
     try {
       setBusy(true);
+
+      final permissionIsGranted = await requestGalleryPermission();
+
+      if (!mounted) return null;
+
+      if (!permissionIsGranted) {
+        SnackBarService.show(
+          context,
+          text: 'Não conseguimos a permisão para acessar a biblioteca.',
+          type: SnackBarType.error,
+        );
+        return null;
+      }
 
       final result = await imagePickerService.pick(PhotoPickerSource.gallery);
 
@@ -85,6 +179,19 @@ class _ProfilePictureState extends State<ProfilePicture> {
   Future<File?> pickImageFromCamera() async {
     try {
       setBusy(true);
+
+      final permissionIsGranted = await requestGalleryPermission();
+
+      if (!mounted) return null;
+
+      if (!permissionIsGranted) {
+        SnackBarService.show(
+          context,
+          text: 'Não conseguimos a permisão para acessar a biblioteca.',
+          type: SnackBarType.error,
+        );
+        return null;
+      }
 
       final result = await imagePickerService.pick(PhotoPickerSource.camera);
 
