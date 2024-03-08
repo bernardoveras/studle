@@ -30,6 +30,7 @@ dependencies:
   shimmer: ^3.0.0
   syncfusion_flutter_datepicker: ^24.2.9
   uuid: ^4.3.3
+  image_picker: ^1.0.7
 
 dev_dependencies:
   flutter_test:
