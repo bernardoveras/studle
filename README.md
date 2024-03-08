@@ -1,4 +1,4 @@
-# Studle
+# Studle: Simplifique sua vida acadêmica!
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/bernardoveras/studle)
 ![Github open issues](https://img.shields.io/github/issues/bernardoveras/studle)
