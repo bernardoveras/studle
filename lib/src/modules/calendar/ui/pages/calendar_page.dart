@@ -49,7 +49,10 @@ class _CalendarPageState extends State<CalendarPage> {
 
     fetchDebouncer.run(() async {
       await scrollToUp();
-      cubit.fetch(startDate: value);
+      cubit.fetch(
+        startDate: value,
+        endDate: value?.lastTimeOfDay(),
+      );
     });
   }
 

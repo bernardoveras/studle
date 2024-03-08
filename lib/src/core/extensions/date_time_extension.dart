@@ -4,4 +4,8 @@ extension DateExtension on DateTime {
   bool isToday() {
     return dateOnly == DateTime.now().dateOnly;
   }
+
+  DateTime lastTimeOfDay() {
+    return DateTime(year, month, day, 23, 59, 59);
+  }
 }

@@ -8,16 +8,19 @@ import 'calendar_day_off_entity.dart';
 class CalendarEntity extends Equatable {
   final List<CalendarActivityEntity> activities;
   final List<CalendarDayOffEntity> daysOff;
+  final List<DateTime> busyDates;
 
   const CalendarEntity({
     required this.activities,
     required this.daysOff,
+    required this.busyDates,
   });
 
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{
       'activities': activities.map((x) => x.toMap()).toList(),
       'days_off': daysOff.map((x) => x.toMap()).toList(),
+      'busy_dates': busyDates.map((e) => e.toIso8601String()).toList(),
     };
 
     return result;
@@ -31,6 +34,8 @@ class CalendarEntity extends Equatable {
       daysOff: (map['days_off'] as List)
           .map((x) => CalendarDayOffEntity.fromMap(x))
           .toList(),
+      busyDates:
+          (map['busy_dates'] as List).map((x) => DateTime.parse(x)).toList(),
     );
   }
 
@@ -43,5 +48,6 @@ class CalendarEntity extends Equatable {
   List<Object?> get props => [
         activities,
         daysOff,
+        busyDates,
       ];
 }

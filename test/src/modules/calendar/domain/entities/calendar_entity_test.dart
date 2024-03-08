@@ -29,6 +29,10 @@ void main() {
           startDate: DateTime(2024, 9, 7),
         ),
       ],
+      busyDates: [
+        DateTime(2024, 3, 5),
+        DateTime(2024, 9, 7),
+      ],
     );
 
     final entity2 = CalendarEntity(
@@ -50,6 +54,10 @@ void main() {
           startDate: DateTime(2024, 9, 7),
         ),
       ],
+      busyDates: [
+        DateTime(2024, 3, 5),
+        DateTime(2024, 9, 7),
+      ],
     );
 
     expect(entity1, entity2);
@@ -60,10 +68,18 @@ void main() {
 
     final map = expectedEntity.toMap();
 
-    expect(map['activities'],
-        expectedEntity.activities.map((e) => e.toMap()).toList());
     expect(
-        map['days_off'], expectedEntity.daysOff.map((e) => e.toMap()).toList());
+      map['activities'],
+      expectedEntity.activities.map((e) => e.toMap()).toList(),
+    );
+    expect(
+      map['days_off'],
+      expectedEntity.daysOff.map((e) => e.toMap()).toList(),
+    );
+    expect(
+      map['busy_dates'],
+      expectedEntity.busyDates.map((e) => e.toIso8601String()).toList(),
+    );
   });
 
   test('CalendarEntity - to json', () {
@@ -80,6 +96,10 @@ void main() {
     expect(
       map['days_off'],
       expectedEntity.daysOff.map((e) => e.toMap()).toList(),
+    );
+    expect(
+      map['busy_dates'],
+      expectedEntity.busyDates.map((e) => e.toIso8601String()).toList(),
     );
   });
 

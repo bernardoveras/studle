@@ -39,11 +39,9 @@ class CalendarCubit extends Cubit<CalendarState> {
         (p) => p.startDate.dateOnly,
       );
 
-      final busyDates = response.keys.toList();
-
       emit(SuccessState(
         data: response,
-        busyDates: busyDates,
+        busyDates: data.busyDates,
       ));
     } on GenericException catch (e) {
       emit(ErrorState(e));
