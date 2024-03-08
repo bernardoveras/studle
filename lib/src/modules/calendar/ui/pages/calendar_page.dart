@@ -248,18 +248,21 @@ class _CalendarPageState extends State<CalendarPage> {
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.center,
                                                 children: [
-                                                  Text(
-                                                    isToday
-                                                        ? 'Hoje'
-                                                        : DateHelper.format(
-                                                            date,
-                                                            pattern: 'EEEE',
-                                                          ).capitalize(),
-                                                    style: Text2Typography(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color: MonoChromaticColors
-                                                          .gray.v900,
+                                                  Flexible(
+                                                    child: Text(
+                                                      isToday
+                                                          ? 'Hoje'
+                                                          : DateHelper.format(
+                                                              date,
+                                                              pattern: 'EEEE',
+                                                            ).capitalize(),
+                                                      style: Text2Typography(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color:
+                                                            MonoChromaticColors
+                                                                .gray.v900,
+                                                      ),
                                                     ),
                                                   ),
                                                   Padding(
@@ -274,16 +277,19 @@ class _CalendarPageState extends State<CalendarPage> {
                                                       smallSize: 4,
                                                     ),
                                                   ),
-                                                  Text(
-                                                    DateHelper.format(
-                                                      date,
-                                                      pattern: "dd 'de' MMMM",
-                                                    ),
-                                                    style: Text2Typography(
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      color: MonoChromaticColors
-                                                          .gray,
+                                                  Flexible(
+                                                    child: Text(
+                                                      DateHelper.format(
+                                                        date,
+                                                        pattern: "dd 'de' MMMM",
+                                                      ),
+                                                      style: Text2Typography(
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        color:
+                                                            MonoChromaticColors
+                                                                .gray,
+                                                      ),
                                                     ),
                                                   ),
                                                 ],
