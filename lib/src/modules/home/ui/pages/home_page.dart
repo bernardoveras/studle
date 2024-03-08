@@ -62,6 +62,7 @@ class _HomePageState extends State<HomePage> {
               onPressed: () => context.push(CalendarPage.route
                   .addQuery('?date=${DateTime(2024, 3, 7).toIso8601String()}')),
             ),
+            const SizedBox(height: 16),
             SolidButton.primary(
               label: 'Atividades complementares',
               onPressed: () => context.push(AdditionalActivitiesPage.route),
