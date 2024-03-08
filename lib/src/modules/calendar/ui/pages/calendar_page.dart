@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -38,62 +40,64 @@ class _CalendarPageState extends State<CalendarPage> {
 
   final fetchDebouncer = Debouncer(milliseconds: 200);
 
+  List<DateTime> busyDates = [];
+
   DateTime? selectedDate;
   int? viewMonth;
   DateTime? viewStartDate;
 
-  Future<void> changeDate(DateTime? value) async {
-    if (selectedDate == value) return;
+  Future<void> changeDate(DateTime? date) async {
+    date = date?.dateOnly;
+
+    if (selectedDate == date) return;
+
+    log('changeDate: $date');
 
     setState(() {
-      selectedDate = value;
+      selectedDate = date;
     });
 
     fetchDebouncer.run(() async {
       await scrollToUp();
       cubit.fetch(
-        startDate: value,
-        endDate: value?.lastTimeOfDay(),
+        startDate: date,
+        endDate: date?.lastTimeOfDay(),
       );
     });
   }
 
-  Future<void> changeViewMonth(DateTime? startDate) async {
+  Future<void> changeViewMonth(DateTime? date) async {
+    date = date?.dateOnly;
+
+    log('changeViewMonth: $date');
+
     if (selectedDate != null) {
       setState(() {
         selectedDate = null;
         datePickerController.selectedDate = null;
       });
 
-      fetchDebouncer.run(() async {
+      return fetchDebouncer.run(() async {
         await scrollToUp();
-        cubit.fetch(startDate: startDate);
+        cubit.fetch(startDate: date);
       });
     }
 
-    if (startDate?.month == viewStartDate?.month) {
+    if (date?.month == viewStartDate?.month) {
       return scrollToUp();
     }
 
-    setState(() {
-      viewMonth = startDate?.month;
-      viewStartDate = startDate;
-      datePickerController.selectedDate = null;
+    datePickerController.selectedDate = null;
+    viewMonth = date?.month;
 
-      if (startDate == null) return;
+    if (date?.month == viewStartDate?.month) return;
 
-      if (startDate.month == viewStartDate!.month) return;
-
-      if (startDate.month < viewStartDate!.month == true) {
-        datePickerController.forward?.call();
-      } else {
-        datePickerController.backward?.call();
-      }
-    });
+    viewStartDate = date;
+    datePickerController.displayDate = viewStartDate;
 
     fetchDebouncer.run(() async {
       await scrollToUp();
-      cubit.fetch(startDate: startDate);
+      cubit.fetch(startDate: date);
     });
   }
 
@@ -138,12 +142,15 @@ class _CalendarPageState extends State<CalendarPage> {
         shape: LinearBorder.none,
       ),
       backgroundColor: PrimaryColors.brand,
-      body: BlocBuilder<CalendarCubit, CalendarState>(
+      body: BlocConsumer<CalendarCubit, CalendarState>(
           bloc: cubit,
+          listener: (context, state) {
+            if (state is! SuccessState) return;
+
+            busyDates = state.busyDates;
+          },
           builder: (context, state) {
             final isLoading = state is LoadingState;
-            final busyDates =
-                state is SuccessState ? state.busyDates : <DateTime>[];
 
             return Column(
               crossAxisAlignment: CrossAxisAlignment.center,
