@@ -3,6 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
+import '../../../../core/constants/image_source_constants.dart';
 import '../../../../core/extensions/date_time_extension.dart';
 import '../../../../core/extensions/string_extension.dart';
 import '../../../../core/helpers/date_helper.dart';
@@ -10,6 +11,7 @@ import '../../../../core/ui/design_system/design_system.dart';
 import '../../../../core/ui/design_system/widgets/skeletons/skeleton_container.dart';
 import '../../../../core/ui/widgets/default_app_bar.dart';
 import '../../../../core/ui/widgets/month_picker.dart';
+import '../../../../core/ui/widgets/states/states.dart';
 import '../../../../core/utils/debouncer.dart';
 import '../../domain/entities/calendar_activity_entity.dart';
 import '../../domain/entities/calendar_day_off_entity.dart';
@@ -207,114 +209,133 @@ class _CalendarPageState extends State<CalendarPage> {
                             thickness: 1.5,
                             color: MonoChromaticColors.gray.v200,
                           ),
-                          const SizedBox(height: 16),
+                          const SizedBox(height: 24),
                           switch (state) {
                             SuccessState _ => Padding(
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 16),
-                                child: ListView.separated(
-                                  shrinkWrap: true,
-                                  itemCount: state.data.length,
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  separatorBuilder: (context, index) =>
-                                      const SizedBox(height: 24),
-                                  itemBuilder: (context, index) {
-                                    final date =
-                                        state.data.keys.elementAt(index);
-                                    final isToday = date.isToday();
+                                child: state.data.isEmpty
+                                    ? const EmptyStateDisplay(
+                                        size: EmptyStateDisplaySize.small,
+                                        imageSource: ImageSourceConstants
+                                            .calendarIllustration,
+                                        description:
+                                            'Não encontramos registros nesta data.',
+                                      )
+                                    : ListView.separated(
+                                        shrinkWrap: true,
+                                        itemCount: state.data.length,
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
+                                        separatorBuilder: (context, index) =>
+                                            const SizedBox(height: 24),
+                                        itemBuilder: (context, index) {
+                                          final date =
+                                              state.data.keys.elementAt(index);
+                                          final isToday = date.isToday();
 
-                                    return Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              isToday
-                                                  ? 'Hoje'
-                                                  : DateHelper.format(
+                                          return Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Row(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    isToday
+                                                        ? 'Hoje'
+                                                        : DateHelper.format(
+                                                            date,
+                                                            pattern: 'EEEE',
+                                                          ).capitalize(),
+                                                    style: Text2Typography(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: MonoChromaticColors
+                                                          .gray.v900,
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets
+                                                        .symmetric(
+                                                      horizontal: 8,
+                                                    ),
+                                                    child: Badge(
+                                                      backgroundColor:
+                                                          MonoChromaticColors
+                                                              .gray,
+                                                      smallSize: 4,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    DateHelper.format(
                                                       date,
-                                                      pattern: 'EEEE',
-                                                    ).capitalize(),
-                                              style: Text2Typography(
-                                                fontWeight: FontWeight.bold,
-                                                color: MonoChromaticColors
-                                                    .gray.v900,
+                                                      pattern: "dd 'de' MMMM",
+                                                    ),
+                                                    style: Text2Typography(
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      color: MonoChromaticColors
+                                                          .gray,
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
-                                            ),
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                horizontal: 8,
-                                              ),
-                                              child: Badge(
-                                                backgroundColor:
-                                                    MonoChromaticColors.gray,
-                                                smallSize: 4,
-                                              ),
-                                            ),
-                                            Text(
-                                              DateHelper.format(
-                                                date,
-                                                pattern: "dd 'de' MMMM",
-                                              ),
-                                              style: Text2Typography(
-                                                fontWeight: FontWeight.w500,
-                                                color: MonoChromaticColors.gray,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        const SizedBox(height: 16),
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            color:
-                                                MonoChromaticColors.gray.v100,
-                                            borderRadius:
-                                                BorderRadius.circular(8),
-                                          ),
-                                          child: ListView.separated(
-                                            itemCount: state.data[date]!.length,
-                                            shrinkWrap: true,
-                                            physics:
-                                                const NeverScrollableScrollPhysics(),
-                                            separatorBuilder: (context, index) {
-                                              return Container(
-                                                height: 1.5,
-                                                width: double.infinity,
-                                                color: MonoChromaticColors
-                                                    .gray.v200,
-                                              );
-                                            },
-                                            padding: EdgeInsets.zero,
-                                            itemBuilder: (context, index) {
-                                              final item =
-                                                  state.data[date]![index];
+                                              const SizedBox(height: 16),
+                                              Container(
+                                                decoration: BoxDecoration(
+                                                  color: MonoChromaticColors
+                                                      .gray.v100,
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                ),
+                                                child: ListView.separated(
+                                                  itemCount:
+                                                      state.data[date]!.length,
+                                                  shrinkWrap: true,
+                                                  physics:
+                                                      const NeverScrollableScrollPhysics(),
+                                                  separatorBuilder:
+                                                      (context, index) {
+                                                    return Container(
+                                                      height: 1.5,
+                                                      width: double.infinity,
+                                                      color: MonoChromaticColors
+                                                          .gray.v200,
+                                                    );
+                                                  },
+                                                  padding: EdgeInsets.zero,
+                                                  itemBuilder:
+                                                      (context, index) {
+                                                    final item = state
+                                                        .data[date]![index];
 
-                                              return Padding(
-                                                padding:
-                                                    const EdgeInsets.all(16),
-                                                child: switch (item) {
-                                                  CalendarDayOffEntity dayOff =>
-                                                    CalendarDayOffCard(
-                                                      dayOff: dayOff,
-                                                    ),
-                                                  CalendarActivityEntity
-                                                    activity =>
-                                                    CalendarActivityCard(
-                                                      activity: activity,
-                                                    ),
-                                                  _ => const SizedBox.shrink(),
-                                                },
-                                              );
-                                            },
-                                          ),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                ),
+                                                    return Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              16),
+                                                      child: switch (item) {
+                                                        CalendarDayOffEntity
+                                                          dayOff =>
+                                                          CalendarDayOffCard(
+                                                            dayOff: dayOff,
+                                                          ),
+                                                        CalendarActivityEntity
+                                                          activity =>
+                                                          CalendarActivityCard(
+                                                            activity: activity,
+                                                          ),
+                                                        _ => const SizedBox
+                                                            .shrink(),
+                                                      },
+                                                    );
+                                                  },
+                                                ),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      ),
                               ),
                             LoadingState _ => Animate(
                                 effects: const [
