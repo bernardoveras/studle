@@ -17,12 +17,12 @@ class NotificationTabBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedOpacity(
-      opacity: disabled ? 0.25 : 1,
-      curve: Curves.ease,
-      duration: const Duration(milliseconds: 500),
-      child: IgnorePointer(
-        ignoring: disabled,
+    return IgnorePointer(
+      ignoring: disabled,
+      child: AnimatedOpacity(
+        opacity: disabled ? 0.5 : 1,
+        curve: Curves.ease,
+        duration: const Duration(milliseconds: 500),
         child: Container(
           height: 64,
           width: double.infinity,
@@ -60,30 +60,28 @@ class NotificationTabBar extends StatelessWidget {
                     const Text(
                       'Não lidas',
                     ),
-                    if (unreadCount > 0) ...[
-                      const SizedBox(width: 8),
-                      Animate(
-                        effects: [
-                          FadeEffect(
-                            curve: Curves.ease,
-                            duration: 300.ms,
-                          ),
-                          ScaleEffect(
-                            begin: const Offset(0.5, 0.5),
-                            alignment: Alignment.center,
-                            curve: Curves.ease,
-                            duration: 300.ms,
-                          ),
-                        ],
-                        child: Badge(
-                          label: Text(unreadCount.toString()),
-                          textStyle: const Button3Typography(
-                            fontWeight: FontWeight.w500,
-                          ),
-                          backgroundColor: SemanticColors.negative,
+                    const SizedBox(width: 8),
+                    Animate(
+                      effects: [
+                        FadeEffect(
+                          curve: Curves.ease,
+                          duration: 300.ms,
                         ),
+                        ScaleEffect(
+                          begin: const Offset(0.5, 0.5),
+                          alignment: Alignment.center,
+                          curve: Curves.ease,
+                          duration: 300.ms,
+                        ),
+                      ],
+                      child: Badge(
+                        label: Text(unreadCount.toString()),
+                        textStyle: const Button3Typography(
+                          fontWeight: FontWeight.w500,
+                        ),
+                        backgroundColor: SemanticColors.negative,
                       ),
-                    ],
+                    ),
                   ],
                 ),
               ),

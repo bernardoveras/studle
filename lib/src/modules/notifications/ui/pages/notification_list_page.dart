@@ -49,8 +49,6 @@ class _NotificationListPageState extends State<NotificationListPage> {
       child: BlocBuilder<NotificationListCubit, NotificationListState>(
         bloc: cubit,
         builder: (context, state) {
-          final isLoading = state is LoadingState;
-          final isSuccess = state is SuccessState;
           final allData =
               state is SuccessState ? state.allData : <NotificationEntity>[];
           final unreadData =
@@ -62,12 +60,11 @@ class _NotificationListPageState extends State<NotificationListPage> {
             ),
             body: Column(
               children: [
-                if ((isSuccess && allData.isNotEmpty) || isLoading)
-                  NotificationTabBar(
-                    onChanged: onChangeTab,
-                    unreadCount: unreadData.length,
-                    disabled: !isSuccess,
-                  ),
+                NotificationTabBar(
+                  onChanged: onChangeTab,
+                  unreadCount: unreadData.length,
+                  disabled: allData.isEmpty,
+                ),
                 Expanded(
                   child: switch (state) {
                     InitialState _ => const SizedBox(),
@@ -103,45 +100,63 @@ class _NotificationListPageState extends State<NotificationListPage> {
                         itemBuilder: (_, __) =>
                             const NotificationSkeletonCard(),
                       ),
-                    _ => allData.isEmpty
-                        ? Center(
-                            child: SingleChildScrollView(
-                              padding: EdgeInsets.only(
-                                left: 20,
-                                right: 20,
-                                bottom: DefaultAppBar.defaultHeight +
-                                    context.bottomPadding,
-                              ),
-                              child: const EmptyStateDisplay(
-                                imageSource: ImageSourceConstants
-                                    .notificationsIllustration,
-                                description:
-                                    'Não encontramos notificações no momento.',
-                              ),
-                            ),
-                          )
-                        : PageView(
-                            controller: pageController,
-                            physics: const NeverScrollableScrollPhysics(),
-                            children: [
-                              RefreshIndicator(
-                                key: const ValueKey('notifications.all'),
-                                onRefresh: () => cubit.fetch(refreshing: true),
-                                child: NotificationList(
-                                  data: allData,
-                                  markAsRead: cubit.markAsRead,
-                                ),
-                              ),
-                              RefreshIndicator(
-                                key: const ValueKey('notifications.unread'),
-                                onRefresh: () => cubit.fetch(refreshing: true),
-                                child: NotificationList(
-                                  data: unreadData,
-                                  markAsRead: cubit.markAsRead,
-                                ),
-                              ),
-                            ],
+                    _ => PageView(
+                        controller: pageController,
+                        physics: const NeverScrollableScrollPhysics(),
+                        children: [
+                          RefreshIndicator(
+                            key: const ValueKey('notifications.all'),
+                            onRefresh: () => cubit.fetch(refreshing: true),
+                            child: allData.isEmpty
+                                ? Center(
+                                    child: SingleChildScrollView(
+                                      padding: EdgeInsets.only(
+                                        left: 20,
+                                        right: 20,
+                                        bottom: DefaultAppBar.defaultHeight +
+                                            context.bottomPadding,
+                                      ),
+                                      child: const EmptyStateDisplay(
+                                        imageSource: ImageSourceConstants
+                                            .notificationsIllustration,
+                                        description:
+                                            'Não encontramos notificações no momento.',
+                                      ),
+                                    ),
+                                  )
+                                : NotificationList(
+                                    data: allData,
+                                    markAsRead: cubit.markAsRead,
+                                  ),
                           ),
+                          RefreshIndicator(
+                            key: const ValueKey('notifications.unread'),
+                            onRefresh: () => cubit.fetch(refreshing: true),
+                            child: unreadData.isEmpty
+                                ? Center(
+                                    child: SingleChildScrollView(
+                                      padding: EdgeInsets.only(
+                                        left: 20,
+                                        right: 20,
+                                        bottom: DefaultAppBar.defaultHeight +
+                                            context.bottomPadding,
+                                      ),
+                                      child: const EmptyStateDisplay(
+                                        imageSource: ImageSourceConstants
+                                            .notificationsIllustration,
+                                        description:
+                                            'Não encontramos notificações não lidas no momento.',
+                                      ),
+                                    ),
+                                  )
+                                : NotificationList(
+                                    data: unreadData,
+                                    markAsRead: cubit.markAsRead,
+                                    animate: false,
+                                  ),
+                          ),
+                        ],
+                      ),
                   },
                 )
               ],
