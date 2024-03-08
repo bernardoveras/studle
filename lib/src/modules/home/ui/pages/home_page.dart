@@ -9,6 +9,8 @@ import '../../../../core/ui/widgets/default_app_bar.dart';
 import '../../../../core/user_session.dart';
 import '../../../activities/ui/pages/additional_activities_page.dart';
 import '../../../calendar/ui/pages/calendar_page.dart';
+import '../../../campaigns/ui/pages/campaign_page.dart';
+import '../../../campaigns/ui/parameters/campaign_page_parameter.dart';
 import '../../../notifications/ui/pages/notification_list_page.dart';
 import '../../../profile/ui/pages/profile_page.dart';
 
@@ -66,6 +68,25 @@ class _HomePageState extends State<HomePage> {
             SolidButton.primary(
               label: 'Atividades complementares',
               onPressed: () => context.push(AdditionalActivitiesPage.route),
+            ),
+            const SizedBox(height: 16),
+            SolidButton.primary(
+              label: 'Campanha',
+              onPressed: () => context.push(
+                CampaignPage.route.addQuery(
+                  const CampaignPageParameter(
+                    title: 'Open Design 2024',
+                    description:
+                        '''Não fique de fora do Open! Garanta sua inscrição no maior evento de design da região!
+
+Se inscreva até dia 31/05 na entrada do evento! Os pagamentos serão feitos na hora por PIX, na área de credenciamento do auditório do bloco F. Corre que ainda dá tempo! 💜
+''',
+                    link: 'https://google.com',
+                    bannerUrl:
+                        'https://img.freepik.com/premium-vector/trendy-event-banner-template_85212-590.jpg',
+                  ).toQueryParameters(),
+                ),
+              ),
             ),
           ],
         ),
