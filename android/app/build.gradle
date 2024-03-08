@@ -23,7 +23,7 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace "com.example.studle"
+    namespace "com.studle.student"
     compileSdk 34
     ndkVersion flutter.ndkVersion
 
@@ -41,7 +41,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.studle"
+        applicationId "com.studle.student"
     
         minSdkVersion flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
