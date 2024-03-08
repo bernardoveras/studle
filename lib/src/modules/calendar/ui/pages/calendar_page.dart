@@ -41,6 +41,8 @@ class _CalendarPageState extends State<CalendarPage> {
   DateTime? viewStartDate;
 
   Future<void> changeDate(DateTime? value) async {
+    if (selectedDate == value) return;
+
     setState(() {
       selectedDate = value;
     });
