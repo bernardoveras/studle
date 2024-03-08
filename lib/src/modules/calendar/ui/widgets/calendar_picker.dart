@@ -87,8 +87,10 @@ class _CalendarPickerState extends State<CalendarPicker> {
           controller: datePickerController,
           onSelectionChanged: (args) => widget.changeDate?.call(args.value),
           onViewChanged: (args) {
-            Future.delayed(Duration.zero).then((value) =>
-                widget.changeViewMonth?.call(args.visibleDateRange.startDate));
+            Future.delayed(Duration.zero).then(
+              (value) =>
+                  widget.changeViewMonth?.call(args.visibleDateRange.startDate),
+            );
           },
           toggleDaySelection: true,
           showActionButtons: false,
@@ -96,6 +98,7 @@ class _CalendarPickerState extends State<CalendarPicker> {
           showNavigationArrow: false,
           headerHeight: 0,
           monthViewSettings: DateRangePickerMonthViewSettings(
+            specialDates: widget.busyDates,
             viewHeaderStyle: DateRangePickerViewHeaderStyle(
               textStyle: Button1Typography(
                 color: MonoChromaticColors.gray.v400,

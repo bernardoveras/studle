@@ -45,9 +45,9 @@ class _CalendarPageState extends State<CalendarPage> {
       selectedDate = value;
     });
 
-    await scrollToUp();
+    fetchDebouncer.run(() async {
+      await scrollToUp();
 
-    fetchDebouncer.run(() {
       cubit.fetch(startDate: value);
     });
   }
@@ -63,9 +63,9 @@ class _CalendarPageState extends State<CalendarPage> {
       );
     });
 
-    await scrollToUp();
+    fetchDebouncer.run(() async {
+      await scrollToUp();
 
-    fetchDebouncer.run(() {
       cubit.fetch(startDate: startDate);
     });
   }
@@ -96,6 +96,7 @@ class _CalendarPageState extends State<CalendarPage> {
     super.dispose();
 
     datePickerController.dispose();
+    scrollController.dispose();
   }
 
   @override
