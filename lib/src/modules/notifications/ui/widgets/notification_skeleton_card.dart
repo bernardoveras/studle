@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/extensions/build_context_extension.dart';
 import '../../../../core/ui/design_system/design_system.dart';
 import '../../../../core/ui/design_system/widgets/skeletons/skeleton_container.dart';
 
@@ -27,23 +28,23 @@ class NotificationSkeletonCard extends StatelessWidget {
                     const SizedBox(width: 8),
                     SkeletonContainer(
                       height: 18,
-                      width: MediaQuery.sizeOf(context).width * 0.3,
+                      width: context.maxWidth * 0.3,
                     ),
                   ],
                 ),
                 const SizedBox(height: 8),
                 SkeletonContainer(
                   height: 18,
-                  width: MediaQuery.sizeOf(context).width,
+                  width: context.maxWidth,
                 ),
                 const SizedBox(height: 4),
                 SkeletonContainer(
                   height: 18,
-                  width: MediaQuery.sizeOf(context).width * 0.5,
+                  width: context.maxWidth * 0.5,
                 ),
                 const SizedBox(height: 12),
                 SkeletonContainer(
-                  width: MediaQuery.sizeOf(context).width * 0.25,
+                  width: context.maxWidth * 0.25,
                 ),
               ],
             ),

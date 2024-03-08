@@ -1,8 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../design_system/design_system.dart';
+
+enum EmptyStateDisplaySize {
+  small(
+    iconSize: 60,
+    imageSize: 130,
+    gap: 24,
+  ),
+  normal(
+    iconSize: 80,
+    imageSize: 150,
+    gap: 24,
+  );
+
+  final double iconSize;
+  final double imageSize;
+  final double gap;
+
+  const EmptyStateDisplaySize({
+    required this.iconSize,
+    required this.imageSize,
+    required this.gap,
+  });
+}
 
 class EmptyStateDisplay extends StatelessWidget {
   const EmptyStateDisplay({
@@ -15,10 +37,11 @@ class EmptyStateDisplay extends StatelessWidget {
     this.onPressedPrimaryButton,
     this.secondaryButtonText,
     this.onPressedSecondaryButton,
+    this.size = EmptyStateDisplaySize.normal,
   }) : assert(icon == null || imageSource == null,
             'Only one of icon or imageSource can be provided, not both.');
 
-  final Widget? icon;
+  final IconData? icon;
   final String? imageSource;
   final String title;
   final String description;
@@ -26,6 +49,7 @@ class EmptyStateDisplay extends StatelessWidget {
   final VoidCallback? onPressedPrimaryButton;
   final String? secondaryButtonText;
   final VoidCallback? onPressedSecondaryButton;
+  final EmptyStateDisplaySize size;
 
   @override
   Widget build(BuildContext context) {
@@ -46,35 +70,41 @@ class EmptyStateDisplay extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          if (icon != null)
-            icon!
-          else if (imageSource != null)
+          if (imageSource != null)
             Image.asset(
               imageSource!,
-              height: 150,
+              height: size.imageSize,
             )
           else
             Icon(
-              PhosphorIconsRegular.notification,
-              size: 80,
+              icon,
+              size: size.iconSize,
               color: MonoChromaticColors.gray.v400,
             ),
-          const SizedBox(height: 32),
+          SizedBox(height: size.gap),
           Text(
             title,
             textAlign: TextAlign.center,
-            style: Heading2Typography(
-              fontWeight: FontWeight.w600,
-              color: MonoChromaticColors.gray.v900,
-            ),
+            style: switch (size) {
+              EmptyStateDisplaySize.small => Heading3Typography(
+                  fontWeight: FontWeight.w600,
+                  color: MonoChromaticColors.gray.v900,
+                ),
+              EmptyStateDisplaySize.normal => Heading2Typography(
+                  fontWeight: FontWeight.w600,
+                  color: MonoChromaticColors.gray.v900,
+                ),
+            },
           ),
-          const SizedBox(height: 24),
+          SizedBox(height: size.gap),
           Text(
             description,
             textAlign: TextAlign.center,
-            style: Text2Typography(
-              color: MonoChromaticColors.gray,
-            ),
+            style: switch (size) {
+              _ => Text2Typography(
+                  color: MonoChromaticColors.gray,
+                ),
+            },
           ),
           if (primaryButtonText != null || secondaryButtonText != null)
             const SizedBox(height: 40),

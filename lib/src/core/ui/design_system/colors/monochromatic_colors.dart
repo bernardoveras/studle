@@ -4,6 +4,7 @@ import 'base_color.dart';
 
 final class MonoChromaticColors {
   static Color get white => Colors.white;
+  static Color get backgroundColor => Colors.white;
   static Color get transparent => Colors.transparent;
   static Color get skeleton => gray.v100;
   static Color get divider => gray.v100;

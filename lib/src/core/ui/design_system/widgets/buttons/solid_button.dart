@@ -203,6 +203,7 @@ class SolidButton extends StatelessWidget {
     double? iconSize,
     bool disabled = false,
     double? radius,
+    Color? foregroundColor,
     SolidButtonStyle? style,
   }) {
     return SolidButton._(
@@ -213,7 +214,7 @@ class SolidButton extends StatelessWidget {
       height: height,
       width: width,
       backgroundColor: MonoChromaticColors.transparent,
-      foregroundColor: MonoChromaticColors.gray.v800,
+      foregroundColor: foregroundColor ?? MonoChromaticColors.gray.v800,
       icon: icon,
       iconSize: iconSize,
       disabled: disabled,
@@ -282,11 +283,11 @@ class SolidButton extends StatelessWidget {
 
             if (style == SolidButtonStyle.outlined) {
               if (states.contains(MaterialState.pressed)) {
-                return foregroundColor;
+                return backgroundColor;
               }
 
               // return foregroundColor.v600;
-              return foregroundColor;
+              return backgroundColor;
             }
 
             return foregroundColor;

@@ -3,6 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../../../core/constants/image_source_constants.dart';
+import '../../../../core/extensions/build_context_extension.dart';
 import '../../../../core/ui/design_system/design_system.dart';
 import '../../../../core/ui/design_system/widgets/default_expansion_tile.dart';
 import '../../../../core/ui/widgets/default_app_bar.dart';
@@ -15,8 +16,6 @@ class QuestionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var bottomPadding = MediaQuery.paddingOf(context).bottom;
-
     return Scaffold(
       appBar: const DefaultAppBar(
         title: 'Dúvidas Frequentes',
@@ -25,7 +24,7 @@ class QuestionPage extends StatelessWidget {
         padding: EdgeInsets.only(
           left: 16,
           right: 16,
-          bottom: bottomPadding + 16,
+          bottom: 16 + context.bottomPadding,
         ),
         child: Animate(
           delay: 500.ms,
@@ -35,12 +34,16 @@ class QuestionPage extends StatelessWidget {
             icon: PhosphorIconsRegular.question,
             style: SolidButtonStyle.outlined,
             onPressed: () => redirectToUrl(
-                'https://github.com/bernardoveras/myschool/discussions'),
+              'https://github.com/bernardoveras/myschool/discussions/new/choose',
+            ),
           ),
         ),
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.only(top: 16, bottom: 16 + bottomPadding),
+        padding: EdgeInsets.only(
+          top: 16,
+          bottom: 16 + context.bottomPadding,
+        ),
         child: Column(
           children: [
             Image.asset(

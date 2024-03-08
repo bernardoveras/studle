@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/extensions/build_context_extension.dart';
 import '../../../../core/ui/design_system/design_system.dart';
 import '../../domain/entities/onboarding_entity.dart';
 
@@ -18,8 +19,8 @@ class OnboardingStep extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            height: MediaQuery.sizeOf(context).height * 0.6,
-            width: MediaQuery.sizeOf(context).width,
+            height: context.maxHeight * 0.6,
+            width: context.maxWidth,
             child: Image.asset(
               onboarding.imageSource,
               fit: BoxFit.cover,

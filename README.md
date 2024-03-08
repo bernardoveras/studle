@@ -1,10 +1,8 @@
 # My School
 
-![GitHub repo size](https://img.shields.io/github/repo-size/bernardoveras/myschool?style=for-the-badge)
-![GitHub language count](https://img.shields.io/github/languages/count/bernardoveras/myschool?style=for-the-badge)
-![GitHub forks](https://img.shields.io/github/forks/bernardoveras/myschool?style=for-the-badge)
-![Bitbucket open issues](https://img.shields.io/bitbucket/issues/bernardoveras/myschool?style=for-the-badge)
-![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/bernardoveras/myschool?style=for-the-badge)
+![GitHub repo size](https://img.shields.io/github/repo-size/bernardoveras/myschool)
+![Github open issues](https://img.shields.io/github/issues/bernardoveras/myschool)
+![Github open pull requests](https://img.shields.io/github/issues-pr/bernardoveras/myschool)
 
 <!-- <img src="imagem.png" alt="Exemplo imagem"> -->
 
@@ -17,19 +15,20 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Onboarding
 - [x] Login
 - [ ] Boas-vindas
-- [ ] Dúvidas frequentes
+- [x] Dúvidas frequentes
 - [ ] Tela Inicial
-- [ ] Dados pessoais
+- [x] Perfil
+- [x] Dados pessoais
 - [ ] Aulas
 - [ ] Notas
 - [ ] Atividades complementares
 - [ ] Progressão acadêmica
 - [ ] Financeiro
-- [ ] Notificações
+- [x] Notificações
 - [ ] Calendário
-- [ ] Carteirinha
+- [x] Carteirinha
 - [ ] Serviço de Atendimento ao Aluno
-- [ ] Campanha
+- [x] Campanha
 
 ## 💻 Pré-requisitos
 
