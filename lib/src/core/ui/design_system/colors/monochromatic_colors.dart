@@ -9,6 +9,9 @@ final class MonoChromaticColors {
   static Color get skeleton => gray.v100;
   static Color get divider => gray.v100;
 
+  static Color get disabledBackground => gray.v200;
+  static Color get disabledForeground => gray.v400;
+
   static BaseColor get gray => BaseColor(
         const <int, String>{
           25: '#FCFCFD',
