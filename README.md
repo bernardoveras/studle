@@ -1,10 +1,11 @@
+<img src=".github/assets/banner.png" alt="Banner">
+
 # Studle: Simplifique sua vida acadêmica!
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/bernardoveras/studle)
 ![Github open issues](https://img.shields.io/github/issues/bernardoveras/studle)
 ![Github open pull requests](https://img.shields.io/github/issues-pr/bernardoveras/studle)
 
-<!-- <img src="imagem.png" alt="Exemplo imagem"> -->
 
 > O Aplicativo Studle é um aplicativo que permite os alunos acessar os horários das aulas, ver quantidades de faltas, olhar as notas do semestre, ver matérias cursadas, ter acesso ao financeiro e outras diversas funções.
 
