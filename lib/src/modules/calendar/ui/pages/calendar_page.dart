@@ -57,8 +57,20 @@ class _CalendarPageState extends State<CalendarPage> {
   }
 
   Future<void> changeViewMonth(DateTime? startDate) async {
+    if (selectedDate != null) {
+      setState(() {
+        selectedDate = null;
+        datePickerController.selectedDate = null;
+      });
+
+      fetchDebouncer.run(() async {
+        await scrollToUp();
+        cubit.fetch(startDate: startDate);
+      });
+    }
+
     if (startDate?.month == viewStartDate?.month) {
-      return;
+      return scrollToUp();
     }
 
     setState(() {
