@@ -23,7 +23,7 @@ class NotificationListCubit extends Cubit<NotificationListState> {
         emit(const LoadingState());
       }
 
-      await Future.delayed(const Duration(milliseconds: 500));
+      await Future.delayed(const Duration(milliseconds: 200));
 
       final result = await notificationService.fetch();
 
@@ -34,6 +34,15 @@ class NotificationListCubit extends Cubit<NotificationListState> {
       final allNotifications = result.getOrDefault([]);
 
       final unreadNotifications = _sortUnread(allNotifications);
+
+      final unreadNotificationsWithoutLink = unreadNotifications
+          .where((e) => e.link == null && !e.isRead)
+          .map((e) => e.id)
+          .toList();
+
+      if (unreadNotificationsWithoutLink.isNotEmpty) {
+        markAsReadBatch(unreadNotificationsWithoutLink).ignore();
+      }
 
       emit(
         SuccessState(
@@ -77,6 +86,43 @@ class NotificationListCubit extends Cubit<NotificationListState> {
       notification = notification.copyWith(status: NotificationStatus.read);
 
       allNotifications[notificationIndex] = notification;
+
+      final unreadNotifications = _sortUnread(allNotifications);
+
+      emit(
+        SuccessState(
+          allData: allNotifications,
+          unreadData: unreadNotifications,
+        ),
+      );
+    } on GenericException catch (e) {
+      emit(ErrorState(e));
+    } catch (e) {
+      emit(ErrorState(UnknowException(error: e)));
+    }
+  }
+
+  Future<void> markAsReadBatch(List<Guid> ids) async {
+    try {
+      final result = await notificationService.markAsReadBatch(ids);
+
+      if (result.isError()) {
+        return emit(ErrorState(result.exceptionOrNull()!));
+      }
+
+      if (state is! SuccessState) return;
+
+      final allNotifications = (state as SuccessState).allData;
+      final allNotificationsFiltered =
+          allNotifications.where((e) => ids.contains(e.id)).toList();
+
+      for (var notification in allNotificationsFiltered) {
+        final notificationIndex = allNotifications.indexOf(notification);
+
+        notification = notification.copyWith(status: NotificationStatus.read);
+
+        allNotifications[notificationIndex] = notification;
+      }
 
       final unreadNotifications = _sortUnread(allNotifications);
 

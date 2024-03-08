@@ -7,4 +7,5 @@ import '../entities/notification_entity.dart';
 abstract interface class INotificationService {
   AsyncResult<List<NotificationEntity>, GenericException> fetch();
   AsyncResult<bool, GenericException> markAsRead(Guid id);
+  AsyncResult<bool, GenericException> markAsReadBatch(List<Guid> ids);
 }
