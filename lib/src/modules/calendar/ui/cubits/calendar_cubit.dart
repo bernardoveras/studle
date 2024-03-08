@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:collection/collection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,6 +21,8 @@ class CalendarCubit extends Cubit<CalendarState> {
     bool refreshing = false,
   }) async {
     try {
+      log('fetching calendar:\nstartDate: $startDate\nendDate: $endDate');
+
       if (!refreshing) {
         emit(const LoadingState());
       }
