@@ -21,17 +21,11 @@ class CampaignPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomSheet: parameters.link == null
+      persistentFooterButtons: parameters.link == null
           ? null
-          : Padding(
-              padding: EdgeInsets.only(
-                left: 16,
-                right: 16,
-                bottom: 16 + context.bottomPadding,
-              ),
-              child: Animate(
-                delay: 500.ms,
-                effects: const [FadeEffect(curve: Curves.ease)],
+          : [
+              Padding(
+                padding: const EdgeInsets.all(12.0),
                 child: SolidButton.primary(
                   label: 'Link',
                   icon: PhosphorIconsRegular.arrowSquareOut,
@@ -39,7 +33,7 @@ class CampaignPage extends StatelessWidget {
                   onPressed: () => redirectToUrl(parameters.link!),
                 ),
               ),
-            ),
+            ],
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

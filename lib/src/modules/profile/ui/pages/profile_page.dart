@@ -58,19 +58,17 @@ class _ProfilePageState extends State<ProfilePage> {
         foregroundColor: Colors.white,
       ),
       backgroundColor: PrimaryColors.brand,
-      bottomSheet: Padding(
-        padding: EdgeInsets.only(
-          left: 16,
-          right: 16,
-          bottom: context.bottomPadding + 16,
+      persistentFooterButtons: [
+        Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: SolidButton.transparent(
+            label: 'Sair da conta',
+            icon: PhosphorIconsRegular.signOut,
+            foregroundColor: SemanticColors.negative,
+            onPressed: logout,
+          ),
         ),
-        child: SolidButton.transparent(
-          label: 'Sair da conta',
-          icon: PhosphorIconsRegular.signOut,
-          foregroundColor: SemanticColors.negative,
-          onPressed: logout,
-        ),
-      ),
+      ],
       body: user == null
           ? Container(color: MonoChromaticColors.backgroundColor)
           : Column(

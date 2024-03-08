@@ -19,20 +19,18 @@ class AdditionalActivitiesPage extends StatelessWidget {
       appBar: const DefaultAppBar(
         title: 'Atividades complementares',
       ),
-      bottomSheet: Padding(
-        padding: EdgeInsets.only(
-          left: 16,
-          right: 16,
-          bottom: 16 + context.bottomPadding,
+      persistentFooterButtons: [
+        Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: SolidButton.primary(
+            label: 'Link para envio de atividades',
+            icon: PhosphorIconsRegular.arrowSquareOut,
+            style: SolidButtonStyle.outlined,
+            onPressed: () => redirectToUrl(
+                'https://github.com/bernardoveras/myschool/discussions'),
+          ),
         ),
-        child: SolidButton.primary(
-          label: 'Link para envio de atividades',
-          icon: PhosphorIconsRegular.arrowSquareOut,
-          style: SolidButtonStyle.outlined,
-          onPressed: () => redirectToUrl(
-              'https://github.com/bernardoveras/myschool/discussions'),
-        ),
-      ),
+      ],
       body: SingleChildScrollView(
         padding: EdgeInsets.only(
           top: 16,

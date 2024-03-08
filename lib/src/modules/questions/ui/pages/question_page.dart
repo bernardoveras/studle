@@ -61,21 +61,19 @@ class _QuestionPageState extends State<QuestionPage> {
       appBar: const DefaultAppBar(
         title: 'Dúvidas Frequentes',
       ),
-      bottomSheet: Padding(
-        padding: EdgeInsets.only(
-          left: 16,
-          right: 16,
-          bottom: 16 + context.bottomPadding,
-        ),
-        child: SolidButton.primary(
-          label: 'Preciso de ajuda',
-          icon: PhosphorIconsRegular.question,
-          style: SolidButtonStyle.outlined,
-          onPressed: () => redirectToUrl(
-            'https://github.com/bernardoveras/myschool/discussions/new/choose',
+      persistentFooterButtons: [
+        Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: SolidButton.primary(
+            label: 'Preciso de ajuda',
+            icon: PhosphorIconsRegular.question,
+            style: SolidButtonStyle.outlined,
+            onPressed: () => redirectToUrl(
+              'https://github.com/bernardoveras/myschool/discussions/new/choose',
+            ),
           ),
         ),
-      ),
+      ],
       body: SingleChildScrollView(
         padding: EdgeInsets.only(
           top: 32,
