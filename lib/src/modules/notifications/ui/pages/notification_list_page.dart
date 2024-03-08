@@ -111,7 +111,7 @@ class _NotificationListPageState extends State<NotificationListPage> {
                                 bottom: MediaQuery.paddingOf(context).bottom +
                                     DefaultAppBar.defaultHeight,
                               ),
-                              child: EmptyStateDisplay(
+                              child: const EmptyStateDisplay(
                                 imageSource: ImageSourceConstants
                                     .notificationsIllustration,
                                 description:
