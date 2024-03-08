@@ -44,8 +44,9 @@ class _CalendarPageState extends State<CalendarPage> {
   List<DateTime> busyDates = [];
 
   DateTime? selectedDate;
-  int? viewMonth;
+  // int? viewMonth;
   DateTime? viewStartDate;
+  int? get viewMonth => viewStartDate?.month;
 
   Future<void> changeDate(DateTime? date) async {
     date = date?.dateOnly;
@@ -89,11 +90,10 @@ class _CalendarPageState extends State<CalendarPage> {
     }
 
     datePickerController.selectedDate = null;
-    viewMonth = date?.month;
 
     if (date?.month == viewStartDate?.month) return;
 
-    viewStartDate = date;
+    setState(() => viewStartDate = date);
     datePickerController.displayDate = viewStartDate;
 
     fetchDebouncer.run(() async {
