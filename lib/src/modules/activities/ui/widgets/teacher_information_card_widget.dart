@@ -3,6 +3,7 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../../../core/ui/design_system/colors/colors.dart';
 import '../../../../core/ui/design_system/typographies/typographies.dart';
+import '../../../../core/ui/services/snackbar/snackbar_service.dart';
 import '../../../../core/utils/copy_text.dart';
 
 class TeacherInformationCard extends StatelessWidget {
@@ -22,11 +23,10 @@ class TeacherInformationCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         copyText(email);
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: const Text('E-mail copiado com sucesso'),
-            backgroundColor: SemanticColors.positive,
-          ),
+        SnackBarService.show(
+          context,
+          text: 'E-mail copiado com sucesso.',
+          type: SnackBarType.success,
         );
       },
       child: Container(
