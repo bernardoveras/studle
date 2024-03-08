@@ -184,8 +184,8 @@ class _CalendarPageState extends State<CalendarPage> {
                     ),
                     child: SingleChildScrollView(
                       padding: EdgeInsets.only(
-                        top: 16,
-                        bottom: 16 + bottomPadding,
+                        top: 20,
+                        bottom: 20 + bottomPadding,
                       ),
                       controller: scrollController,
                       child: Column(
