@@ -88,7 +88,7 @@ class _CalendarPageState extends State<CalendarPage> {
       duration: const Duration(milliseconds: 250),
       curve: Curves.easeInOut,
     );
-    await Future.delayed(const Duration(milliseconds: 50));
+    await Future.delayed(const Duration(milliseconds: 20));
   }
 
   @override
