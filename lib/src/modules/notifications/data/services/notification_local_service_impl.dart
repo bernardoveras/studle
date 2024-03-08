@@ -5,6 +5,7 @@ import 'package:result_dart/result_dart.dart';
 
 import '../../../../core/constants/local_storage_key.dart';
 import '../../../../core/exceptions/exceptions.dart';
+import '../../../../core/extension_types/guid.dart';
 import '../../../../core/services/local_storage/domain/services/i_local_storage_service.dart';
 import '../../domain/entities/notification_entity.dart';
 import '../../domain/enums/notification_status_enum.dart';
@@ -57,7 +58,7 @@ class NotificationLocalServiceImpl implements INotificationService {
   }
 
   @override
-  AsyncResult<bool, GenericException> markAsRead(int id) async {
+  AsyncResult<bool, GenericException> markAsRead(Guid id) async {
     try {
       final result =
           await localStorageService.read<String>(LocalStorageKey.notifications);

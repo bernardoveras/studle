@@ -2,6 +2,7 @@ import 'package:result_dart/result_dart.dart';
 
 import '../../../../core/exceptions/generic_exception.dart';
 import '../../../../core/exceptions/invalid_credentials_exception.dart';
+import '../../../../core/extension_types/guid.dart';
 import '../../domain/dtos/login_with_student_registration_dto.dart';
 import '../../domain/entities/user_entity.dart';
 import '../../domain/enums/person_gender_enum.dart';
@@ -22,7 +23,7 @@ class AuthMockServiceImpl implements IAuthService {
     }
 
     final user = UserEntity(
-      id: 1,
+      id: Guid.random(),
       accessToken: '6aa50a1a77db4163bcf3ee2a2a0115fb',
       refreshToken: '48b38423c45f4daaab8d7ed782fb8dc8',
       name: 'Bernardo Veras',

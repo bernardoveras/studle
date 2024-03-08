@@ -2,6 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/exceptions/exceptions.dart';
+import '../../../../core/extension_types/guid.dart';
 import '../../domain/entities/notification_entity.dart';
 import '../../domain/enums/notification_status_enum.dart';
 import '../../domain/services/i_notification_service.dart';
@@ -47,7 +48,7 @@ class NotificationListCubit extends Cubit<NotificationListState> {
     }
   }
 
-  Future<void> markAsRead(int id) async {
+  Future<void> markAsRead(Guid id) async {
     try {
       if (state is! SuccessState) return;
 

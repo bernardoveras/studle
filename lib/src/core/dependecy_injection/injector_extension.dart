@@ -4,6 +4,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../modules/authentication/data/services/auth_mock_service_impl.dart';
 import '../../modules/authentication/domain/entities/user_entity.dart';
 import '../../modules/authentication/domain/services/i_auth_service.dart';
+import '../../modules/calendar/data/services/calendar_mock_service_impl.dart';
+import '../../modules/calendar/domain/services/i_calendar_service.dart';
 import '../../modules/notifications/data/services/notification_local_service_impl.dart';
 import '../../modules/notifications/domain/services/i_notification_service.dart';
 import '../constants/local_storage_key.dart';
@@ -17,6 +19,13 @@ extension InjectorExtension on GetIt {
     return this
       ..registerLazySingleton<IAuthService>(
         () => AuthMockServiceImpl(),
+      );
+  }
+
+  GetIt registerCalendarServices() {
+    return this
+      ..registerLazySingleton<ICalendarService>(
+        () => CalendarMockServiceImpl(),
       );
   }
 
@@ -45,7 +54,7 @@ extension InjectorExtension on GetIt {
                   .getOrNull();
 
           UserEntity? user;
-          
+
           if (userJson != null) {
             try {
               user = UserEntity.fromJson(userJson);

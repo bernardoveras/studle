@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/dependecy_injection/injector.dart';
+import '../../../../core/extensions/build_context_extension.dart';
 import '../../../../core/ui/design_system/design_system.dart';
 import '../../../../core/ui/widgets/default_app_bar.dart';
 import '../../../../core/user_session.dart';
@@ -36,8 +37,6 @@ class _StudentIdentityPageState extends State<StudentIdentityPage> {
 
   @override
   Widget build(BuildContext context) {
-    var bottomPadding = MediaQuery.paddingOf(context).bottom;
-
     var user = userSession.user;
 
     return Scaffold(
@@ -54,7 +53,7 @@ class _StudentIdentityPageState extends State<StudentIdentityPage> {
                 return SizedBox.expand(
                   child: SingleChildScrollView(
                     padding: EdgeInsets.only(
-                      bottom: 24 + bottomPadding,
+                      bottom: 24 + context.bottomPadding,
                     ),
                     physics: const ClampingScrollPhysics(),
                     child: Stack(

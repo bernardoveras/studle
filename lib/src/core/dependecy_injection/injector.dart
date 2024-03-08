@@ -28,6 +28,7 @@ abstract class Injector {
       ..registerAuthenticationServices()
       ..registerLocalStorageServices()
       ..registerNotificationServices()
+      ..registerCalendarServices()
       ..registerUserSession();
   }
 }

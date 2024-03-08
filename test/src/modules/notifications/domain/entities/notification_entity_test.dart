@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:myschool/src/core/extension_types/guid.dart';
 import 'package:myschool/src/core/utils/nullable_value.dart';
 import 'package:myschool/src/modules/notifications/domain/entities/notification_entity.dart';
 import 'package:myschool/src/modules/notifications/domain/enums/notification_link_type_enum.dart';
@@ -11,7 +12,7 @@ import '../../../../../mocks/notification_entity_mock.dart' as mock;
 void main() {
   test('NotificationEntity - equality', () {
     final entity1 = NotificationEntity(
-      id: 1,
+      id: Guid.empty(),
       title: '6º Encontro de Clássicos na My School',
       description:
           'Já estamos em fevereiro e o evento mais aguardado pelos amantes de carro chegou!',
@@ -20,7 +21,7 @@ void main() {
     );
 
     final entity2 = NotificationEntity(
-      id: 1,
+      id: Guid.empty(),
       title: '6º Encontro de Clássicos na My School',
       description:
           'Já estamos em fevereiro e o evento mais aguardado pelos amantes de carro chegou!',
@@ -33,7 +34,7 @@ void main() {
 
   test('NotificationEntity - equality - with link', () {
     final entity1 = NotificationEntity(
-      id: 1,
+      id: Guid.empty(),
       title: '6º Encontro de Clássicos na My School',
       description:
           'Já estamos em fevereiro e o evento mais aguardado pelos amantes de carro chegou!',
@@ -44,7 +45,7 @@ void main() {
     );
 
     final entity2 = NotificationEntity(
-      id: 1,
+      id: Guid.empty(),
       title: '6º Encontro de Clássicos na My School',
       description:
           'Já estamos em fevereiro e o evento mais aguardado pelos amantes de carro chegou!',
