@@ -47,25 +47,33 @@ class _CalendarPageState extends State<CalendarPage> {
 
     fetchDebouncer.run(() async {
       await scrollToUp();
-
       cubit.fetch(startDate: value);
     });
   }
 
   Future<void> changeViewMonth(DateTime? startDate) async {
+    if (startDate?.month == viewStartDate?.month) {
+      return;
+    }
+
     setState(() {
       viewMonth = startDate?.month;
       viewStartDate = startDate;
       datePickerController.selectedDate = null;
-      datePickerController.displayDate = DateTime.now().copyWith(
-        day: 1,
-        month: startDate?.month,
-      );
+
+      if (startDate == null) return;
+
+      if (startDate.month == viewStartDate!.month) return;
+
+      if (startDate.month < viewStartDate!.month == true) {
+        datePickerController.forward?.call();
+      } else {
+        datePickerController.backward?.call();
+      }
     });
 
     fetchDebouncer.run(() async {
       await scrollToUp();
-
       cubit.fetch(startDate: startDate);
     });
   }
@@ -88,7 +96,7 @@ class _CalendarPageState extends State<CalendarPage> {
     datePickerController = DateRangePickerController();
     scrollController = ScrollController();
 
-    cubit = context.read()..fetch();
+    cubit = context.read();
   }
 
   @override
@@ -141,6 +149,7 @@ class _CalendarPageState extends State<CalendarPage> {
                   child: Container(
                     width: double.infinity,
                     margin: const EdgeInsets.only(top: 16),
+                    clipBehavior: Clip.antiAlias,
                     decoration: BoxDecoration(
                       color: MonoChromaticColors.backgroundColor,
                       borderRadius: const BorderRadius.vertical(

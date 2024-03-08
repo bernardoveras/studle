@@ -86,6 +86,7 @@ class _CalendarPickerState extends State<CalendarPicker> {
         SfDateRangePicker(
           controller: datePickerController,
           onSelectionChanged: (args) => widget.changeDate?.call(args.value),
+          initialDisplayDate: viewStartDate ?? DateTime.now(),
           onViewChanged: (args) {
             Future.delayed(Duration.zero).then(
               (value) =>
