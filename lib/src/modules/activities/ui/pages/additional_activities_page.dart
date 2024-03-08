@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
+import '../../../../core/extensions/build_context_extension.dart';
 import '../../../../core/ui/design_system/design_system.dart';
 import '../../../../core/ui/widgets/default_app_bar.dart';
 import '../../../../core/utils/redirect_to_url.dart';
@@ -14,8 +15,6 @@ class AdditionalActivitiesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var bottomPadding = MediaQuery.paddingOf(context).bottom;
-
     return Scaffold(
       appBar: const DefaultAppBar(
         title: 'Atividades complementares',
@@ -24,7 +23,7 @@ class AdditionalActivitiesPage extends StatelessWidget {
         padding: EdgeInsets.only(
           left: 16,
           right: 16,
-          bottom: 16 + bottomPadding,
+          bottom: 16 + context.bottomPadding,
         ),
         child: SolidButton.primary(
           label: 'Link para envio de atividades',
@@ -39,7 +38,7 @@ class AdditionalActivitiesPage extends StatelessWidget {
           top: 16,
           right: 16,
           left: 16,
-          bottom: 16 + bottomPadding,
+          bottom: 16 + context.bottomPadding,
         ),
         child: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
