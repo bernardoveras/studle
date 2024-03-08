@@ -36,6 +36,7 @@ dependencies:
   app_settings: ^5.1.1
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.13.1
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
@@ -58,3 +59,10 @@ flutter:
         - asset: assets/fonts/Inter-SemiBold.ttf
           weight: 600
         - asset: assets/fonts/Inter-Bold.ttf
+
+flutter_launcher_icons:
+  image_path: "assets/icon-ios.png"
+  adaptive_icon_foreground: "assets/icon-android.png"
+  android: true
+  ios: true
+  adaptive_icon_background: "#4723D9"
