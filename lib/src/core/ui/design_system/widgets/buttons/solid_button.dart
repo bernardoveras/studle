@@ -244,7 +244,7 @@ class SolidButton extends StatelessWidget {
           ),
           backgroundColor: MaterialStateProperty.resolveWith((states) {
             if (states.contains(MaterialState.disabled)) {
-              return MonoChromaticColors.gray.v300;
+              return MonoChromaticColors.disabledBackground;
             }
 
             if (style == SolidButtonStyle.inverted) {
@@ -253,11 +253,9 @@ class SolidButton extends StatelessWidget {
               }
 
               if (states.contains(MaterialState.focused)) {
-                // return backgroundColor.v300;
                 return backgroundColor;
               }
 
-              // return backgroundColor.v200;
               return backgroundColor;
             }
 
@@ -269,7 +267,7 @@ class SolidButton extends StatelessWidget {
           }),
           foregroundColor: MaterialStateProperty.resolveWith((states) {
             if (states.contains(MaterialState.disabled)) {
-              return MonoChromaticColors.gray;
+              return MonoChromaticColors.gray.v400;
             }
 
             if (style == SolidButtonStyle.inverted) {
