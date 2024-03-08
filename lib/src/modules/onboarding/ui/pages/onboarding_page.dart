@@ -31,24 +31,22 @@ class _OnboardingPageState extends State<OnboardingPage> {
       listenable: store,
       builder: (_, __) {
         return Scaffold(
-          bottomSheet: Padding(
-            padding: EdgeInsets.only(
-              left: 16,
-              right: 16,
-              bottom: 16 + MediaQuery.viewPaddingOf(context).bottom,
-            ),
-            child: Animate(
-              effects: const [
-                FadeEffect(
-                  curve: Curves.easeInOut,
-                  duration: Duration(milliseconds: 300),
+          persistentFooterButtons: [
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Animate(
+                effects: const [
+                  FadeEffect(
+                    curve: Curves.easeInOut,
+                    duration: Duration(milliseconds: 300),
+                  ),
+                ],
+                child: OnboardingBottomSheet(
+                  store: store,
                 ),
-              ],
-              child: OnboardingBottomSheet(
-                store: store,
               ),
             ),
-          ),
+          ],
           body: PageView.builder(
             itemCount: store.onboardingCount,
             controller: store.pageController,

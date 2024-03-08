@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../../../core/dependecy_injection/injector.dart';
+import '../../../../core/extensions/build_context_extension.dart';
 import '../../../../core/ui/design_system/design_system.dart';
 import '../../../../core/ui/widgets/default_app_bar.dart';
 import '../../../../core/ui/widgets/tiles/default_list_tile.dart';
@@ -48,8 +49,6 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    var bottomPadding = MediaQuery.viewPaddingOf(context).bottom;
-
     var user = userSession.user;
 
     return Scaffold(
@@ -59,19 +58,17 @@ class _ProfilePageState extends State<ProfilePage> {
         foregroundColor: Colors.white,
       ),
       backgroundColor: PrimaryColors.brand,
-      bottomSheet: Padding(
-        padding: EdgeInsets.only(
-          left: 16,
-          right: 16,
-          bottom: bottomPadding + 16,
+      persistentFooterButtons: [
+        Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: SolidButton.transparent(
+            label: 'Sair da conta',
+            icon: PhosphorIconsRegular.signOut,
+            foregroundColor: SemanticColors.negative,
+            onPressed: logout,
+          ),
         ),
-        child: SolidButton.transparent(
-          label: 'Sair da conta',
-          icon: PhosphorIconsRegular.signOut,
-          foregroundColor: SemanticColors.negative,
-          onPressed: logout,
-        ),
-      ),
+      ],
       body: user == null
           ? Container(color: MonoChromaticColors.backgroundColor)
           : Column(
@@ -121,7 +118,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         left: 16,
                         right: 16,
                         top: 16,
-                        bottom: 16 + bottomPadding,
+                        bottom: 16 + context.bottomPadding,
                       ),
                       child: Column(
                         children: [

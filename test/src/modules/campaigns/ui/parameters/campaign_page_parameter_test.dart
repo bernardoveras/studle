@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:myschool/src/modules/campaigns/ui/parameters/campaign_page_parameter.dart';
+import 'package:studle/src/modules/campaigns/ui/parameters/campaign_page_parameter.dart';
 
 void main() {
   test('CampaignPageParameter - equality', () {

@@ -77,7 +77,7 @@ class ErrorStateDisplay extends StatelessWidget {
               onPressed: onPressedSecondaryButton ??
                   () {
                     redirectToUrl(
-                      'https://github.com/bernardoveras/myschool/discussions/new/choose',
+                      'https://github.com/bernardoveras/studle/discussions/new/choose',
                     );
                   },
             ),

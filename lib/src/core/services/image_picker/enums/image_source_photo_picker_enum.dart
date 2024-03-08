@@ -1,0 +1,4 @@
+enum PhotoPickerSource {
+  camera,
+  gallery,
+}

@@ -3,6 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
+import '../../../../core/extensions/build_context_extension.dart';
 import '../../../../core/ui/design_system/design_system.dart';
 
 class CampaignHeader extends StatelessWidget {
@@ -15,8 +16,8 @@ class CampaignHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var topPadding = MediaQuery.paddingOf(context).top;
-    var screenSize = MediaQuery.sizeOf(context);
+    var topPadding = context.topPadding;
+    var screenSize = context.screenSize;
 
     return Container(
       decoration: BoxDecoration(

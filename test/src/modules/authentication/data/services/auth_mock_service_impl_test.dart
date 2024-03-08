@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:myschool/src/core/exceptions/invalid_credentials_exception.dart';
-import 'package:myschool/src/modules/authentication/data/services/auth_mock_service_impl.dart';
-import 'package:myschool/src/modules/authentication/domain/dtos/login_with_student_registration_dto.dart';
-import 'package:myschool/src/modules/authentication/domain/services/i_auth_service.dart';
+import 'package:studle/src/core/exceptions/invalid_credentials_exception.dart';
+import 'package:studle/src/modules/authentication/data/services/auth_mock_service_impl.dart';
+import 'package:studle/src/modules/authentication/domain/dtos/login_with_student_registration_dto.dart';
+import 'package:studle/src/modules/authentication/domain/services/i_auth_service.dart';
 
 import '../../../../../mocks/login_with_student_registration_mock.dart'
     as login_with_student_registration_dto_mock;

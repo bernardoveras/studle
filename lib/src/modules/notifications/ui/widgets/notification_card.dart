@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
+import '../../../../core/extension_types/guid.dart';
 import '../../../../core/helpers/date_helper.dart';
 import '../../../../core/ui/design_system/design_system.dart';
 import '../../../../core/utils/redirect_to_url.dart';
@@ -17,7 +18,7 @@ class NotificationCard extends StatelessWidget {
   });
 
   final NotificationEntity notification;
-  final ValueChanged<int>? markAsRead;
+  final ValueChanged<Guid>? markAsRead;
 
   void _markAsRead() {
     if (notification.isRead) return;

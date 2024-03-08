@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../extensions/build_context_extension.dart';
 import 'default_modal_header.dart';
 
 class DefaultModal extends StatelessWidget {
@@ -14,11 +15,11 @@ class DefaultModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bottomPadding = MediaQuery.paddingOf(context).bottom;
+    final bottomPadding = context.bottomPadding;
 
     return ConstrainedBox(
       constraints: BoxConstraints(
-        maxHeight: MediaQuery.sizeOf(context).height * 0.85,
+        maxHeight: context.maxHeight * 0.85,
       ),
       child: Container(
         decoration: const BoxDecoration(

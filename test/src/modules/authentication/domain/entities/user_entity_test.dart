@@ -1,16 +1,17 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:myschool/src/core/extensions/string_extension.dart';
-import 'package:myschool/src/modules/authentication/domain/entities/user_entity.dart';
-import 'package:myschool/src/modules/authentication/domain/enums/person_gender_enum.dart';
+import 'package:studle/src/core/extension_types/guid.dart';
+import 'package:studle/src/core/extensions/string_extension.dart';
+import 'package:studle/src/modules/authentication/domain/entities/user_entity.dart';
+import 'package:studle/src/modules/authentication/domain/enums/person_gender_enum.dart';
 
 import '../../../../../mocks/user_entity_mock.dart' as mock;
 
 void main() {
   test('UserEntity - equality', () {
     final entity1 = UserEntity(
-      id: 1,
+      id: Guid.empty(),
       accessToken: '6aa50a1a77db4163bcf3ee2a2a0115fb',
       refreshToken: '48b38423c45f4daaab8d7ed782fb8dc8',
       name: 'Bernardo Veras',
@@ -32,7 +33,7 @@ void main() {
     );
 
     final entity2 = UserEntity(
-      id: 1,
+      id: Guid.empty(),
       accessToken: '6aa50a1a77db4163bcf3ee2a2a0115fb',
       refreshToken: '48b38423c45f4daaab8d7ed782fb8dc8',
       name: 'Bernardo Veras',

@@ -14,4 +14,12 @@ extension StringExtension on String? {
 
     return this!.replaceAll(regex, '').removeWhiteSpace();
   }
+
+  String capitalize() {
+    if (isBlank) return '';
+
+    if (this!.length == 1) return this!.toUpperCase();
+
+    return '${this![0].toUpperCase()}${this!.substring(1).toLowerCase()}';
+  }
 }

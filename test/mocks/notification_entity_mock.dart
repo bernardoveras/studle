@@ -1,10 +1,11 @@
-import 'package:myschool/src/modules/notifications/domain/entities/notification_entity.dart';
-import 'package:myschool/src/modules/notifications/domain/enums/notification_link_type_enum.dart';
-import 'package:myschool/src/modules/notifications/domain/enums/notification_status_enum.dart';
+import 'package:studle/src/core/extension_types/guid.dart';
+import 'package:studle/src/modules/notifications/domain/entities/notification_entity.dart';
+import 'package:studle/src/modules/notifications/domain/enums/notification_link_type_enum.dart';
+import 'package:studle/src/modules/notifications/domain/enums/notification_status_enum.dart';
 
 final entity = NotificationEntity(
-  id: 1,
-  title: '6º Encontro de Clássicos na My School',
+  id: Guid.empty(),
+  title: '6º Encontro de Clássicos na Studle',
   description:
       'Já estamos em fevereiro e o evento mais aguardado pelos amantes de carro chegou!',
   status: NotificationStatus.read,
@@ -12,8 +13,8 @@ final entity = NotificationEntity(
 );
 
 final entityWithLink = NotificationEntity(
-  id: 1,
-  title: '6º Encontro de Clássicos na My School',
+  id: Guid.empty(),
+  title: '6º Encontro de Clássicos na Studle',
   description:
       'Já estamos em fevereiro e o evento mais aguardado pelos amantes de carro chegou!',
   link: 'https://google.com',
@@ -22,18 +23,17 @@ final entityWithLink = NotificationEntity(
   createdAt: DateTime(2024, 2, 14, 12, 50),
 );
 
-const map = <String, dynamic>{
-  'id': 1,
-  'title': '6º Encontro de Clássicos na My School',
+final map = <String, dynamic>{
+  'id': Guid.empty(),
+  'title': '6º Encontro de Clássicos na Studle',
   'description':
       'Já estamos em fevereiro e o evento mais aguardado pelos amantes de carro chegou!',
   'status': 0,
   'created_at': '2024-02-14T12:50:00.000',
 };
-
-const mapWithLink = <String, dynamic>{
-  'id': 1,
-  'title': '6º Encontro de Clássicos na My School',
+final mapWithLink = <String, dynamic>{
+  'id': Guid.empty(),
+  'title': '6º Encontro de Clássicos na Studle',
   'description':
       'Já estamos em fevereiro e o evento mais aguardado pelos amantes de carro chegou!',
   'link': 'https://google.com',
@@ -42,8 +42,8 @@ const mapWithLink = <String, dynamic>{
   'created_at': '2024-02-14T12:50:00.000',
 };
 
-const json =
-    '{"id":1,"title":"6º Encontro de Clássicos na My School","description":"Já estamos em fevereiro e o evento mais aguardado pelos amantes de carro chegou!","status":0,"created_at":"2024-02-14T12:50:00.000"}';
+final json =
+    '{"id":"${Guid.empty()}","title":"6º Encontro de Clássicos na Studle","description":"Já estamos em fevereiro e o evento mais aguardado pelos amantes de carro chegou!","status":0,"created_at":"2024-02-14T12:50:00.000"}';
 
-const jsonWithLink =
-    '{"id":1,"title":"6º Encontro de Clássicos na My School","description":"Já estamos em fevereiro e o evento mais aguardado pelos amantes de carro chegou!","link":"https://google.com","link_type":1,"status":0,"created_at":"2024-02-14T12:50:00.000"}';
+final jsonWithLink =
+    '{"id":"${Guid.empty()}","title":"6º Encontro de Clássicos na Studle","description":"Já estamos em fevereiro e o evento mais aguardado pelos amantes de carro chegou!","link":"https://google.com","link_type":1,"status":0,"created_at":"2024-02-14T12:50:00.000"}';

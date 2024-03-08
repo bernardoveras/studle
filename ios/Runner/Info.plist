@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>My School</string>
+	<string>Studle</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>myschool</string>
+	<string>studle</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -45,5 +45,18 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<!-- Permission options for the `mediaLibrary` group -->
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Precisamos da permissão para que você possa compartilhar arquivos.</string>
+	<key>kTCCServiceMediaLibrary</key>
+	<string>Precisamos da permissão para que você possa compartilhar arquivos.</string>
+
+	<!-- Permission options for the `photos` group -->
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Precisamos da permissão para que você possa compartilhar fotos e vídeos da sua biblioteca.</string>
+
+	<!-- Permission options for the `camera` group -->
+	<key>NSCameraUsageDescription</key>
+	<string>Precisamos da permissão para que você possa tirar fotos e vídeos da sua câmera.</string>
 </dict>
 </plist>

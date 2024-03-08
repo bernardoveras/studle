@@ -28,7 +28,7 @@ class OnboardingStore extends ChangeNotifier {
   bool get isFirstOnboarding => currentOnboarding?.order == 0;
 
   void _composeOnboarding() {
-    final onboarding1 = currentOnboarding = OnboardingEntity(
+    final onboarding1 = currentOnboarding = const OnboardingEntity(
       order: 0,
       imageSource: ImageSourceConstants.onboarding1,
       title: 'Boas-vindas ao App do Aluno!',
@@ -36,7 +36,7 @@ class OnboardingStore extends ChangeNotifier {
           'Nossa plataforma foi projetada para simplificar e melhorar sua experiência universitária.',
     );
 
-    final onboarding2 = OnboardingEntity(
+    const onboarding2 = OnboardingEntity(
       order: 1,
       imageSource: ImageSourceConstants.onboarding2,
       title: 'A sua escola no seu bolso.',
@@ -44,7 +44,7 @@ class OnboardingStore extends ChangeNotifier {
           'Acesse os horários e locais das aulas, suas notas, faltas e outras informações relevantes para cada disciplina de maneira fácil e rápida.',
     );
 
-    final onboarding3 = OnboardingEntity(
+    const onboarding3 = OnboardingEntity(
       order: 2,
       imageSource: ImageSourceConstants.onboarding3,
       title: 'Mantenha-se conectado(a)!',

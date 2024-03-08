@@ -2,12 +2,13 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
+import '../../../../core/extension_types/guid.dart';
 import '../../../../core/utils/nullable_value.dart';
 import '../enums/notification_link_type_enum.dart';
 import '../enums/notification_status_enum.dart';
 
 class NotificationEntity extends Equatable {
-  final int id;
+  final Guid id;
   final String title;
   final String description;
   final NotificationStatus status;

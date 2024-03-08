@@ -10,6 +10,9 @@ abstract class AppTheme {
       backgroundColor: Colors.transparent,
       elevation: 0.0,
     ),
+    dividerTheme: const DividerThemeData(
+      color: Colors.transparent,
+    ),
     snackBarTheme: SnackBarThemeData(
       backgroundColor: Colors.white,
       behavior: SnackBarBehavior.floating,
