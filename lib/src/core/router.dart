@@ -35,7 +35,14 @@ abstract class AppRouter {
           value: CalendarCubit(
             calendarService: Injector.resolve(),
           ),
-          child: const CalendarPage(),
+          child: CalendarPage(
+            initialDate: state.uri.queryParameters['date'] != null
+                ? DateTime.parse(state.uri.queryParameters['date']!)
+                : null,
+            initialMonth: state.uri.queryParameters['month'] != null
+                ? int.tryParse(state.uri.queryParameters['month']!)
+                : null,
+          ),
         ),
       ),
       GoRoute(

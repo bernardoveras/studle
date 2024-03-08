@@ -98,6 +98,7 @@ class _CalendarPickerState extends State<CalendarPicker> {
           showTodayButton: false,
           showNavigationArrow: false,
           headerHeight: 0,
+          initialSelectedDate: selectedDate,
           monthViewSettings: DateRangePickerMonthViewSettings(
             specialDates: widget.busyDates,
             viewHeaderStyle: DateRangePickerViewHeaderStyle(

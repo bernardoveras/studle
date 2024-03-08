@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../../../core/dependecy_injection/injector.dart';
+import '../../../../core/extensions/query_parameters_extension.dart';
 import '../../../../core/ui/design_system/design_system.dart';
 import '../../../../core/ui/widgets/default_app_bar.dart';
 import '../../../../core/user_session.dart';
@@ -57,7 +58,8 @@ class _HomePageState extends State<HomePage> {
           children: [
             SolidButton.primary(
               label: 'Calendário',
-              onPressed: () => context.push(CalendarPage.route),
+              onPressed: () => context.push(CalendarPage.route
+                  .addQuery('?date=${DateTime(2024, 3, 7).toIso8601String()}')),
             ),
           ],
         ),

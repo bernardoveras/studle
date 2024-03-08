@@ -26,7 +26,14 @@ import '../widgets/calendar_picker.dart';
 import '../widgets/calendar_skeleton_card.dart';
 
 class CalendarPage extends StatefulWidget {
-  const CalendarPage({super.key});
+  final DateTime? initialDate;
+  final int? initialMonth;
+
+  const CalendarPage({
+    super.key,
+    this.initialDate,
+    this.initialMonth,
+  });
 
   static String get route => '/calendar';
 
@@ -44,9 +51,10 @@ class _CalendarPageState extends State<CalendarPage> {
   List<DateTime> busyDates = [];
 
   DateTime? selectedDate;
-  // int? viewMonth;
   DateTime? viewStartDate;
   int? get viewMonth => viewStartDate?.month;
+
+  bool usingSelectedDateFromQuery = false;
 
   Future<void> changeDate(DateTime? date) async {
     date = date?.dateOnly;
@@ -74,10 +82,14 @@ class _CalendarPageState extends State<CalendarPage> {
     log('changeViewMonth: $date');
 
     if (selectedDate != null) {
-      setState(() {
-        selectedDate = null;
-        datePickerController.selectedDate = null;
-      });
+      if (!usingSelectedDateFromQuery) {
+        setState(() {
+          selectedDate = null;
+          datePickerController.selectedDate = null;
+        });
+      } else {
+        usingSelectedDateFromQuery = false;
+      }
 
       return fetchDebouncer.run(() async {
         await scrollToUp();
@@ -119,6 +131,14 @@ class _CalendarPageState extends State<CalendarPage> {
 
     datePickerController = DateRangePickerController();
     scrollController = ScrollController();
+
+    if (widget.initialDate != null) {
+      selectedDate = widget.initialDate!.dateOnly;
+      viewStartDate = widget.initialDate!.dateOnly;
+      usingSelectedDateFromQuery = true;
+    } else if (widget.initialMonth != null) {
+      viewStartDate = DateTime.now().copyWith(month: widget.initialMonth!);
+    }
 
     cubit = context.read();
   }

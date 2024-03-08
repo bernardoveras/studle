@@ -46,7 +46,7 @@ class _MonthPickerState extends State<MonthPicker> {
   void didUpdateWidget(covariant MonthPicker oldWidget) {
     super.didUpdateWidget(oldWidget);
 
-    if (oldWidget.month != widget.month && widget.month != null) {
+    if (widget.month != null) {
       selectedMonth = widget.month!;
       alignScrollToCenter(widget.month!);
     }
@@ -75,55 +75,54 @@ class _MonthPickerState extends State<MonthPicker> {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 45,
-      child: ListView.separated(
-        controller: widget.controller,
-        itemCount: 12,
-        shrinkWrap: true,
+      child: SingleChildScrollView(
+        controller: controller,
         scrollDirection: Axis.horizontal,
-        separatorBuilder: (context, index) => const SizedBox(width: 12),
-        itemBuilder: (context, index) {
-          final currentMonth = index + 1;
-          final date = DateTime(2024, currentMonth);
-          final isActive = selectedMonth == currentMonth;
-          final isFirst = currentMonth == 1;
-          final isLast = currentMonth == 12;
+        child: Row(
+          children: List.generate(12, (index) => index).map((index) {
+            final currentMonth = index + 1;
+            final date = DateTime.now().copyWith(month: currentMonth);
+            final isActive = selectedMonth == currentMonth;
+            final isFirst = currentMonth == 1;
+            final isLast = currentMonth == 12;
 
-          return Padding(
-            key: GlobalObjectKey(date.month),
-            padding: isFirst
-                ? const EdgeInsets.only(left: 16)
-                : isLast
-                    ? const EdgeInsets.only(right: 16)
-                    : EdgeInsets.zero,
-            child: GestureDetector(
-              onTap: () => changeMonth(date.month),
-              child: Chip(
-                label: Text(
-                  DateHelper.format(date, pattern: 'MMMM').capitalize(),
-                  style: Button2Typography(
-                    color: isActive ? PrimaryColors.brand : Colors.white,
-                    fontWeight: FontWeight.w600,
+            return Padding(
+              key: GlobalObjectKey(date.month),
+              padding: isFirst
+                  ? const EdgeInsets.only(left: 16, right: 12)
+                  : isLast
+                      ? const EdgeInsets.only(right: 16)
+                      : const EdgeInsets.only(right: 12),
+              child: GestureDetector(
+                onTap: () => changeMonth(date.month),
+                child: Chip(
+                  label: Text(
+                    DateHelper.format(date, pattern: 'MMMM').capitalize(),
+                    style: Button2Typography(
+                      color: isActive ? PrimaryColors.brand : Colors.white,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  elevation: 0,
+                  backgroundColor:
+                      isActive ? Colors.white : PrimaryColors.brand,
+                  shape: !isActive
+                      ? const StadiumBorder(
+                          side: BorderSide(
+                            color: Colors.white,
+                            width: 1.5,
+                          ),
+                        )
+                      : null,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 12,
                   ),
                 ),
-                elevation: 0,
-                backgroundColor: isActive ? Colors.white : PrimaryColors.brand,
-                shape: !isActive
-                    ? const StadiumBorder(
-                        side: BorderSide(
-                          color: Colors.white,
-                          width: 1.5,
-                        ),
-                      )
-                    : null,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 12,
-                ),
               ),
-            ),
-          );
-        },
+            );
+          }).toList(),
+        ),
       ),
     );
   }
