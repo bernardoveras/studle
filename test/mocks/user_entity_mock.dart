@@ -1,6 +1,6 @@
-import 'package:myschool/src/core/extension_types/guid.dart';
-import 'package:myschool/src/modules/authentication/domain/entities/user_entity.dart';
-import 'package:myschool/src/modules/authentication/domain/enums/person_gender_enum.dart';
+import 'package:studle/src/core/extension_types/guid.dart';
+import 'package:studle/src/modules/authentication/domain/entities/user_entity.dart';
+import 'package:studle/src/modules/authentication/domain/enums/person_gender_enum.dart';
 
 final entity = UserEntity(
   id: Guid.empty(),

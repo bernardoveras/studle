@@ -1,10 +1,10 @@
 blank_issues_enabled: false
 contact_links:
   - name: Feature Request
-    url: https://github.com/bernardoveras/myschool/discussions/categories/feature-requests
+    url: https://github.com/bernardoveras/studle/discussions/categories/feature-requests
     about: Have a feature request?  Please let us know via GitHub Discussions. 
-  - name: My School Q&A
-    url: https://github.com/bernardoveras/myschool/discussions/categories/q-a
+  - name: Studle Q&A
+    url: https://github.com/bernardoveras/studle/discussions/categories/q-a
     about: Have a general questions?  Please let us know via GitHub Discussions.
   - name: Self-Host Bug Report
     url: https://github.com/bernardoveras/selfhost/issues/new

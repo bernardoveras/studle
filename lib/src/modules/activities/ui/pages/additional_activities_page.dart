@@ -27,7 +27,7 @@ class AdditionalActivitiesPage extends StatelessWidget {
             icon: PhosphorIconsRegular.arrowSquareOut,
             style: SolidButtonStyle.outlined,
             onPressed: () => redirectToUrl(
-                'https://github.com/bernardoveras/myschool/discussions'),
+                'https://github.com/bernardoveras/studle/discussions'),
           ),
         ),
       ],
@@ -48,7 +48,7 @@ class AdditionalActivitiesPage extends StatelessWidget {
             SizedBox(height: 16),
             TeacherInformationCard(
               name: 'Prof. José Neto',
-              email: 'jose.neto@myschool.com',
+              email: 'jose.neto@studle.com',
               pictureUrl:
                   'https://avatars.githubusercontent.com/u/56937988?v=4',
             ),

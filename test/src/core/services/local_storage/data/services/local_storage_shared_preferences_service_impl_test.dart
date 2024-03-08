@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:myschool/src/core/exceptions/not_found_exception.dart';
-import 'package:myschool/src/core/services/local_storage/data/services/local_storage_shared_preferences_service_impl.dart';
-import 'package:myschool/src/core/services/local_storage/domain/services/i_local_storage_service.dart';
+import 'package:studle/src/core/exceptions/not_found_exception.dart';
+import 'package:studle/src/core/services/local_storage/data/services/local_storage_shared_preferences_service_impl.dart';
+import 'package:studle/src/core/services/local_storage/domain/services/i_local_storage_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// 🕔 Unit Test Progress

@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:myschool/src/core/extension_types/guid.dart';
+import 'package:studle/src/core/extension_types/guid.dart';
 import 'package:uuid/uuid.dart';
 
 void main() {

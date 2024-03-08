@@ -173,7 +173,7 @@ class StudentIdentityCard extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
-                                  'My School',
+                                  'Studle',
                                   style: Text3Typography(
                                     color: MonoChromaticColors.gray,
                                   ),
