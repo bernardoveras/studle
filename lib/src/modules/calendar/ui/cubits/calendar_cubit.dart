@@ -13,7 +13,7 @@ class CalendarCubit extends Cubit<CalendarState> {
 
   CalendarCubit({
     required this.calendarService,
-  }) : super(const InitialState());
+  }) : super(const LoadingState());
 
   Future<void> fetch({
     DateTime? startDate,
