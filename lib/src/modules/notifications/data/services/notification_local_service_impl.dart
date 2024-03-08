@@ -122,4 +122,65 @@ class NotificationLocalServiceImpl implements INotificationService {
       return Failure(UnknowException(error: e));
     }
   }
+
+  @override
+  AsyncResult<bool, GenericException> markAsReadBatch(List<Guid> ids) async {
+    try {
+      final result =
+          await localStorageService.read<String>(LocalStorageKey.notifications);
+
+      final response = result.getOrNull();
+
+      if (result.isError()) {
+        final error = result.exceptionOrNull();
+        return Failure(error!);
+      }
+
+      final decodedJson = jsonDecode(response!);
+
+      if (decodedJson is! List) {
+        return Failure(
+          NotFoundException(
+            message: 'Não foi possível encontrar a notificação com ids $ids.',
+          ),
+        );
+      }
+
+      final notifications =
+          decodedJson.map((e) => NotificationEntity.fromMap(e)).toList();
+
+      final notificationsFiltered =
+          notifications.where((x) => ids.contains(x.id));
+
+      for (var notification in notificationsFiltered) {
+        if (notification.isRead) {
+          continue;
+        }
+
+        final notificationIndex = notifications.indexOf(notification);
+
+        notification = notification.copyWith(status: NotificationStatus.read);
+
+        notifications[notificationIndex] = notification;
+      }
+
+      final notificationsJson =
+          jsonEncode(notifications.map((e) => e.toMap()).toList());
+
+      final writeResult = await localStorageService.write<String>(
+        LocalStorageKey.notifications,
+        notificationsJson,
+      );
+
+      if (writeResult.isError()) {
+        return writeResult;
+      }
+
+      return const Success(true);
+    } on GenericException catch (e) {
+      return Failure(e);
+    } catch (e) {
+      return Failure(UnknowException(error: e));
+    }
+  }
 }
