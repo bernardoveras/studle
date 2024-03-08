@@ -1,4 +1,4 @@
-# My School
+# Studle
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/bernardoveras/myschool)
 ![Github open issues](https://img.shields.io/github/issues/bernardoveras/myschool)
@@ -21,11 +21,11 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Dados pessoais
 - [ ] Aulas
 - [ ] Notas
-- [ ] Atividades complementares
+- [x] Atividades complementares
 - [ ] Progressão acadêmica
 - [ ] Financeiro
 - [x] Notificações
-- [ ] Calendário
+- [x] Calendário
 - [x] Carteirinha
 - [ ] Serviço de Atendimento ao Aluno
 - [x] Campanha
