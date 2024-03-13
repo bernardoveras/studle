@@ -1,7 +1,7 @@
 import 'exceptions.dart';
 
 class InvalidCredentialsException extends UnauthorizedException {
-  InvalidCredentialsException({
+  const InvalidCredentialsException({
     super.message = 'Login e/ou senha incorretos.',
   });
 }

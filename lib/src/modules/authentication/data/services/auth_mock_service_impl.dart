@@ -19,7 +19,7 @@ class AuthMockServiceImpl implements IAuthService {
     await Future.delayed(const Duration(seconds: 1));
 
     if (dto.registration != mockLogin || dto.password != mockPassword) {
-      return Failure(InvalidCredentialsException());
+      return const Failure(InvalidCredentialsException());
     }
 
     final user = UserEntity(

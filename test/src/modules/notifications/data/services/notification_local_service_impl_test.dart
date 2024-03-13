@@ -57,7 +57,7 @@ void main() {
       final expectedValue = [];
 
       when(localStorageService.read<String>(LocalStorageKey.notifications))
-          .thenAnswer((_) async => Failure(NotFoundException()));
+          .thenAnswer((_) async => const Failure(NotFoundException()));
 
       final result = await notificationService.fetch();
 
