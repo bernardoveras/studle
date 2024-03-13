@@ -40,8 +40,8 @@ class NotificationLocalServiceImpl implements INotificationService {
 
       if (decodedJson is! List) {
         return Failure(
-          UnknowException(
-            message: 'Não foi possível encontrar as notificações. (61dcbc0f)',
+          InvalidTypeException(
+            message: 'O tipo ${decodedJson.runtimeType} não é válido.',
           ),
         );
       }
@@ -74,8 +74,8 @@ class NotificationLocalServiceImpl implements INotificationService {
 
       if (decodedJson is! List) {
         return Failure(
-          NotFoundException(
-            message: 'Não foi possível encontrar a notificação com id $id.',
+          InvalidTypeException(
+            message: 'O tipo ${decodedJson.runtimeType} não é válido.',
           ),
         );
       }
@@ -140,8 +140,8 @@ class NotificationLocalServiceImpl implements INotificationService {
 
       if (decodedJson is! List) {
         return Failure(
-          NotFoundException(
-            message: 'Não foi possível encontrar a notificação com ids $ids.',
+          InvalidTypeException(
+            message: 'O tipo ${decodedJson.runtimeType} não é válido.',
           ),
         );
       }
@@ -151,6 +151,14 @@ class NotificationLocalServiceImpl implements INotificationService {
 
       final notificationsFiltered =
           notifications.where((x) => ids.contains(x.id));
+
+      if (notificationsFiltered.isEmpty) {
+        return Failure(
+          NotFoundException(
+            message: 'Não foi possível encontrar a notificação com ids $ids.',
+          ),
+        );
+      }
 
       for (var notification in notificationsFiltered) {
         if (notification.isRead) {

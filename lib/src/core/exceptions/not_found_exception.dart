@@ -1,7 +1,7 @@
 import 'exceptions.dart';
 
 class NotFoundException extends GenericException {
-  NotFoundException({
+  const NotFoundException({
     super.message = 'Não encontrado.',
     super.error,
   });
