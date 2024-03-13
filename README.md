@@ -2,9 +2,10 @@
 
 # Studle: Simplifique sua vida acadêmica!
 
-![GitHub repo size](https://img.shields.io/github/repo-size/bernardoveras/studle)
-![Github open issues](https://img.shields.io/github/issues/bernardoveras/studle)
-![Github open pull requests](https://img.shields.io/github/issues-pr/bernardoveras/studle)
+![GitHub stars](https://img.shields.io/github/stars/bernardoveras/studle?style=for-the-badge&color=6BE7BF&labelColor=4723D9&logo=GitHub)
+![Github open issues](https://img.shields.io/github/issues/bernardoveras/studle?style=for-the-badge&color=6BE7BF&labelColor=4723D9)
+[![All Contributors](https://img.shields.io/github/contributors/bernardoveras/studle?style=for-the-badge&color=6BE7BF&labelColor=4723D9)](https://github.com/bernardoveras/studle/graphs/contributors)
+![Codecov](https://img.shields.io/codecov/c/github/bernardoveras/studle?style=for-the-badge&color=6BE7BF&labelColor=4723D9)
 
 
 > O Aplicativo Studle é um aplicativo que permite os alunos acessar os horários das aulas, ver quantidades de faltas, olhar as notas do semestre, ver matérias cursadas, ter acesso ao financeiro e outras diversas funções.
@@ -74,42 +75,9 @@ Como alternativa, consulte a documentação do GitHub em [como criar uma solicit
 
 Agradecemos às seguintes pessoas que contribuíram para este projeto:
 
-<table>
-  <tr>
-    <td align="center">
-      <a href="#" title="Bernardo Veras">
-        <img src="https://avatars.githubusercontent.com/u/56937988" width="100px;" alt="Foto do Bernardo Veras no GitHub"/><br>
-        <sub>
-          <b>Bernardo Veras</b>
-        </sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="#" title="Caio Vellani">
-        <img src="https://avatars.githubusercontent.com/u/130803251?v=4" width="100px;" alt="Foto do Caio Vellani no GitHub"/><br>
-        <sub>
-          <b>Caio Vellani</b>
-        </sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="#" title="Giovanne Costa">
-        <img src="https://mir-s3-cdn-cf.behance.net/user/230/4e7ca387663677.5f31551c552a0.jpg" width="100px;" alt="Foto do Giovanne Costa no Behance"/><br>
-        <sub>
-          <b>Giovanne Costa<br>(UI Design)</b>
-        </sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="#" title="Gustavo Machado">
-        <img src="https://mir-s3-cdn-cf.behance.net/user/230/75f529178659203.65cfba6c4432f.jpg" width="100px;" alt="Foto do Gustavo Machado no Behance"/><br>
-        <sub>
-          <b>Gustavo Machado<br>(UI Design)</b>
-        </sub>
-      </a>
-    </td>
-  </tr>
-</table>
+<a href="https://github.com/bernardoveras/studle/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=bernardoveras/studle" />
+</a>
 
 ## 😄 Seja um dos contribuidores
 
