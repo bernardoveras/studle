@@ -11,6 +11,7 @@ import '../../../activities/ui/pages/additional_activities_page.dart';
 import '../../../calendar/ui/pages/calendar_page.dart';
 import '../../../campaigns/ui/pages/campaign_page.dart';
 import '../../../campaigns/ui/parameters/campaign_page_parameter.dart';
+import '../../../financial/ui/pages/financial_page.dart';
 import '../../../notifications/ui/pages/notification_list_page.dart';
 import '../../../profile/ui/pages/profile_page.dart';
 
@@ -87,6 +88,11 @@ Se inscreva até dia 31/05 na entrada do evento! Os pagamentos serão feitos na 
                   ).toQueryParameters(),
                 ),
               ),
+            ),
+            const SizedBox(height: 16),
+            SolidButton.primary(
+              label: 'Financeiro',
+              onPressed: () => context.push(FinancialPage.route),
             ),
           ],
         ),

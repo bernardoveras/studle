@@ -9,6 +9,7 @@ import '../modules/calendar/ui/cubits/calendar_cubit.dart';
 import '../modules/calendar/ui/pages/calendar_page.dart';
 import '../modules/campaigns/ui/pages/campaign_page.dart';
 import '../modules/campaigns/ui/parameters/campaign_page_parameter.dart';
+import '../modules/financial/ui/pages/financial_page.dart';
 import '../modules/home/ui/pages/home_page.dart';
 import '../modules/notifications/ui/cubits/notification_list_cubit.dart';
 import '../modules/notifications/ui/pages/notification_list_page.dart';
@@ -105,6 +106,10 @@ abstract class AppRouter {
       GoRoute(
         path: AdditionalActivitiesPage.route,
         builder: (context, state) => const AdditionalActivitiesPage(),
+      ),
+      GoRoute(
+        path: FinancialPage.route,
+        builder: (context, state) => const FinancialPage(),
       ),
     ],
     redirect: RouteGuard.redirect,
