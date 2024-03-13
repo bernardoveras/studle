@@ -39,7 +39,7 @@ class NotificationLocalServiceImpl implements INotificationService {
       final decodedJson = jsonDecode(response);
 
       if (decodedJson is! List) {
-        return Failure(
+        return const Failure(
           UnknowException(
             message: 'Não foi possível encontrar as notificações. (61dcbc0f)',
           ),

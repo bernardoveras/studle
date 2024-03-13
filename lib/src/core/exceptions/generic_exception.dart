@@ -12,7 +12,7 @@ abstract class GenericException implements Exception {
   /// to present detailed information to the end user.
   final dynamic error;
 
-  GenericException({
+  const GenericException({
     required this.message,
     this.error,
   });
