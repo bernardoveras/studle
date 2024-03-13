@@ -5,7 +5,7 @@
 ![GitHub stars](https://img.shields.io/github/stars/bernardoveras/studle?style=for-the-badge&color=6BE7BF&labelColor=4723D9&logo=GitHub)
 ![Github open issues](https://img.shields.io/github/issues/bernardoveras/studle?style=for-the-badge&color=6BE7BF&labelColor=4723D9)
 [![All Contributors](https://img.shields.io/github/contributors/bernardoveras/studle?style=for-the-badge&color=6BE7BF&labelColor=4723D9)](https://github.com/bernardoveras/studle/graphs/contributors)
-![Codecov](https://img.shields.io/codecov/c/github/bernardoveras/studle?style=for-the-badge&color=6BE7BF&labelColor=4723D9)
+<!-- ![Codecov](https://img.shields.io/codecov/c/github/bernardoveras/studle?style=for-the-badge&color=6BE7BF&labelColor=4723D9) -->
 
 
 > O Aplicativo Studle é um aplicativo que permite os alunos acessar os horários das aulas, ver quantidades de faltas, olhar as notas do semestre, ver matérias cursadas, ter acesso ao financeiro e outras diversas funções.
