@@ -10,7 +10,7 @@
 
 > O Aplicativo Studle é um aplicativo que permite os alunos acessar os horários das aulas, ver quantidades de faltas, olhar as notas do semestre, ver matérias cursadas, ter acesso ao financeiro e outras diversas funções.
 
-### Ajustes e melhorias
+### Funcionalidades
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes funcionalidades:
 
@@ -58,6 +58,10 @@ flutter pub get
 # executar o aplicativo
 flutter run
 ```
+
+## 🖼️ UI/UX do Aplicativo
+
+O UI/UX do aplicativo foi feito pelos designers Giovanne Costa e Gustavo Machado, você pode encontrar o link do Figma [clicando aqui](https://www.figma.com/file/rtQ4WJEFNHYzR6E9enwN7g/Studle---Portal-do-Aluno?type=design&node-id=175%3A1932&mode=design&t=umrHW8JoBbap9DGB-1)
 
 ## 📫 Contribuindo para Studle
 
