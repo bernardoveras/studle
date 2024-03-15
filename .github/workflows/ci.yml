@@ -1,0 +1,28 @@
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+      - dev
+
+name: "Run tests and analyze"
+jobs:
+  test:
+    name: Run test
+    runs-on: ubuntu-latest    
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.19.2'
+          channel: 'stable'
+          cache: true
+      - name: Run pub get
+        run: flutter pub get
+      - name: Run analyze
+        run: flutter analyze
+      - name: Run test
+        run: flutter test
