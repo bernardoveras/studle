@@ -1,7 +1,7 @@
 import 'exceptions.dart';
 
 class UnknowException extends GenericException {
-  UnknowException({
+  const UnknowException({
     super.message = 'Erro desconhecido.',
     super.error,
   });

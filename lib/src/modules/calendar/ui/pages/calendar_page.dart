@@ -86,6 +86,8 @@ class _CalendarPageState extends State<CalendarPage> {
         setState(() {
           selectedDate = null;
           datePickerController.selectedDate = null;
+          viewStartDate = date;
+          datePickerController.displayDate = viewStartDate;
         });
       } else {
         usingSelectedDateFromQuery = false;
@@ -176,18 +178,13 @@ class _CalendarPageState extends State<CalendarPage> {
               children: [
                 IgnorePointer(
                   ignoring: isLoading,
-                  child: AnimatedOpacity(
-                    opacity: isLoading ? 0.5 : 1,
-                    duration: const Duration(milliseconds: 400),
-                    curve: Curves.easeInOut,
-                    child: MonthPicker(
-                      month: viewMonth,
-                      changeMonth: (month) {
-                        changeViewMonth(
-                          DateTime.now().copyWith(day: 1, month: month),
-                        );
-                      },
-                    ),
+                  child: MonthPicker(
+                    month: viewMonth,
+                    changeMonth: (month) {
+                      changeViewMonth(
+                        DateTime.now().copyWith(day: 1, month: month),
+                      );
+                    },
                   ),
                 ),
                 Expanded(

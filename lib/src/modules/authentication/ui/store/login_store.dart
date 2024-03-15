@@ -42,7 +42,7 @@ class LoginStore extends ChangeNotifier with LoadingChangeNotifierMixin {
       changeLoading(true);
 
       if (!formIsValid) {
-        return Failure(UnknowException(message: 'Campos incorretos.'));
+        return const Failure(UnknowException(message: 'Campos incorretos.'));
       }
 
       final dto = LoginWithStudentRegistrationDto(

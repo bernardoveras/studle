@@ -49,7 +49,7 @@ class OnboardingBottomSheet extends StatelessWidget {
           controller: store.pageController,
           count: store.onboardingCount,
           effect: JumpingDotEffect(
-            dotColor: PrimaryColors.brand.v100,
+            dotColor: PrimaryColors.brand.v50,
             activeDotColor: PrimaryColors.brand,
             dotHeight: 8,
             dotWidth: 8,

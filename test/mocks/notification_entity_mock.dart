@@ -47,3 +47,6 @@ final json =
 
 final jsonWithLink =
     '{"id":"${Guid.empty()}","title":"6º Encontro de Clássicos na Studle","description":"Já estamos em fevereiro e o evento mais aguardado pelos amantes de carro chegou!","link":"https://google.com","link_type":1,"status":0,"created_at":"2024-02-14T12:50:00.000"}';
+
+final jsonReadList = '[$json]';
+final jsonUnreadList = '[${json.replaceAll('"status":0', '"status":1')}]';

@@ -1,37 +1,11 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:studle/src/core/exceptions/not_found_exception.dart';
 import 'package:studle/src/core/services/local_storage/data/services/local_storage_shared_preferences_service_impl.dart';
 import 'package:studle/src/core/services/local_storage/domain/services/i_local_storage_service.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-/// 🕔 Unit Test Progress
-///
-/// ✅ DELETE
-/// ✅ Delete existing key
-/// ✅ Delete non-existent key
-/// ✅ Delete all
-///
-/// ✅ READ
-/// ✅ Read existing key without type
-/// ✅ Read non-existent key and throw NotFoundException error
-/// ✅ Read existing key of type bool
-/// ✅ Read existing key of type double
-/// ✅ Read existing key of type int
-/// ✅ Read existing key of type List<String>
-/// ✅ Read existing key of type Map<String, dynamic>
-/// ✅ Read existing key of type String
-///
-/// ✅ WRITE
-/// ✅ Write to key without type
-/// ✅ Write to key with type bool
-/// ✅ Write to key with type double
-/// ✅ Write to key with type int
-/// ✅ Write to key with type List<String>
-/// ✅ Write to key with type Map<String, dynamic>
-/// ✅ Write to key with type String
-/// ✅ Write to key with null value and delete
 void main() {
   late final ILocalStorageService localStorageService;
   late final SharedPreferences sharedPreferences;

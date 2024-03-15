@@ -1,7 +1,7 @@
 import 'exceptions.dart';
 
 class UnauthorizedException extends GenericException {
-  UnauthorizedException({
+  const UnauthorizedException({
     super.message = 'Sessão expirada.',
   });
 }

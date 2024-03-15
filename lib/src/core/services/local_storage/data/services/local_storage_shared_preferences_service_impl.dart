@@ -19,7 +19,7 @@ class LocalStorageSharedPreferencesServiceImpl implements ILocalStorageService {
       final deleted = await sharedPreferences.remove(key);
 
       if (!deleted) {
-        return Failure(UnknowException());
+        return const Failure(UnknowException());
       }
 
       // ignore: avoid_print
@@ -92,7 +92,7 @@ class LocalStorageSharedPreferencesServiceImpl implements ILocalStorageService {
       };
 
       if (!writed) {
-        return Failure(UnknowException());
+        return const Failure(UnknowException());
       }
 
       // ignore: avoid_print
@@ -115,7 +115,7 @@ class LocalStorageSharedPreferencesServiceImpl implements ILocalStorageService {
       final deletedAll = await sharedPreferences.clear();
 
       if (!deletedAll) {
-        return Failure(UnknowException());
+        return const Failure(UnknowException());
       }
 
       // ignore: avoid_print
