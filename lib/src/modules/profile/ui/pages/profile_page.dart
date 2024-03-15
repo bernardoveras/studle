@@ -58,17 +58,6 @@ class _ProfilePageState extends State<ProfilePage> {
         foregroundColor: Colors.white,
       ),
       backgroundColor: PrimaryColors.brand,
-      persistentFooterButtons: [
-        Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: SolidButton.transparent(
-            label: 'Sair da conta',
-            icon: PhosphorIconsRegular.signOut,
-            foregroundColor: SemanticColors.negative,
-            onPressed: logout,
-          ),
-        ),
-      ],
       body: user == null
           ? Container(color: MonoChromaticColors.backgroundColor)
           : Column(
@@ -145,6 +134,13 @@ class _ProfilePageState extends State<ProfilePage> {
                             icon: PhosphorIconsRegular.question,
                             style: SolidButtonStyle.outlined,
                             onPressed: () => context.push(QuestionPage.route),
+                          ),
+                          const SizedBox(height: 24),
+                          SolidButton.transparent(
+                            label: 'Sair da conta',
+                            icon: PhosphorIconsRegular.signOut,
+                            foregroundColor: SemanticColors.negative,
+                            onPressed: logout,
                           ),
                         ],
                       ),
