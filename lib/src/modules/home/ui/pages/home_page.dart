@@ -35,56 +35,90 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: DefaultAppBar(
-        title: 'Home',
-        actions: [
-          IconButton(
-            onPressed: () => context.push(NotificationListPage.route),
-            splashColor: Colors.transparent,
-            icon: const Icon(
-              PhosphorIconsRegular.bellSimple,
-            ),
-          ),
-          IconButton(
-            onPressed: () => context.push(ProfilePage.route),
-            splashColor: Colors.transparent,
-            icon: const Icon(
-              PhosphorIconsRegular.user,
-            ),
-          ),
-        ],
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      body: Container(
+        color: Colors.blue.shade700,
+        height: size.height,
+        width: double.infinity,
         child: Column(
           children: [
-            SolidButton.primary(
-              label: 'Calendário',
-              onPressed: () => context.push(CalendarPage.route
-                  .addQuery('?date=${DateTime(2024, 3, 7).toIso8601String()}')),
+            const SizedBox(height: 50),
+            ListTile(
+              leading: IconButton(
+                onPressed: () => context.push(ProfilePage.route),
+                splashColor: Colors.transparent,
+                icon: const Icon(
+                  PhosphorIconsRegular.user,
+                  color: Colors.white,
+                ),
+              ),
+              title: RichText(
+                text: TextSpan(
+                  text: 'Olá, ',
+                  style: const Text2Typography(),
+                  children: [
+                    TextSpan(
+                      text: userSession.user?.name ?? '',
+                      style: const Text2Typography(fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+              ),
+              trailing: IconButton(
+                onPressed: () => context.push(NotificationListPage.route),
+                splashColor: Colors.transparent,
+                icon: const Icon(
+                  PhosphorIconsRegular.bellSimple,
+                  color: Colors.white,
+                ),
+              ),
             ),
-            const SizedBox(height: 16),
-            SolidButton.primary(
-              label: 'Atividades complementares',
-              onPressed: () => context.push(AdditionalActivitiesPage.route),
-            ),
-            const SizedBox(height: 16),
-            SolidButton.primary(
-              label: 'Campanha',
-              onPressed: () => context.push(
-                CampaignPage.route.addQuery(
-                  const CampaignPageParameter(
-                    title: 'Open Design 2024',
-                    description:
-                        '''Não fique de fora do Open! Garanta sua inscrição no maior evento de design da região!
-
-Se inscreva até dia 31/05 na entrada do evento! Os pagamentos serão feitos na hora por PIX, na área de credenciamento do auditório do bloco F. Corre que ainda dá tempo! 💜
-''',
-                    link: 'https://google.com',
-                    bannerUrl:
-                        'https://img.freepik.com/premium-vector/trendy-event-banner-template_85212-590.jpg',
-                  ).toQueryParameters(),
+            Expanded(
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(32),
+                    topRight: Radius.circular(32),
+                  ),
+                ),
+                child: ListView(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        children: [
+                          SolidButton.primary(
+                            label: 'Calendário',
+                            onPressed: () => context.push(CalendarPage.route.addQuery('?date=${DateTime(2024, 3, 7).toIso8601String()}')),
+                          ),
+                          const SizedBox(height: 16),
+                          SolidButton.primary(
+                            label: 'Atividades complementares',
+                            onPressed: () => context.push(AdditionalActivitiesPage.route),
+                          ),
+                          const SizedBox(height: 16),
+                          SolidButton.primary(
+                            label: 'Campanha',
+                            onPressed: () => context.push(
+                              CampaignPage.route.addQuery(
+                                const CampaignPageParameter(
+                                  title: 'Open Design 2024',
+                                  description: '''Não fique de fora do Open! Garanta sua inscrição no maior evento de design da região!
+                
+                Se inscreva até dia 31/05 na entrada do evento! Os pagamentos serão feitos na hora por PIX, na área de credenciamento do auditório do bloco F. Corre que ainda dá tempo! 💜
+                ''',
+                                  link: 'https://google.com',
+                                  bannerUrl: 'https://img.freepik.com/premium-vector/trendy-event-banner-template_85212-590.jpg',
+                                ).toQueryParameters(),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),

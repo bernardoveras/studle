@@ -46,16 +46,14 @@ Future<void> main() async {
         NotificationEntity(
           id: Guid.random(),
           title: 'Open Design 2024',
-          description:
-              'Não fique de fora do Open! Garante sua inscrição no maior evento de design da região!',
+          description: 'Não fique de fora do Open! Garante sua inscrição no maior evento de design da região!',
           status: NotificationStatus.unread,
           createdAt: DateTime(2024, 2, 16, 15, 20),
         ),
         NotificationEntity(
           id: Guid.random(),
           title: '6º Encontro de Clássicos na Studle',
-          description:
-              'Já estamos em fevereiro e o evento mais aguardado pelos amantes de carro chegou!',
+          description: 'Já estamos em fevereiro e o evento mais aguardado pelos amantes de carro chegou!',
           status: NotificationStatus.unread,
           createdAt: DateTime(2024, 2, 14, 12, 50),
           link: 'https://google.com',
@@ -71,8 +69,7 @@ Future<void> main() async {
         NotificationEntity(
           id: Guid.random(),
           title: 'Reitoria',
-          description:
-              'Participe da campanha do Vestibular 2024! A seleção está acontecendo hoje (30/08), das 20h às 23h',
+          description: 'Participe da campanha do Vestibular 2024! A seleção está acontecendo hoje (30/08), das 20h às 23h',
           status: NotificationStatus.unread,
           createdAt: DateTime(2024, 3, 1, 12, 30),
         ),
