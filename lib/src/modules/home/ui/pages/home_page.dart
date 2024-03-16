@@ -5,7 +5,6 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 import '../../../../core/dependecy_injection/injector.dart';
 import '../../../../core/extensions/query_parameters_extension.dart';
 import '../../../../core/ui/design_system/design_system.dart';
-import '../../../../core/ui/widgets/default_app_bar.dart';
 import '../../../../core/user_session.dart';
 import '../../../activities/ui/pages/additional_activities_page.dart';
 import '../../../calendar/ui/pages/calendar_page.dart';
@@ -38,7 +37,7 @@ class _HomePageState extends State<HomePage> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
-        color: Colors.blue.shade700,
+        color: PrimaryColors.brand,
         height: size.height,
         width: double.infinity,
         child: Column(
@@ -59,7 +58,7 @@ class _HomePageState extends State<HomePage> {
                   style: const Text2Typography(),
                   children: [
                     TextSpan(
-                      text: userSession.user?.name ?? '',
+                      text: '${userSession.user?.name ?? ''}!',
                       style: const Text2Typography(fontWeight: FontWeight.bold),
                     ),
                   ],
@@ -91,12 +90,15 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           SolidButton.primary(
                             label: 'Calendário',
-                            onPressed: () => context.push(CalendarPage.route.addQuery('?date=${DateTime(2024, 3, 7).toIso8601String()}')),
+                            onPressed: () => context.push(CalendarPage.route
+                                .addQuery(
+                                    '?date=${DateTime(2024, 3, 7).toIso8601String()}')),
                           ),
                           const SizedBox(height: 16),
                           SolidButton.primary(
                             label: 'Atividades complementares',
-                            onPressed: () => context.push(AdditionalActivitiesPage.route),
+                            onPressed: () =>
+                                context.push(AdditionalActivitiesPage.route),
                           ),
                           const SizedBox(height: 16),
                           SolidButton.primary(
@@ -105,12 +107,14 @@ class _HomePageState extends State<HomePage> {
                               CampaignPage.route.addQuery(
                                 const CampaignPageParameter(
                                   title: 'Open Design 2024',
-                                  description: '''Não fique de fora do Open! Garanta sua inscrição no maior evento de design da região!
+                                  description:
+                                      '''Não fique de fora do Open! Garanta sua inscrição no maior evento de design da região!
                 
                 Se inscreva até dia 31/05 na entrada do evento! Os pagamentos serão feitos na hora por PIX, na área de credenciamento do auditório do bloco F. Corre que ainda dá tempo! 💜
                 ''',
                                   link: 'https://google.com',
-                                  bannerUrl: 'https://img.freepik.com/premium-vector/trendy-event-banner-template_85212-590.jpg',
+                                  bannerUrl:
+                                      'https://img.freepik.com/premium-vector/trendy-event-banner-template_85212-590.jpg',
                                 ).toQueryParameters(),
                               ),
                             ),

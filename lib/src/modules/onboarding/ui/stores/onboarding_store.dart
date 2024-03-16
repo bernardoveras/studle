@@ -32,21 +32,24 @@ class OnboardingStore extends ChangeNotifier {
       order: 0,
       imageSource: ImageSourceConstants.onboarding1,
       title: 'Boas-vindas ao App do Aluno!',
-      description: 'Nossa plataforma foi projetada para simplificar e melhorar sua experiência universitária.',
+      description:
+          'Nossa plataforma foi projetada para simplificar e melhorar sua experiência universitária.',
     );
 
     const onboarding2 = OnboardingEntity(
       order: 1,
       imageSource: ImageSourceConstants.onboarding2,
       title: 'A sua escola no seu bolso.',
-      description: 'Acesse os horários e locais das aulas, suas notas, faltas e outras informações relevantes para cada disciplina de maneira fácil e rápida.',
+      description:
+          'Acesse os horários e locais das aulas, suas notas, faltas e outras informações relevantes para cada disciplina de maneira fácil e rápida.',
     );
 
     const onboarding3 = OnboardingEntity(
       order: 2,
       imageSource: ImageSourceConstants.onboarding3,
       title: 'Mantenha-se conectado(a)!',
-      description: 'Explore o aplicativo e aproveite ao máximo a sua jornada universitária.',
+      description:
+          'Explore o aplicativo e aproveite ao máximo a sua jornada universitária.',
     );
 
     onboardings = [
@@ -56,7 +59,8 @@ class OnboardingStore extends ChangeNotifier {
     ];
   }
 
-  OnboardingEntity? findOnboardingByOrder(int order) => onboardings.firstWhereOrNull((x) => x.order == order);
+  OnboardingEntity? findOnboardingByOrder(int order) =>
+      onboardings.firstWhereOrNull((x) => x.order == order);
 
   OnboardingEntity? next() {
     if (currentOnboarding == null) return null;

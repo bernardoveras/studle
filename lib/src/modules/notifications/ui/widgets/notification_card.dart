@@ -58,7 +58,8 @@ class NotificationCard extends StatelessWidget {
                     children: [
                       Badge(
                         backgroundColor: switch (notification.status) {
-                          NotificationStatus.read => MonoChromaticColors.gray.v300,
+                          NotificationStatus.read =>
+                            MonoChromaticColors.gray.v300,
                           NotificationStatus.unread => SemanticColors.negative,
                         },
                       ),

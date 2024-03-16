@@ -115,7 +115,8 @@ class _LoginPageState extends State<LoginPage> {
                       keyboardType: TextInputType.number,
                       textInputAction: TextInputAction.next,
                       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                      validator: Validatorless.required(TextConstants.requiredField),
+                      validator:
+                          Validatorless.required(TextConstants.requiredField),
                       onChanged: store.changeLogin,
                     ),
                     const SizedBox(height: 20),
@@ -123,7 +124,8 @@ class _LoginPageState extends State<LoginPage> {
                       label: 'Senha',
                       hintText: 'Senha',
                       textInputAction: TextInputAction.done,
-                      validator: Validatorless.required(TextConstants.requiredField),
+                      validator:
+                          Validatorless.required(TextConstants.requiredField),
                       onChanged: store.changePassword,
                       onFieldSubmitted: (_) => submit(),
                     ),
