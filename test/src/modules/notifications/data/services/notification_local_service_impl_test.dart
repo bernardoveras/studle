@@ -64,6 +64,24 @@ void main() {
 
       expect(result.exceptionOrNull(), isA<UnknowException>());
     });
+
+    test('Return error if local storage method returns a type other than List',
+        () async {
+      when(localStorageService.read<String>(LocalStorageKey.notifications))
+          .thenAnswer((_) async => const Success('{"key":"value"}'));
+
+      final result = await notificationService.fetch();
+
+      expect(result.exceptionOrNull(), isA<InvalidTypeException>());
+    });
+
+    test('Return error when throwing an exception', () async {
+      when(localStorageService.read<String>(LocalStorageKey.notifications))
+          .thenThrow(const UnknowException());
+
+      expect(
+          await notificationService.fetch(), const Failure(UnknowException()));
+    });
   });
 
   group('markAsRead', () {
@@ -155,6 +173,14 @@ void main() {
         LocalStorageKey.notifications,
         any,
       ));
+    });
+
+    test('Return error when throwing an exception', () async {
+      when(localStorageService.read<String>(LocalStorageKey.notifications))
+          .thenThrow(const UnknowException());
+
+      expect(await notificationService.markAsRead(mock.entity.id),
+          const Failure(UnknowException()));
     });
   });
 
@@ -252,6 +278,14 @@ void main() {
         LocalStorageKey.notifications,
         any,
       ));
+    });
+
+    test('Return error when throwing an exception', () async {
+      when(localStorageService.read<String>(LocalStorageKey.notifications))
+          .thenThrow(const UnknowException());
+
+      expect(await notificationService.markAsReadBatch([mock.entity.id]),
+          const Failure(UnknowException()));
     });
   });
 }

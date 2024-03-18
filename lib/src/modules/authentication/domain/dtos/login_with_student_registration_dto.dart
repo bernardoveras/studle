@@ -22,9 +22,8 @@ class LoginWithStudentRegistrationDto extends Equatable {
 
   String toJson() => json.encode(toMap());
 
+  // coverage:ignore-start
   @override
-  List<Object?> get props => [
-        registration,
-        password,
-      ];
+  List<Object?> get props => [registration, password];
+  // coverage:ignore-end
 }

@@ -1,3 +1,5 @@
+//coverage:ignore-file
+
 import 'package:equatable/equatable.dart';
 
 class CampaignPageParameter extends Equatable {
