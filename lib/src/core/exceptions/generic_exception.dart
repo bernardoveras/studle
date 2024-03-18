@@ -1,3 +1,5 @@
+// coverage:ignore-file
+
 abstract class GenericException implements Exception {
   /// Description of the error created.
   ///
