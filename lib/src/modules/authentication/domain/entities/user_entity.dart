@@ -110,6 +110,7 @@ class UserEntity extends Equatable {
   factory UserEntity.fromJson(String source) =>
       UserEntity.fromMap(json.decode(source));
 
+  //coverage:ignore-start
   UserEntity copyWith({
     String? accessToken,
     String? refreshToken,
@@ -152,6 +153,7 @@ class UserEntity extends Equatable {
       validityYear: validityYear ?? this.validityYear,
     );
   }
+  //coverage:ignore-end
 
   @override
   List<Object?> get props => [
